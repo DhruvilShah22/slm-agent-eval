@@ -90,8 +90,14 @@ def main() -> None:
               "and that the Kaggle account is phone-verified.", flush=True)
 
     # --- 2. Ollama install + serve ----------------------------------------
+    # Kaggle's image lacks zstd, which the Ollama installer requires.
+    dep = sh("apt-get install -y -qq zstd || "
+             "(apt-get update -qq && apt-get install -y -qq zstd)")
+    print("zstd install rc:", dep.returncode, flush=True)
     inst = sh("curl -fsSL https://ollama.com/install.sh | sh")
     print("ollama install tail:", inst.stdout[-300:], inst.stderr[-300:], flush=True)
+    if sh("which ollama").returncode != 0:
+        raise RuntimeError("ollama binary not found after install — see log above")
     subprocess.Popen(["ollama", "serve"],
                      stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
     for _ in range(120):

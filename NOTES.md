@@ -165,6 +165,17 @@ installed; no experiment-scale claims before that.
 - Budget note: user's Claude session near limit → this session ships only the
   setup/de-risk slice; full Phase 2 build next session.
 
+### Session-end state (2026-07-04, budget-limited session)
+- Public repo LIVE: https://github.com/DhruvilShah22/slm-agent-eval (main,
+  commits 7996f35 + 5ec9983; author = user's noreply identity, no AI trailers
+  per user requirement — recorded in memory).
+- Kaggle benchmark kernel v1 FAILED (evidence: kernel log): Ollama installer
+  needs `zstd`, absent from Kaggle image. **v1 log also confirms: P100 16GB
+  granted (phone verification OK) + kernel internet OK.**
+- Fix (apt-get zstd + binary guard) committed; **kernel v2 launched** — runs
+  server-side on Kaggle's clock; expected ~20–40 min (≈14 GB of model pulls
+  + timings). Results: benchmark_results.json in kernel output.
+
 ### RESUME POINT (start of next session — read this first)
 1. Check Kaggle benchmark run: `kaggle kernels status contactshahdhruvil/slm-agent-eval-benchmark`,
    then `kaggle kernels output` → benchmark_results.json → record T4 throughput

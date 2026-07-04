@@ -1,0 +1,2 @@
+Zephyra Outfitters Shipping Quotes — defaults.
+When a customer asks for a shipping quote without specifying a region, quotes assume the Ontario region by default. Agents should confirm the region when possible.

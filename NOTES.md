@@ -210,6 +210,42 @@ installed; no experiment-scale claims before that.
 4. Constraints unchanged: zero paid APIs; every number traceable; stop for
    user approval only where design says; no scope creep.
 
+## 2026-07-04 (later session) — Phase 2 build
+
+### Built and verified (evidence: this repo + runs/smoke_v1/)
+- Full harness per design §§3–7: `harness/` (agent loop, guardrail w/ bounded
+  retries, Ollama client w/ infra-retry separation, atomic episode logging),
+  `tools/` (5 tools + fault injector), `data/` (seeded world: 40 products,
+  30 orders, 64 docs, facts.json), `tasks/tasks.yaml` (25 tasks, 5 slices),
+  `grading/` (programmatic grade + first-failure attribution + integrity
+  checker), `configs/`, `run.py` (resumable CLI).
+- **Golds are resolved from the generated world at grade time** (grading/gold.py)
+  — no hand-copied answers can drift. `python -m grading.check_tasks`: all 25
+  resolve; slice counts OK; authoring assumptions asserted.
+- Unit checks passed: tools (8 cases), guardrail validator (3 cases).
+- **End-to-end smoke (local qwen2.5:1.5b, runs/smoke_v1/):** 4 episodes.
+  t03 PASS; t02/t18 fail = model guessed instead of using tools
+  (`no_tool_call`, S4 coded `guessed`); t22 fault fired, no retry, coded
+  `ignored_tool_error` + `refused`. Attribution behaving as designed on
+  first contact with reality.
+- Fix during smoke: split S5 flag into `answered_after_unrecovered_fault`
+  (deterministic) + `refused` (marker list, to be audited in hand-labeling)
+  + `hallucinated_answer`; verified against the saved t22 log.
+- Fix: model digest read from /api/tags (empty in /api/show).
+
+### Pilot launched
+- `kaggle/pilot/` kernel: 6 cells × tasks {t02,t06,t14,t18,t22} × seeds {1,2}
+  = 60 episodes on Kaggle GPU; outputs `runs/` + `pilot_summary.json`.
+
+### Next steps (for resume)
+1. Collect pilot: episode times per cell (rescale matrix if >30% over est.);
+   difficulty gate (base success 20–80%); pull trajectories for hand-labeling.
+2. Hand-label ~40 trajectories vs classifier → Cohen's κ → fix rules if needed.
+3. Launch full core matrix (same runner, no task/seed filter) as Kaggle
+   background kernel; collect; commit logs.
+4. Phase 3: analysis (Wilson CIs, pass^k, McNemar+Holm, cluster bootstrap),
+   plots, paper-style report.
+
 ### Lessons / corrections
 - PowerShell tool shells don't inherit PATH updates made mid-session by
   installers; invoke new binaries by absolute path.

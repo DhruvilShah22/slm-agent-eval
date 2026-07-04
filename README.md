@@ -26,7 +26,23 @@ and correction, with evidence pointers.
 PHASE0_RESEARCH_FRAMING.md   research questions, verified prior work, hardware evidence
 PHASE1_DESIGN.md             approved design: architecture, tasks, metrics, matrix, stats
 NOTES.md                     running log (evidence for every claim)
-kaggle/benchmark/            GPU timing benchmark kernel (pilot gate, part 1)
+harness/                     agent loop, guardrail, Ollama client, episode logging
+tools/                       the 5 local tools + fault injector (all deterministic)
+tasks/tasks.yaml             25 tasks in 5 slices; golds resolved from data at grade time
+grading/                     success grading, first-failure attribution, integrity checks
+data/                        seeded world generator + generated corpus/DB/facts
+configs/                     experiment cells (core matrix, smoke)
+run.py                       runner CLI (resumable per episode)
+runs/                        episode logs (every reported number traces here)
+kaggle/                      benchmark + pilot kernels for free-GPU execution
 ```
 
-Full reproduction instructions land with Phase 2 code.
+## Quick start (local)
+
+```
+pip install -r requirements.txt
+python data/generate.py            # regenerate the synthetic world (seeded)
+python -m grading.check_tasks      # verify all 25 golds resolve
+ollama pull qwen2.5:1.5b           # or any config'd model
+python run.py --config configs/smoke.yaml
+```

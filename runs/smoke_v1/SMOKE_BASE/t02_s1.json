@@ -1,0 +1,68 @@
+{
+ "task_id": "t02",
+ "seed": 1,
+ "cell": "SMOKE_BASE",
+ "model": "qwen2.5:1.5b",
+ "condition": "baseline",
+ "slice": "S1",
+ "started_utc": "2026-07-04T10:23:49Z",
+ "events": [
+  {
+   "type": "model_call",
+   "turn": 0,
+   "content": "شتی: Doba obrotu w zakresie od 1 do 3 dni.",
+   "tool_calls": null,
+   "infra_retries": 0,
+   "timings": {
+    "prompt_eval_count": 678,
+    "prompt_eval_duration": 13803759000,
+    "eval_count": 21,
+    "eval_duration": 3421101000,
+    "total_duration": 22220574000,
+    "load_duration": 4758550400
+   }
+  },
+  {
+   "type": "nudge"
+  },
+  {
+   "type": "model_call",
+   "turn": 1,
+   "content": "findFirstProduct {\"category\":\"jackets\"}",
+   "tool_calls": null,
+   "infra_retries": 0,
+   "timings": {
+    "prompt_eval_count": 733,
+    "prompt_eval_duration": 2077554000,
+    "eval_count": 9,
+    "eval_duration": 1310352000,
+    "total_duration": 6653672500,
+    "load_duration": 3227573900
+   }
+  }
+ ],
+ "final_answer": "findFirstProduct {\"category\":\"jackets\"}",
+ "asked_clarification": false,
+ "nudges": 1,
+ "hit_max_turns": false,
+ "wall_s": 28.96,
+ "turns": 2,
+ "blocks_used": 0,
+ "token_totals": {
+  "prompt_eval": 1411,
+  "eval": 30
+ },
+ "max_context_tokens": 742,
+ "grade": {
+  "gold": 30,
+  "gold_type": "number",
+  "extracted": "findFirstProduct {\"category\":\"jackets\"}",
+  "success": false,
+  "parse_failure": true,
+  "parsed": null
+ },
+ "attribution": {
+  "first_failure": "no_tool_call"
+ },
+ "completed": true
+}

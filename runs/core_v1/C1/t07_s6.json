@@ -1,0 +1,68 @@
+{
+ "task_id": "t07",
+ "seed": 6,
+ "cell": "C1",
+ "model": "qwen2.5:1.5b-instruct-q4_K_M",
+ "condition": "baseline",
+ "slice": "S2",
+ "started_utc": "2026-07-04T11:41:32Z",
+ "events": [
+  {
+   "type": "model_call",
+   "turn": 0,
+   "content": "orderId:ORD-1002, status:DROPPED, totalAmount:49.6, dateReceived:2023-05-18, region:US East (CALCUTTA), lineItems:[{'productId': 'backpacks', 'quantity': 2, 'unitPrice': 19.8}], discountType:VOLUME_DISCOUNT, volumeDiscountPercentage:10",
+   "tool_calls": null,
+   "infra_retries": 0,
+   "timings": {
+    "prompt_eval_count": 687,
+    "prompt_eval_duration": 13091000,
+    "eval_count": 89,
+    "eval_duration": 1004601000,
+    "total_duration": 1272041155,
+    "load_duration": 247481620
+   }
+  },
+  {
+   "type": "nudge"
+  },
+  {
+   "type": "model_call",
+   "turn": 1,
+   "content": " orderId: ORD-1002, status: DROPPED, totalAmount: 49.60, dateReceived: 2023-05-18, region: US East (CALCUTTA), lineItems: [{'productId': 'backpacks', 'quantity': 2, 'unitPrice': 19.8}], discountType: VOLUME_DISCOUNT, volumeDiscountPercentage: 10",
+   "tool_calls": null,
+   "infra_retries": 0,
+   "timings": {
+    "prompt_eval_count": 810,
+    "prompt_eval_duration": 64971000,
+    "eval_count": 94,
+    "eval_duration": 1089871000,
+    "total_duration": 1412057531,
+    "load_duration": 249445523
+   }
+  }
+ ],
+ "final_answer": "orderId: ORD-1002, status: DROPPED, totalAmount: 49.60, dateReceived: 2023-05-18, region: US East (CALCUTTA), lineItems: [{'productId': 'backpacks', 'quantity': 2, 'unitPrice': 19.8}], discountType: VOLUME_DISCOUNT, volumeDiscountPercentage: 10",
+ "asked_clarification": false,
+ "nudges": 1,
+ "hit_max_turns": false,
+ "wall_s": 2.69,
+ "turns": 2,
+ "blocks_used": 0,
+ "token_totals": {
+  "prompt_eval": 1497,
+  "eval": 183
+ },
+ "max_context_tokens": 904,
+ "grade": {
+  "gold": 945.45,
+  "gold_type": "number",
+  "extracted": "orderId: ORD-1002, status: DROPPED, totalAmount: 49.60, dateReceived: 2023-05-18, region: US East (CALCUTTA), lineItems: [{'productId': 'backpacks', 'quantity': 2, 'unitPrice': 19.8}], discountType: VOLUME_DISCOUNT, volumeDiscountPercentage: 10",
+  "success": false,
+  "parse_failure": false,
+  "parsed": 10.0
+ },
+ "attribution": {
+  "first_failure": "no_tool_call"
+ },
+ "completed": true
+}

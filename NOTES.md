@@ -275,6 +275,46 @@ installed; no experiment-scale claims before that.
   trajectories printed WITHOUT classifier output.
 - Full core matrix kernel launched: kaggle.com/code/contactshahdhruvil/slm-agent-eval-core
 
+### CORE MATRIX COMPLETE (evidence: runs/core_v1/, artifacts/matrix_summary.json)
+1,200 episodes in 55.8 min on Kaggle GPU. Inline pass counts (grader v2,
+ADVISORY until Phase 3 re-grade + blind κ validation):
+| Cell | Model | Cond | Pass/200 | Dominant first-failures |
+|---|---|---|---|---|
+| C1 | 1.5B Q4 | base | 27 (13.5%) | no_tool_call 61, synthesis 51 |
+| C2 | 1.5B Q4 | guard | 22 (11.0%) | no_tool_call 56, synthesis 53, malformed 23 |
+| C3 | 1.5B Q8 | base | 60 (30.0%) | synthesis 70, malformed 19, wrong_tool 19 |
+| C4 | 1.5B Q8 | guard | 45 (22.5%) | synthesis 70, malformed 34 |
+| C5 | 3B Q4 | base | 61 (30.5%) | synthesis 34, no_tool_call 32, bad_args 31 |
+| C6 | 3B Q4 | guard | 67 (33.5%) | synthesis 35, no_tool_call 31, bad_args 30 |
+
+Provisional observations (to be tested properly in Phase 3, NOT results yet):
+- **Quantization effect at 1.5B is large**: Q8 30.0% vs Q4 13.5% baseline —
+  and 1.5B-Q8 ≈ 3B-Q4. Contrasts with ACBench's 1–3% tool-use drop claim;
+  potential headline finding.
+- **Guardrail: no help at 1.5B (−2.5pp Q4, −7.5pp Q8), small gain at 3B
+  (+3pp)** — H2 looks partially falsified; failure mix (tool selection +
+  synthesis dominate) explains why an argument-level guardrail can't help.
+  The C4 drop needs investigation (typed errors confusing the small model?).
+- Failure anatomy shifts with quant: 1.5B-Q4 doesn't call tools
+  (no_tool_call 61); 1.5B-Q8 calls tools but synthesizes wrong (synthesis 70,
+  no_tool_call 5). Quantization changes *how* it fails, not just how much.
+- ignored_tool_error at 3B: 11 (base) → 5 (guard) — typed retriable errors
+  may specifically help error recovery. Check with S5-slice analysis.
+
+### RESUME POINT (next session)
+1. Blind κ validation: sample ~40 core_v1 episodes (stratified by cell/slice),
+   print trajectories WITHOUT attribution/grade, hand-label, compute κ; fix
+   grader/attributor if κ < ~0.7, re-grade all, log.
+2. analysis/ scripts: re-grade ALL episodes from raw logs (final grader),
+   Wilson CIs, pass^k k∈{1,2,4,8}, McNemar (guard vs base per model×quant;
+   Q8 vs Q4 @1.5B; 3B vs 1.5B @Q4) + Holm, cluster bootstrap by task,
+   S4/S5 slice analyses, latency/token overhead tables, plots.
+3. Collect ext_v1 (kernel launched overnight: llama1b-Q8, 3b-Q8, 7b-Q4 ×
+   base/guard) — same pipeline. User decides whether extensions go in paper.
+4. Paper-style report (REPORT.md): abstract, related work (Phase 0/1 docs),
+   method, results, limitations, future work. Every number from analysis/
+   outputs; cite only verified papers in NOTES literature list.
+
 ### Lessons / corrections
 - PowerShell tool shells don't inherit PATH updates made mid-session by
   installers; invoke new binaries by absolute path.

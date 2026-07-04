@@ -1,0 +1,130 @@
+{
+ "task_id": "t06",
+ "seed": 4,
+ "cell": "C6",
+ "model": "qwen2.5:3b-instruct-q4_K_M",
+ "condition": "guardrail",
+ "slice": "S2",
+ "started_utc": "2026-07-04T12:22:30Z",
+ "events": [
+  {
+   "type": "model_call",
+   "turn": 0,
+   "content": "",
+   "tool_calls": [
+    {
+     "id": "call_xs3tsnmj",
+     "function": {
+      "index": 0,
+      "name": "get_order",
+      "arguments": {
+       "order_id": "ORD-1009"
+      }
+     }
+    }
+   ],
+   "infra_retries": 0,
+   "timings": {
+    "prompt_eval_count": 691,
+    "prompt_eval_duration": 23663000,
+    "eval_count": 26,
+    "eval_duration": 473534000,
+    "total_duration": 764218378,
+    "load_duration": 258034730
+   }
+  },
+  {
+   "type": "tool_call",
+   "turn": 0,
+   "name": "get_order",
+   "args": {
+    "order_id": "ORD-1009"
+   },
+   "violations": [],
+   "blocked": false,
+   "fault_mode": null,
+   "executed": true,
+   "result_error": false,
+   "result": {
+    "order": {
+     "order_id": "ORD-1009",
+     "customer": "Reese Birchwood",
+     "status": "shipped",
+     "placed_date": "2026-01-20",
+     "region": "Ontario"
+    },
+    "items": [
+     {
+      "sku": "ZO-132",
+      "name": "Mistcloak Pro",
+      "qty": 1,
+      "unit_price": 652.02
+     },
+     {
+      "sku": "ZO-133",
+      "name": "Rainwhistle Lite",
+      "qty": 1,
+      "unit_price": 294.32
+     }
+    ]
+   }
+  },
+  {
+   "type": "model_call",
+   "turn": 1,
+   "content": "",
+   "tool_calls": null,
+   "infra_retries": 0,
+   "timings": {
+    "prompt_eval_count": 865,
+    "prompt_eval_duration": 179508000,
+    "eval_count": 27,
+    "eval_duration": 503299000,
+    "total_duration": 948428001,
+    "load_duration": 257667706
+   }
+  },
+  {
+   "type": "nudge"
+  },
+  {
+   "type": "model_call",
+   "turn": 2,
+   "content": "FINAL ANSWER: 946.34",
+   "tool_calls": null,
+   "infra_retries": 0,
+   "timings": {
+    "prompt_eval_count": 900,
+    "prompt_eval_duration": 121776000,
+    "eval_count": 12,
+    "eval_duration": 214250000,
+    "total_duration": 584443058,
+    "load_duration": 240802601
+   }
+  }
+ ],
+ "final_answer": "946.34",
+ "asked_clarification": false,
+ "nudges": 1,
+ "hit_max_turns": false,
+ "wall_s": 2.3,
+ "turns": 3,
+ "blocks_used": 0,
+ "token_totals": {
+  "prompt_eval": 2456,
+  "eval": 65
+ },
+ "max_context_tokens": 912,
+ "grade": {
+  "gold": 946.34,
+  "gold_type": "number",
+  "extracted": "946.34",
+  "success": true,
+  "parse_failure": false,
+  "parsed": 946.34
+ },
+ "attribution": {
+  "first_failure": null
+ },
+ "completed": true
+}

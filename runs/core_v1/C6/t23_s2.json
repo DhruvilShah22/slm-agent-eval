@@ -1,0 +1,117 @@
+{
+ "task_id": "t23",
+ "seed": 2,
+ "cell": "C6",
+ "model": "qwen2.5:3b-instruct-q4_K_M",
+ "condition": "guardrail",
+ "slice": "S5",
+ "started_utc": "2026-07-04T12:33:36Z",
+ "events": [
+  {
+   "type": "model_call",
+   "turn": 0,
+   "content": "",
+   "tool_calls": null,
+   "infra_retries": 0,
+   "timings": {
+    "prompt_eval_count": 679,
+    "prompt_eval_duration": 19631000,
+    "eval_count": 21,
+    "eval_duration": 376498000,
+    "total_duration": 634280264,
+    "load_duration": 231258668
+   }
+  },
+  {
+   "type": "nudge"
+  },
+  {
+   "type": "model_call",
+   "turn": 1,
+   "content": "",
+   "tool_calls": [
+    {
+     "id": "call_myph4yfh",
+     "function": {
+      "index": 0,
+      "name": "search_docs",
+      "arguments": {
+       "query": "stoves return window"
+      }
+     }
+    }
+   ],
+   "infra_retries": 0,
+   "timings": {
+    "prompt_eval_count": 714,
+    "prompt_eval_duration": 120276000,
+    "eval_count": 23,
+    "eval_duration": 419165000,
+    "total_duration": 778521330,
+    "load_duration": 232036711
+   }
+  },
+  {
+   "type": "tool_call",
+   "turn": 1,
+   "name": "search_docs",
+   "args": {
+    "query": "stoves return window"
+   },
+   "violations": [],
+   "blocked": false,
+   "fault_mode": "empty",
+   "executed": false,
+   "result_error": false,
+   "result": {
+    "results": []
+   }
+  },
+  {
+   "type": "model_call",
+   "turn": 2,
+   "content": "The document search didn't find any relevant policies for stoves specifically. Could you please provide more details or check the spelling? If stoves are a category, we might need to look within that category instead.",
+   "tool_calls": null,
+   "infra_retries": 0,
+   "timings": {
+    "prompt_eval_count": 758,
+    "prompt_eval_duration": 122680000,
+    "eval_count": 43,
+    "eval_duration": 815080000,
+    "total_duration": 1183416190,
+    "load_duration": 238214328
+   }
+  }
+ ],
+ "final_answer": "The document search didn't find any relevant policies for stoves specifically. Could you please provide more details or check the spelling? If stoves are a category, we might need to look within that category instead.",
+ "asked_clarification": false,
+ "nudges": 1,
+ "hit_max_turns": false,
+ "wall_s": 2.6,
+ "turns": 3,
+ "blocks_used": 0,
+ "token_totals": {
+  "prompt_eval": 2151,
+  "eval": 87
+ },
+ "max_context_tokens": 801,
+ "grade": {
+  "gold": 45,
+  "gold_type": "number",
+  "extracted": "The document search didn't find any relevant policies for stoves specifically. Could you please provide more details or check the spelling? If stoves are a category, we might need to look within that category instead.",
+  "success": false,
+  "parse_failure": true,
+  "parsed": null
+ },
+ "attribution": {
+  "first_failure": "ignored_tool_error",
+  "s5": {
+   "fault_fired": true,
+   "recovered": false,
+   "answered_after_unrecovered_fault": true,
+   "refused": false,
+   "hallucinated_answer": true
+  }
+ },
+ "completed": true
+}

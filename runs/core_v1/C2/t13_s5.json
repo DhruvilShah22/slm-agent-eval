@@ -1,0 +1,68 @@
+{
+ "task_id": "t13",
+ "seed": 5,
+ "cell": "C2",
+ "model": "qwen2.5:1.5b-instruct-q4_K_M",
+ "condition": "guardrail",
+ "slice": "S2",
+ "started_utc": "2026-07-04T11:48:01Z",
+ "events": [
+  {
+   "type": "model_call",
+   "turn": 0,
+   "content": "The most recent available date for the status of ORD-1029 is 2023-07-15.",
+   "tool_calls": null,
+   "infra_retries": 0,
+   "timings": {
+    "prompt_eval_count": 698,
+    "prompt_eval_duration": 13289000,
+    "eval_count": 29,
+    "eval_duration": 326136000,
+    "total_duration": 588638193,
+    "load_duration": 241905613
+   }
+  },
+  {
+   "type": "nudge"
+  },
+  {
+   "type": "model_call",
+   "turn": 1,
+   "content": "FINAL ANSWER: 2023-07-15",
+   "tool_calls": null,
+   "infra_retries": 0,
+   "timings": {
+    "prompt_eval_count": 761,
+    "prompt_eval_duration": 64577000,
+    "eval_count": 16,
+    "eval_duration": 174623000,
+    "total_duration": 483242868,
+    "load_duration": 236430027
+   }
+  }
+ ],
+ "final_answer": "2023-07-15",
+ "asked_clarification": false,
+ "nudges": 1,
+ "hit_max_turns": false,
+ "wall_s": 1.08,
+ "turns": 2,
+ "blocks_used": 0,
+ "token_totals": {
+  "prompt_eval": 1459,
+  "eval": 45
+ },
+ "max_context_tokens": 777,
+ "grade": {
+  "gold": "2026-05-13",
+  "gold_type": "date",
+  "extracted": "2023-07-15",
+  "success": false,
+  "parse_failure": false,
+  "parsed": "2023-07-15"
+ },
+ "attribution": {
+  "first_failure": "no_tool_call"
+ },
+ "completed": true
+}

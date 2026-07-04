@@ -1,0 +1,106 @@
+{
+ "task_id": "t09",
+ "seed": 7,
+ "cell": "C3",
+ "model": "qwen2.5:1.5b-instruct-q8_0",
+ "condition": "baseline",
+ "slice": "S2",
+ "started_utc": "2026-07-04T11:53:18Z",
+ "events": [
+  {
+   "type": "model_call",
+   "turn": 0,
+   "content": "",
+   "tool_calls": [
+    {
+     "id": "call_uvm4d6fq",
+     "function": {
+      "index": 0,
+      "name": "get_order",
+      "arguments": {
+       "order_id": "ORD-1016"
+      }
+     }
+    }
+   ],
+   "infra_retries": 0,
+   "timings": {
+    "prompt_eval_count": 687,
+    "prompt_eval_duration": 14354000,
+    "eval_count": 26,
+    "eval_duration": 306356000,
+    "total_duration": 570225064,
+    "load_duration": 241196354
+   }
+  },
+  {
+   "type": "tool_call",
+   "turn": 0,
+   "name": "get_order",
+   "args": {
+    "order_id": "ORD-1016"
+   },
+   "violations": [],
+   "blocked": false,
+   "fault_mode": null,
+   "executed": true,
+   "result_error": false,
+   "result": {
+    "order": {
+     "order_id": "ORD-1016",
+     "customer": "Jules Ivorsen",
+     "status": "delivered",
+     "placed_date": "2026-03-28",
+     "region": "Ontario"
+    },
+    "items": [
+     {
+      "sku": "ZO-121",
+      "name": "Emberforge Solo",
+      "qty": 1,
+      "unit_price": 485.15
+     }
+    ]
+   }
+  },
+  {
+   "type": "model_call",
+   "turn": 1,
+   "content": "The total cost of order ORD-1016 is $485.15. Standard shipping to Ontario will be applied as part of the delivery process.\n\nFinal Answer: $485.15",
+   "tool_calls": null,
+   "infra_retries": 0,
+   "timings": {
+    "prompt_eval_count": 825,
+    "prompt_eval_duration": 85669000,
+    "eval_count": 45,
+    "eval_duration": 539901000,
+    "total_duration": 903511026,
+    "load_duration": 269817407
+   }
+  }
+ ],
+ "final_answer": "$485.15",
+ "asked_clarification": false,
+ "nudges": 0,
+ "hit_max_turns": false,
+ "wall_s": 1.48,
+ "turns": 2,
+ "blocks_used": 0,
+ "token_totals": {
+  "prompt_eval": 1512,
+  "eval": 71
+ },
+ "max_context_tokens": 870,
+ "grade": {
+  "gold": 492.14,
+  "gold_type": "number",
+  "extracted": "$485.15",
+  "success": false,
+  "parse_failure": false,
+  "parsed": 485.15
+ },
+ "attribution": {
+  "first_failure": "synthesis_error"
+ },
+ "completed": true
+}

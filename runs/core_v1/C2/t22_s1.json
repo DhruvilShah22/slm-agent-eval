@@ -1,0 +1,119 @@
+{
+ "task_id": "t22",
+ "seed": 1,
+ "cell": "C2",
+ "model": "qwen2.5:1.5b-instruct-q4_K_M",
+ "condition": "guardrail",
+ "slice": "S5",
+ "started_utc": "2026-07-04T11:49:35Z",
+ "events": [
+  {
+   "type": "model_call",
+   "turn": 0,
+   "content": "",
+   "tool_calls": [
+    {
+     "id": "call_i7gag52x",
+     "function": {
+      "index": 0,
+      "name": "get_order",
+      "arguments": {
+       "order_id": "ORD-1023"
+      }
+     }
+    }
+   ],
+   "infra_retries": 0,
+   "timings": {
+    "prompt_eval_count": 680,
+    "prompt_eval_duration": 62476000,
+    "eval_count": 26,
+    "eval_duration": 290157000,
+    "total_duration": 599198506,
+    "load_duration": 239224125
+   }
+  },
+  {
+   "type": "tool_call",
+   "turn": 0,
+   "name": "get_order",
+   "args": {
+    "order_id": "ORD-1023"
+   },
+   "violations": [],
+   "blocked": false,
+   "fault_mode": "error",
+   "executed": false,
+   "result_error": true,
+   "result": {
+    "error_type": "service_unavailable",
+    "message": "The service is temporarily unavailable.",
+    "retriable": true
+   }
+  },
+  {
+   "type": "model_call",
+   "turn": 1,
+   "content": "The service is temporarily unavailable. Please try again later.",
+   "tool_calls": null,
+   "infra_retries": 0,
+   "timings": {
+    "prompt_eval_count": 748,
+    "prompt_eval_duration": 67184000,
+    "eval_count": 12,
+    "eval_duration": 129615000,
+    "total_duration": 448487841,
+    "load_duration": 244149430
+   }
+  },
+  {
+   "type": "nudge"
+  },
+  {
+   "type": "model_call",
+   "turn": 2,
+   "content": "FINAL ANSWER: SERVICE UNAVAILABLE",
+   "tool_calls": null,
+   "infra_retries": 0,
+   "timings": {
+    "prompt_eval_count": 794,
+    "prompt_eval_duration": 65034000,
+    "eval_count": 8,
+    "eval_duration": 83896000,
+    "total_duration": 401113510,
+    "load_duration": 244171665
+   }
+  }
+ ],
+ "final_answer": "SERVICE UNAVAILABLE",
+ "asked_clarification": false,
+ "nudges": 1,
+ "hit_max_turns": false,
+ "wall_s": 1.45,
+ "turns": 3,
+ "blocks_used": 0,
+ "token_totals": {
+  "prompt_eval": 2222,
+  "eval": 46
+ },
+ "max_context_tokens": 802,
+ "grade": {
+  "gold": "processing",
+  "gold_type": "string",
+  "extracted": "SERVICE UNAVAILABLE",
+  "success": false,
+  "parse_failure": false,
+  "parsed": "service unavailable"
+ },
+ "attribution": {
+  "first_failure": "ignored_tool_error",
+  "s5": {
+   "fault_fired": true,
+   "recovered": false,
+   "answered_after_unrecovered_fault": true,
+   "refused": true,
+   "hallucinated_answer": false
+  }
+ },
+ "completed": true
+}

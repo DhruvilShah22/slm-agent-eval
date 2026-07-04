@@ -1,0 +1,124 @@
+{
+ "task_id": "t03",
+ "seed": 6,
+ "cell": "C4",
+ "model": "qwen2.5:1.5b-instruct-q8_0",
+ "condition": "guardrail",
+ "slice": "S1",
+ "started_utc": "2026-07-04T11:58:47Z",
+ "events": [
+  {
+   "type": "model_call",
+   "turn": 0,
+   "content": "",
+   "tool_calls": [
+    {
+     "id": "call_ysb6wm3r",
+     "function": {
+      "index": 0,
+      "name": "get_order",
+      "arguments": {
+       "order_id": "ORD-1011"
+      }
+     }
+    }
+   ],
+   "infra_retries": 0,
+   "timings": {
+    "prompt_eval_count": 680,
+    "prompt_eval_duration": 13586000,
+    "eval_count": 26,
+    "eval_duration": 292088000,
+    "total_duration": 552416331,
+    "load_duration": 239851208
+   }
+  },
+  {
+   "type": "tool_call",
+   "turn": 0,
+   "name": "get_order",
+   "args": {
+    "order_id": "ORD-1011"
+   },
+   "violations": [],
+   "blocked": false,
+   "fault_mode": null,
+   "executed": true,
+   "result_error": false,
+   "result": {
+    "order": {
+     "order_id": "ORD-1011",
+     "customer": "Tatum Kirkbray",
+     "status": "delayed",
+     "placed_date": "2026-03-09",
+     "region": "Quebec"
+    },
+    "items": [
+     {
+      "sku": "ZO-126",
+      "name": "Nightquill 400",
+      "qty": 3,
+      "unit_price": 277.39
+     }
+    ]
+   }
+  },
+  {
+   "type": "model_call",
+   "turn": 1,
+   "content": "Order ORD-1011 is currently delayed and placed on March 9th, 2026 in Quebec. It contains 3 Nightquill 400 tents at a unit price of $277.39 each.",
+   "tool_calls": null,
+   "infra_retries": 0,
+   "timings": {
+    "prompt_eval_count": 821,
+    "prompt_eval_duration": 85619000,
+    "eval_count": 53,
+    "eval_duration": 624959000,
+    "total_duration": 959089311,
+    "load_duration": 241187709
+   }
+  },
+  {
+   "type": "nudge"
+  },
+  {
+   "type": "model_call",
+   "turn": 2,
+   "content": "FINAL ANSWER: delay'd'",
+   "tool_calls": null,
+   "infra_retries": 0,
+   "timings": {
+    "prompt_eval_count": 908,
+    "prompt_eval_duration": 55239000,
+    "eval_count": 8,
+    "eval_duration": 85423000,
+    "total_duration": 385188380,
+    "load_duration": 236972496
+   }
+  }
+ ],
+ "final_answer": "delay'd'",
+ "asked_clarification": false,
+ "nudges": 1,
+ "hit_max_turns": false,
+ "wall_s": 1.9,
+ "turns": 3,
+ "blocks_used": 0,
+ "token_totals": {
+  "prompt_eval": 2409,
+  "eval": 87
+ },
+ "max_context_tokens": 916,
+ "grade": {
+  "gold": "delayed",
+  "gold_type": "string",
+  "extracted": "delay'd'",
+  "success": false,
+  "parse_failure": false,
+  "parsed": "delayd"
+ },
+ "attribution": {
+  "first_failure": "synthesis_error"
+ },
+ "completed": true
+}

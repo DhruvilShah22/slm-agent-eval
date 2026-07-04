@@ -1,0 +1,68 @@
+{
+ "task_id": "t02",
+ "seed": 1,
+ "cell": "C2",
+ "model": "qwen2.5:1.5b-instruct-q4_K_M",
+ "condition": "guardrail",
+ "slice": "S1",
+ "started_utc": "2026-07-04T11:45:21Z",
+ "events": [
+  {
+   "type": "model_call",
+   "turn": 0,
+   "content": "شتاک جایزه‌ی به کاربر در زمان استقبال این ترکیب با استفاده از شناسنامه‌ای برای گرفتن نتایج. ممکنه کمتر از یک روز بین صدور و خرید حتماً هست.",
+   "tool_calls": null,
+   "infra_retries": 0,
+   "timings": {
+    "prompt_eval_count": 678,
+    "prompt_eval_duration": 62048000,
+    "eval_count": 79,
+    "eval_duration": 896747000,
+    "total_duration": 1221273835,
+    "load_duration": 255144497
+   }
+  },
+  {
+   "type": "nudge"
+  },
+  {
+   "type": "model_call",
+   "turn": 1,
+   "content": "شتاک جایزه‌ی برای کتابخانه‌ها نشان داده شده است. اطلاعات در زمان استقبال با توجه به شناسنامه‌ای راهنمایی می‌گیرد. چند روز بین صدور و خرید ممکنه، حداقل یک روز است.",
+   "tool_calls": null,
+   "infra_retries": 0,
+   "timings": {
+    "prompt_eval_count": 791,
+    "prompt_eval_duration": 64629000,
+    "eval_count": 89,
+    "eval_duration": 992639000,
+    "total_duration": 1307996770,
+    "load_duration": 242966870
+   }
+  }
+ ],
+ "final_answer": "شتاک جایزه‌ی برای کتابخانه‌ها نشان داده شده است. اطلاعات در زمان استقبال با توجه به شناسنامه‌ای راهنمایی می‌گیرد. چند روز بین صدور و خرید ممکنه، حداقل یک روز است.",
+ "asked_clarification": false,
+ "nudges": 1,
+ "hit_max_turns": false,
+ "wall_s": 2.53,
+ "turns": 2,
+ "blocks_used": 0,
+ "token_totals": {
+  "prompt_eval": 1469,
+  "eval": 168
+ },
+ "max_context_tokens": 880,
+ "grade": {
+  "gold": 30,
+  "gold_type": "number",
+  "extracted": "شتاک جایزه‌ی برای کتابخانه‌ها نشان داده شده است. اطلاعات در زمان استقبال با توجه به شناسنامه‌ای راهنمایی می‌گیرد. چند روز بین صدور و خرید ممکنه، حداقل یک روز است.",
+  "success": false,
+  "parse_failure": true,
+  "parsed": null
+ },
+ "attribution": {
+  "first_failure": "no_tool_call"
+ },
+ "completed": true
+}

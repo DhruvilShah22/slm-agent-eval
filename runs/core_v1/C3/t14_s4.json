@@ -1,0 +1,68 @@
+{
+ "task_id": "t14",
+ "seed": 4,
+ "cell": "C3",
+ "model": "qwen2.5:1.5b-instruct-q8_0",
+ "condition": "baseline",
+ "slice": "S3",
+ "started_utc": "2026-07-04T11:54:46Z",
+ "events": [
+  {
+   "type": "model_call",
+   "turn": 0,
+   "content": "The Vexatrail 55 backpack comes with a standard warranty period of one year.",
+   "tool_calls": null,
+   "infra_retries": 0,
+   "timings": {
+    "prompt_eval_count": 685,
+    "prompt_eval_duration": 13626000,
+    "eval_count": 20,
+    "eval_duration": 224544000,
+    "total_duration": 506441674,
+    "load_duration": 261535440
+   }
+  },
+  {
+   "type": "nudge"
+  },
+  {
+   "type": "model_call",
+   "turn": 1,
+   "content": "FINAL ANSWER: one year",
+   "tool_calls": null,
+   "infra_retries": 0,
+   "timings": {
+    "prompt_eval_count": 739,
+    "prompt_eval_duration": 54678000,
+    "eval_count": 7,
+    "eval_duration": 71838000,
+    "total_duration": 374577928,
+    "load_duration": 240598771
+   }
+  }
+ ],
+ "final_answer": "one year",
+ "asked_clarification": false,
+ "nudges": 1,
+ "hit_max_turns": false,
+ "wall_s": 0.88,
+ "turns": 2,
+ "blocks_used": 0,
+ "token_totals": {
+  "prompt_eval": 1424,
+  "eval": 27
+ },
+ "max_context_tokens": 746,
+ "grade": {
+  "gold": 1,
+  "gold_type": "number",
+  "extracted": "one year",
+  "success": true,
+  "parse_failure": false,
+  "parsed": 1.0
+ },
+ "attribution": {
+  "first_failure": null
+ },
+ "completed": true
+}

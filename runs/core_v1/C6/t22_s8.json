@@ -1,0 +1,181 @@
+{
+ "task_id": "t22",
+ "seed": 8,
+ "cell": "C6",
+ "model": "qwen2.5:3b-instruct-q4_K_M",
+ "condition": "guardrail",
+ "slice": "S5",
+ "started_utc": "2026-07-04T12:33:30Z",
+ "events": [
+  {
+   "type": "model_call",
+   "turn": 0,
+   "content": "",
+   "tool_calls": [
+    {
+     "id": "call_6o2izgd1",
+     "function": {
+      "index": 0,
+      "name": "get_order",
+      "arguments": {
+       "order_id": "ORD-1023"
+      }
+     }
+    }
+   ],
+   "infra_retries": 0,
+   "timings": {
+    "prompt_eval_count": 680,
+    "prompt_eval_duration": 20730000,
+    "eval_count": 26,
+    "eval_duration": 477184000,
+    "total_duration": 739101678,
+    "load_duration": 234555568
+   }
+  },
+  {
+   "type": "tool_call",
+   "turn": 0,
+   "name": "get_order",
+   "args": {
+    "order_id": "ORD-1023"
+   },
+   "violations": [],
+   "blocked": false,
+   "fault_mode": "error",
+   "executed": false,
+   "result_error": true,
+   "result": {
+    "error_type": "service_unavailable",
+    "message": "The service is temporarily unavailable.",
+    "retriable": true
+   }
+  },
+  {
+   "type": "model_call",
+   "turn": 1,
+   "content": "It seems that the service for fetching order details is currently unavailable. I'll retry in a moment.",
+   "tool_calls": null,
+   "infra_retries": 0,
+   "timings": {
+    "prompt_eval_count": 748,
+    "prompt_eval_duration": 125804000,
+    "eval_count": 21,
+    "eval_duration": 381628000,
+    "total_duration": 753786067,
+    "load_duration": 239379680
+   }
+  },
+  {
+   "type": "nudge"
+  },
+  {
+   "type": "model_call",
+   "turn": 2,
+   "content": "",
+   "tool_calls": [
+    {
+     "id": "call_sjggbf7y",
+     "function": {
+      "index": 0,
+      "name": "get_order",
+      "arguments": {
+       "order_id": "ORD-1023"
+      }
+     }
+    }
+   ],
+   "infra_retries": 0,
+   "timings": {
+    "prompt_eval_count": 803,
+    "prompt_eval_duration": 121742000,
+    "eval_count": 25,
+    "eval_duration": 470696000,
+    "total_duration": 831352421,
+    "load_duration": 231361261
+   }
+  },
+  {
+   "type": "tool_call",
+   "turn": 2,
+   "name": "get_order",
+   "args": {
+    "order_id": "ORD-1023"
+   },
+   "violations": [],
+   "blocked": false,
+   "fault_mode": null,
+   "executed": true,
+   "result_error": false,
+   "result": {
+    "order": {
+     "order_id": "ORD-1023",
+     "customer": "Indigo Dunmore",
+     "status": "processing",
+     "placed_date": "2026-02-13",
+     "region": "Prairie"
+    },
+    "items": [
+     {
+      "sku": "ZO-122",
+      "name": "Scorchfen Trek",
+      "qty": 5,
+      "unit_price": 100.3
+     },
+     {
+      "sku": "ZO-119",
+      "name": "Pyreglade Micro",
+      "qty": 5,
+      "unit_price": 67.88
+     }
+    ]
+   }
+  },
+  {
+   "type": "model_call",
+   "turn": 3,
+   "content": "FINAL ANSWER: The order ORD-1023 for customer Indigo Dunmore is currently in processing status with a placed date of 2026-02-13. It contains two items: 5 units of Scorchfen Trek priced at $100.30 and 5 units of Pyreglade Micro priced at $67.88.",
+   "tool_calls": null,
+   "infra_retries": 0,
+   "timings": {
+    "prompt_eval_count": 976,
+    "prompt_eval_duration": 177636000,
+    "eval_count": 82,
+    "eval_duration": 1589538000,
+    "total_duration": 2005128465,
+    "load_duration": 230056942
+   }
+  }
+ ],
+ "final_answer": "The order ORD-1023 for customer Indigo Dunmore is currently in processing status with a placed date of 2026-02-13. It contains two items: 5 units of Scorchfen Trek priced at $100.30 and 5 units of Pyreglade Micro priced at $67.88.",
+ "asked_clarification": false,
+ "nudges": 1,
+ "hit_max_turns": false,
+ "wall_s": 4.34,
+ "turns": 4,
+ "blocks_used": 0,
+ "token_totals": {
+  "prompt_eval": 3207,
+  "eval": 154
+ },
+ "max_context_tokens": 1058,
+ "grade": {
+  "gold": "processing",
+  "gold_type": "string",
+  "extracted": "The order ORD-1023 for customer Indigo Dunmore is currently in processing status with a placed date of 2026-02-13. It contains two items: 5 units of Scorchfen Trek priced at $100.30 and 5 units of Pyreglade Micro priced at $67.88.",
+  "success": true,
+  "parse_failure": false,
+  "parsed": "the order ord1023 for customer indigo dunmore is currently in processing status with a placed date of 20260213 it contains two items 5 units of scorchfen trek priced at 10030 and 5 units of pyreglade micro priced at 6788"
+ },
+ "attribution": {
+  "first_failure": null,
+  "s5": {
+   "fault_fired": true,
+   "recovered": true,
+   "answered_after_unrecovered_fault": false,
+   "refused": false,
+   "hallucinated_answer": false
+  }
+ },
+ "completed": true
+}

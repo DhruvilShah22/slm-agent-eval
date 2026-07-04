@@ -1,0 +1,106 @@
+{
+ "task_id": "t03",
+ "seed": 7,
+ "cell": "C2",
+ "model": "qwen2.5:1.5b-instruct-q4_K_M",
+ "condition": "guardrail",
+ "slice": "S1",
+ "started_utc": "2026-07-04T11:45:49Z",
+ "events": [
+  {
+   "type": "model_call",
+   "turn": 0,
+   "content": "",
+   "tool_calls": [
+    {
+     "id": "call_5nh9qrdu",
+     "function": {
+      "index": 0,
+      "name": "get_order",
+      "arguments": {
+       "order_id": "ORD-1011"
+      }
+     }
+    }
+   ],
+   "infra_retries": 0,
+   "timings": {
+    "prompt_eval_count": 680,
+    "prompt_eval_duration": 13329000,
+    "eval_count": 26,
+    "eval_duration": 282889000,
+    "total_duration": 552601552,
+    "load_duration": 248983119
+   }
+  },
+  {
+   "type": "tool_call",
+   "turn": 0,
+   "name": "get_order",
+   "args": {
+    "order_id": "ORD-1011"
+   },
+   "violations": [],
+   "blocked": false,
+   "fault_mode": null,
+   "executed": true,
+   "result_error": false,
+   "result": {
+    "order": {
+     "order_id": "ORD-1011",
+     "customer": "Tatum Kirkbray",
+     "status": "delayed",
+     "placed_date": "2026-03-09",
+     "region": "Quebec"
+    },
+    "items": [
+     {
+      "sku": "ZO-126",
+      "name": "Nightquill 400",
+      "qty": 3,
+      "unit_price": 277.39
+     }
+    ]
+   }
+  },
+  {
+   "type": "model_call",
+   "turn": 1,
+   "content": "The order ORD-1011 from Tatum Kirkbray is currently delayed and was placed on March 9th, 2026 in Quebec with three Nightquill 400 tents ordered at $277.39 each. \n\nFinal answer: The order status of \"delayed\" has been confirmed for ORD-1011.",
+   "tool_calls": null,
+   "infra_retries": 0,
+   "timings": {
+    "prompt_eval_count": 821,
+    "prompt_eval_duration": 96887000,
+    "eval_count": 78,
+    "eval_duration": 913388000,
+    "total_duration": 1258632564,
+    "load_duration": 240571051
+   }
+  }
+ ],
+ "final_answer": "The order status of \"delayed\" has been confirmed for ORD-1011.",
+ "asked_clarification": false,
+ "nudges": 0,
+ "hit_max_turns": false,
+ "wall_s": 1.82,
+ "turns": 2,
+ "blocks_used": 0,
+ "token_totals": {
+  "prompt_eval": 1501,
+  "eval": 104
+ },
+ "max_context_tokens": 899,
+ "grade": {
+  "gold": "delayed",
+  "gold_type": "string",
+  "extracted": "The order status of \"delayed\" has been confirmed for ORD-1011.",
+  "success": true,
+  "parse_failure": false,
+  "parsed": "the order status of delayed has been confirmed for ord1011"
+ },
+ "attribution": {
+  "first_failure": null
+ },
+ "completed": true
+}

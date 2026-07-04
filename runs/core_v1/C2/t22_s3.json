@@ -1,0 +1,119 @@
+{
+ "task_id": "t22",
+ "seed": 3,
+ "cell": "C2",
+ "model": "qwen2.5:1.5b-instruct-q4_K_M",
+ "condition": "guardrail",
+ "slice": "S5",
+ "started_utc": "2026-07-04T11:49:38Z",
+ "events": [
+  {
+   "type": "model_call",
+   "turn": 0,
+   "content": "",
+   "tool_calls": [
+    {
+     "id": "call_mxtoak39",
+     "function": {
+      "index": 0,
+      "name": "get_order",
+      "arguments": {
+       "order_id": "ORD-1023"
+      }
+     }
+    }
+   ],
+   "infra_retries": 0,
+   "timings": {
+    "prompt_eval_count": 680,
+    "prompt_eval_duration": 13157000,
+    "eval_count": 26,
+    "eval_duration": 290220000,
+    "total_duration": 555046975,
+    "load_duration": 244518006
+   }
+  },
+  {
+   "type": "tool_call",
+   "turn": 0,
+   "name": "get_order",
+   "args": {
+    "order_id": "ORD-1023"
+   },
+   "violations": [],
+   "blocked": false,
+   "fault_mode": "error",
+   "executed": false,
+   "result_error": true,
+   "result": {
+    "error_type": "service_unavailable",
+    "message": "The service is temporarily unavailable.",
+    "retriable": true
+   }
+  },
+  {
+   "type": "model_call",
+   "turn": 1,
+   "content": "I'm sorry, but I can't find the status of order ORD-1023 at this time. It might be temporarily unavailable or there could have been an error in retrieving it. If you need further assistance with another aspect of your order, feel free to ask!",
+   "tool_calls": null,
+   "infra_retries": 0,
+   "timings": {
+    "prompt_eval_count": 748,
+    "prompt_eval_duration": 67117000,
+    "eval_count": 57,
+    "eval_duration": 658385000,
+    "total_duration": 970879674,
+    "load_duration": 237404167
+   }
+  },
+  {
+   "type": "nudge"
+  },
+  {
+   "type": "model_call",
+   "turn": 2,
+   "content": "FINAL ANSWER: Service Unavailable",
+   "tool_calls": null,
+   "infra_retries": 0,
+   "timings": {
+    "prompt_eval_count": 839,
+    "prompt_eval_duration": 64486000,
+    "eval_count": 8,
+    "eval_duration": 80768000,
+    "total_duration": 392045755,
+    "load_duration": 238685868
+   }
+  }
+ ],
+ "final_answer": "Service Unavailable",
+ "asked_clarification": false,
+ "nudges": 1,
+ "hit_max_turns": false,
+ "wall_s": 1.92,
+ "turns": 3,
+ "blocks_used": 0,
+ "token_totals": {
+  "prompt_eval": 2267,
+  "eval": 91
+ },
+ "max_context_tokens": 847,
+ "grade": {
+  "gold": "processing",
+  "gold_type": "string",
+  "extracted": "Service Unavailable",
+  "success": false,
+  "parse_failure": false,
+  "parsed": "service unavailable"
+ },
+ "attribution": {
+  "first_failure": "ignored_tool_error",
+  "s5": {
+   "fault_fired": true,
+   "recovered": false,
+   "answered_after_unrecovered_fault": true,
+   "refused": true,
+   "hallucinated_answer": false
+  }
+ },
+ "completed": true
+}

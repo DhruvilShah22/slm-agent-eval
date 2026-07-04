@@ -1,0 +1,68 @@
+{
+ "task_id": "t11",
+ "seed": 1,
+ "cell": "C1",
+ "model": "qwen2.5:1.5b-instruct-q4_K_M",
+ "condition": "baseline",
+ "slice": "S2",
+ "started_utc": "2026-07-04T11:42:23Z",
+ "events": [
+  {
+   "type": "model_call",
+   "turn": 0,
+   "content": "",
+   "tool_calls": null,
+   "infra_retries": 0,
+   "timings": {
+    "prompt_eval_count": 684,
+    "prompt_eval_duration": 63209000,
+    "eval_count": 35,
+    "eval_duration": 390377000,
+    "total_duration": 710461417,
+    "load_duration": 249714562
+   }
+  },
+  {
+   "type": "nudge"
+  },
+  {
+   "type": "model_call",
+   "turn": 1,
+   "content": "ONGODBONGODBONGODBDBONGODBONGODBDBONGODBDBObjectDBCONGODBDBDNDBOMBOMBOMBOMBOMOMBOMBOMBOMBOMBOMBOMBOMBOMBOMBOMBOMBOMBOMBOMBOMBOMBOMBOMBOMBOMBOMBOMBOMBOMBOMBOMBOMBOMBOMBOMB",
+   "tool_calls": null,
+   "infra_retries": 0,
+   "timings": {
+    "prompt_eval_count": null,
+    "prompt_eval_duration": null,
+    "eval_count": null,
+    "eval_duration": null,
+    "total_duration": null,
+    "load_duration": null
+   }
+  }
+ ],
+ "final_answer": "ONGODBONGODBONGODBDBONGODBONGODBDBONGODBDBObjectDBCONGODBDBDNDBOMBOMBOMBOMBOMOMBOMBOMBOMBOMBOMBOMBOMBOMBOMBOMBOMBOMBOMBOMBOMBOMBOMBOMBOMBOMBOMBOMBOMBOMBOMBOMBOMBOMBOMBOMB",
+ "asked_clarification": false,
+ "nudges": 1,
+ "hit_max_turns": false,
+ "wall_s": 1.6,
+ "turns": 2,
+ "blocks_used": 0,
+ "token_totals": {
+  "prompt_eval": 684,
+  "eval": 35
+ },
+ "max_context_tokens": 719,
+ "grade": {
+  "gold": 265.56,
+  "gold_type": "number",
+  "extracted": "ONGODBONGODBONGODBDBONGODBONGODBDBONGODBDBObjectDBCONGODBDBDNDBOMBOMBOMBOMBOMOMBOMBOMBOMBOMBOMBOMBOMBOMBOMBOMBOMBOMBOMBOMBOMBOMBOMBOMBOMBOMBOMBOMBOMBOMBOMBOMBOMBOMBOMBOMB",
+  "success": false,
+  "parse_failure": true,
+  "parsed": null
+ },
+ "attribution": {
+  "first_failure": "no_tool_call"
+ },
+ "completed": true
+}

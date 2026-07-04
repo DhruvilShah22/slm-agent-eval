@@ -1,0 +1,71 @@
+{
+ "task_id": "t25",
+ "seed": 1,
+ "cell": "C2",
+ "model": "qwen2.5:1.5b-instruct-q4_K_M",
+ "condition": "guardrail",
+ "slice": "S5",
+ "started_utc": "2026-07-04T11:50:14Z",
+ "events": [
+  {
+   "type": "model_call",
+   "turn": 0,
+   "content": "",
+   "tool_calls": null,
+   "infra_retries": 0,
+   "timings": {
+    "prompt_eval_count": 688,
+    "prompt_eval_duration": 63214000,
+    "eval_count": 26,
+    "eval_duration": 285130000,
+    "total_duration": 588924953,
+    "load_duration": 233259617
+   }
+  },
+  {
+   "type": "nudge"
+  },
+  {
+   "type": "model_call",
+   "turn": 1,
+   "content": " FINAL ANSWER: 74.25",
+   "tool_calls": null,
+   "infra_retries": 0,
+   "timings": {
+    "prompt_eval_count": 723,
+    "prompt_eval_duration": 64456000,
+    "eval_count": 11,
+    "eval_duration": 114428000,
+    "total_duration": 427182517,
+    "load_duration": 241163882
+   }
+  }
+ ],
+ "final_answer": "74.25",
+ "asked_clarification": false,
+ "nudges": 1,
+ "hit_max_turns": false,
+ "wall_s": 1.02,
+ "turns": 2,
+ "blocks_used": 0,
+ "token_totals": {
+  "prompt_eval": 1411,
+  "eval": 37
+ },
+ "max_context_tokens": 734,
+ "grade": {
+  "gold": 717.75,
+  "gold_type": "number",
+  "extracted": "74.25",
+  "success": false,
+  "parse_failure": false,
+  "parsed": 74.25
+ },
+ "attribution": {
+  "first_failure": "no_tool_call",
+  "s5": {
+   "fault_fired": false
+  }
+ },
+ "completed": true
+}

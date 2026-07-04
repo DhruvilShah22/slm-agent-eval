@@ -1,0 +1,124 @@
+{
+ "task_id": "t03",
+ "seed": 3,
+ "cell": "C2",
+ "model": "qwen2.5:1.5b-instruct-q4_K_M",
+ "condition": "guardrail",
+ "slice": "S1",
+ "started_utc": "2026-07-04T11:45:40Z",
+ "events": [
+  {
+   "type": "model_call",
+   "turn": 0,
+   "content": "",
+   "tool_calls": [
+    {
+     "id": "call_gi0ty9gz",
+     "function": {
+      "index": 0,
+      "name": "get_order",
+      "arguments": {
+       "order_id": "ORD-1011"
+      }
+     }
+    }
+   ],
+   "infra_retries": 0,
+   "timings": {
+    "prompt_eval_count": 680,
+    "prompt_eval_duration": 13137000,
+    "eval_count": 26,
+    "eval_duration": 287845000,
+    "total_duration": 553523435,
+    "load_duration": 245328894
+   }
+  },
+  {
+   "type": "tool_call",
+   "turn": 0,
+   "name": "get_order",
+   "args": {
+    "order_id": "ORD-1011"
+   },
+   "violations": [],
+   "blocked": false,
+   "fault_mode": null,
+   "executed": true,
+   "result_error": false,
+   "result": {
+    "order": {
+     "order_id": "ORD-1011",
+     "customer": "Tatum Kirkbray",
+     "status": "delayed",
+     "placed_date": "2026-03-09",
+     "region": "Quebec"
+    },
+    "items": [
+     {
+      "sku": "ZO-126",
+      "name": "Nightquill 400",
+      "qty": 3,
+      "unit_price": 277.39
+     }
+    ]
+   }
+  },
+  {
+   "type": "model_call",
+   "turn": 1,
+   "content": "The order for customer Tatum Kirkbray with ID ORD-1011 is currently delayed and was placed on March 9, 2026 in Quebec. The items are three Nightquill 400s at $277.39 each.",
+   "tool_calls": null,
+   "infra_retries": 0,
+   "timings": {
+    "prompt_eval_count": 821,
+    "prompt_eval_duration": 97211000,
+    "eval_count": 59,
+    "eval_duration": 680800000,
+    "total_duration": 1058217786,
+    "load_duration": 272697514
+   }
+  },
+  {
+   "type": "nudge"
+  },
+  {
+   "type": "model_call",
+   "turn": 2,
+   "content": "FINAL ANSWER: delay'd in Quebec, 3 x Nightquill 400s @ $277.39 each",
+   "tool_calls": null,
+   "infra_retries": 0,
+   "timings": {
+    "prompt_eval_count": 914,
+    "prompt_eval_duration": 65205000,
+    "eval_count": 30,
+    "eval_duration": 342384000,
+    "total_duration": 661601971,
+    "load_duration": 246201681
+   }
+  }
+ ],
+ "final_answer": "delay'd in Quebec, 3 x Nightquill 400s @ $277.39 each",
+ "asked_clarification": false,
+ "nudges": 1,
+ "hit_max_turns": false,
+ "wall_s": 2.28,
+ "turns": 3,
+ "blocks_used": 0,
+ "token_totals": {
+  "prompt_eval": 2415,
+  "eval": 115
+ },
+ "max_context_tokens": 944,
+ "grade": {
+  "gold": "delayed",
+  "gold_type": "string",
+  "extracted": "delay'd in Quebec, 3 x Nightquill 400s @ $277.39 each",
+  "success": false,
+  "parse_failure": false,
+  "parsed": "delayd in quebec 3 x nightquill 400s  27739 each"
+ },
+ "attribution": {
+  "first_failure": "synthesis_error"
+ },
+ "completed": true
+}

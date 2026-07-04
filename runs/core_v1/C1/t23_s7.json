@@ -1,0 +1,117 @@
+{
+ "task_id": "t23",
+ "seed": 7,
+ "cell": "C1",
+ "model": "qwen2.5:1.5b-instruct-q4_K_M",
+ "condition": "baseline",
+ "slice": "S5",
+ "started_utc": "2026-07-04T11:44:42Z",
+ "events": [
+  {
+   "type": "model_call",
+   "turn": 0,
+   "content": "",
+   "tool_calls": [
+    {
+     "id": "call_y0bgc4xh",
+     "function": {
+      "index": 0,
+      "name": "search_docs",
+      "arguments": {
+       "query": "stoves return window"
+      }
+     }
+    }
+   ],
+   "infra_retries": 0,
+   "timings": {
+    "prompt_eval_count": 679,
+    "prompt_eval_duration": 12079000,
+    "eval_count": 23,
+    "eval_duration": 254886000,
+    "total_duration": 521988738,
+    "load_duration": 247782085
+   }
+  },
+  {
+   "type": "tool_call",
+   "turn": 0,
+   "name": "search_docs",
+   "args": {
+    "query": "stoves return window"
+   },
+   "violations": [],
+   "blocked": false,
+   "fault_mode": "empty",
+   "executed": false,
+   "result_error": false,
+   "result": {
+    "results": []
+   }
+  },
+  {
+   "type": "model_call",
+   "turn": 1,
+   "content": "The documentation doesn't specify the return window for stoves. Please check with customer service or refer to our terms and conditions.",
+   "tool_calls": null,
+   "infra_retries": 0,
+   "timings": {
+    "prompt_eval_count": 723,
+    "prompt_eval_duration": 63683000,
+    "eval_count": 26,
+    "eval_duration": 285247000,
+    "total_duration": 605683953,
+    "load_duration": 249129751
+   }
+  },
+  {
+   "type": "nudge"
+  },
+  {
+   "type": "model_call",
+   "turn": 2,
+   "content": "FINAL ANSWER: N/A",
+   "tool_calls": null,
+   "infra_retries": 0,
+   "timings": {
+    "prompt_eval_count": 783,
+    "prompt_eval_duration": 65021000,
+    "eval_count": 7,
+    "eval_duration": 72403000,
+    "total_duration": 395507304,
+    "load_duration": 250433017
+   }
+  }
+ ],
+ "final_answer": "N/A",
+ "asked_clarification": false,
+ "nudges": 1,
+ "hit_max_turns": false,
+ "wall_s": 1.53,
+ "turns": 3,
+ "blocks_used": 0,
+ "token_totals": {
+  "prompt_eval": 2185,
+  "eval": 56
+ },
+ "max_context_tokens": 790,
+ "grade": {
+  "gold": 45,
+  "gold_type": "number",
+  "extracted": "N/A",
+  "success": false,
+  "parse_failure": true,
+  "parsed": null
+ },
+ "attribution": {
+  "first_failure": "ignored_tool_error",
+  "s5": {
+   "fault_fired": true,
+   "recovered": false,
+   "answered_after_unrecovered_fault": true,
+   "refused": false,
+   "hallucinated_answer": true
+  }
+ },
+ "completed": true
+}

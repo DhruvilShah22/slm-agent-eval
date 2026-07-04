@@ -1,0 +1,50 @@
+{
+ "task_id": "t12",
+ "seed": 7,
+ "cell": "C1",
+ "model": "qwen2.5:1.5b-instruct-q4_K_M",
+ "condition": "baseline",
+ "slice": "S2",
+ "started_utc": "2026-07-04T11:42:42Z",
+ "events": [
+  {
+   "type": "model_call",
+   "turn": 0,
+   "content": "FINAL ANSWER: 5% of the original price.",
+   "tool_calls": null,
+   "infra_retries": 0,
+   "timings": {
+    "prompt_eval_count": 702,
+    "prompt_eval_duration": 12193000,
+    "eval_count": 13,
+    "eval_duration": 140376000,
+    "total_duration": 398525440,
+    "load_duration": 238884456
+   }
+  }
+ ],
+ "final_answer": "5% of the original price.",
+ "asked_clarification": false,
+ "nudges": 0,
+ "hit_max_turns": false,
+ "wall_s": 0.4,
+ "turns": 1,
+ "blocks_used": 0,
+ "token_totals": {
+  "prompt_eval": 702,
+  "eval": 13
+ },
+ "max_context_tokens": 715,
+ "grade": {
+  "gold": 196.88,
+  "gold_type": "number",
+  "extracted": "5% of the original price.",
+  "success": false,
+  "parse_failure": false,
+  "parsed": 5.0
+ },
+ "attribution": {
+  "first_failure": "no_tool_call"
+ },
+ "completed": true
+}

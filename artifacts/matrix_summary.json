@@ -1,0 +1,89 @@
+{
+ "matrix_wall_min": 55.8,
+ "cells": {
+  "C1": {
+   "n": 200,
+   "pass": 27,
+   "mean_wall_s": 1.7,
+   "first_failures": {
+    "None": 27,
+    "bad_arg_values": 16,
+    "ignored_tool_error": 20,
+    "malformed_args": 15,
+    "no_tool_call": 61,
+    "synthesis_error": 51,
+    "wrong_tool": 10
+   }
+  },
+  "C2": {
+   "n": 200,
+   "pass": 22,
+   "mean_wall_s": 1.6,
+   "first_failures": {
+    "None": 22,
+    "bad_arg_values": 16,
+    "ignored_tool_error": 20,
+    "malformed_args": 23,
+    "no_tool_call": 56,
+    "synthesis_error": 53,
+    "wrong_tool": 10
+   }
+  },
+  "C3": {
+   "n": 200,
+   "pass": 60,
+   "mean_wall_s": 2.3,
+   "first_failures": {
+    "None": 60,
+    "bad_arg_values": 10,
+    "ignored_tool_error": 17,
+    "malformed_args": 19,
+    "no_tool_call": 5,
+    "synthesis_error": 70,
+    "wrong_tool": 19
+   }
+  },
+  "C4": {
+   "n": 200,
+   "pass": 45,
+   "mean_wall_s": 2.2,
+   "first_failures": {
+    "None": 45,
+    "bad_arg_values": 11,
+    "ignored_tool_error": 17,
+    "malformed_args": 34,
+    "no_tool_call": 4,
+    "synthesis_error": 70,
+    "wrong_tool": 19
+   }
+  },
+  "C5": {
+   "n": 200,
+   "pass": 61,
+   "mean_wall_s": 4.4,
+   "first_failures": {
+    "None": 61,
+    "bad_arg_values": 31,
+    "ignored_tool_error": 11,
+    "malformed_args": 14,
+    "no_tool_call": 32,
+    "synthesis_error": 34,
+    "wrong_tool": 17
+   }
+  },
+  "C6": {
+   "n": 200,
+   "pass": 67,
+   "mean_wall_s": 4.5,
+   "first_failures": {
+    "None": 67,
+    "bad_arg_values": 30,
+    "ignored_tool_error": 5,
+    "malformed_args": 14,
+    "no_tool_call": 31,
+    "synthesis_error": 35,
+    "wrong_tool": 18
+   }
+  }
+ }
+}

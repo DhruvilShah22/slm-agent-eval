@@ -1,0 +1,117 @@
+{
+ "task_id": "t22",
+ "seed": 1,
+ "cell": "C3",
+ "model": "qwen2.5:1.5b-instruct-q8_0",
+ "condition": "baseline",
+ "slice": "S5",
+ "started_utc": "2026-07-04T11:57:00Z",
+ "events": [
+  {
+   "type": "model_call",
+   "turn": 0,
+   "content": "",
+   "tool_calls": [
+    {
+     "id": "call_x8pzimb9",
+     "function": {
+      "index": 0,
+      "name": "get_order",
+      "arguments": {
+       "order_id": "ORD-1023"
+      }
+     }
+    }
+   ],
+   "infra_retries": 0,
+   "timings": {
+    "prompt_eval_count": 680,
+    "prompt_eval_duration": 52454000,
+    "eval_count": 26,
+    "eval_duration": 298056000,
+    "total_duration": 613699222,
+    "load_duration": 255724347
+   }
+  },
+  {
+   "type": "tool_call",
+   "turn": 0,
+   "name": "get_order",
+   "args": {
+    "order_id": "ORD-1023"
+   },
+   "violations": [],
+   "blocked": false,
+   "fault_mode": "error",
+   "executed": false,
+   "result_error": true,
+   "result": {
+    "error": "ERROR: service temporarily unavailable"
+   }
+  },
+  {
+   "type": "model_call",
+   "turn": 1,
+   "content": "It appears there is an issue with the system right now. I can't check on order ORD-1023 at this time. Can you please provide me with more information? If it's urgent, we might be able to expedite a call or email response for you.",
+   "tool_calls": null,
+   "infra_retries": 0,
+   "timings": {
+    "prompt_eval_count": 732,
+    "prompt_eval_duration": 54814000,
+    "eval_count": 58,
+    "eval_duration": 682828000,
+    "total_duration": 1036787811,
+    "load_duration": 291733471
+   }
+  },
+  {
+   "type": "nudge"
+  },
+  {
+   "type": "model_call",
+   "turn": 2,
+   "content": "Final answer: Unable to check status of ORD-1023 right now due to system issue. Please try again later or provide more details.",
+   "tool_calls": null,
+   "infra_retries": 0,
+   "timings": {
+    "prompt_eval_count": 824,
+    "prompt_eval_duration": 54880000,
+    "eval_count": 31,
+    "eval_duration": 351065000,
+    "total_duration": 673295707,
+    "load_duration": 259673301
+   }
+  }
+ ],
+ "final_answer": "Unable to check status of ORD-1023 right now due to system issue. Please try again later or provide more details.",
+ "asked_clarification": false,
+ "nudges": 1,
+ "hit_max_turns": false,
+ "wall_s": 2.33,
+ "turns": 3,
+ "blocks_used": 0,
+ "token_totals": {
+  "prompt_eval": 2236,
+  "eval": 115
+ },
+ "max_context_tokens": 855,
+ "grade": {
+  "gold": "processing",
+  "gold_type": "string",
+  "extracted": "Unable to check status of ORD-1023 right now due to system issue. Please try again later or provide more details.",
+  "success": false,
+  "parse_failure": false,
+  "parsed": "unable to check status of ord1023 right now due to system issue please try again later or provide more details"
+ },
+ "attribution": {
+  "first_failure": "ignored_tool_error",
+  "s5": {
+   "fault_fired": true,
+   "recovered": false,
+   "answered_after_unrecovered_fault": true,
+   "refused": true,
+   "hallucinated_answer": false
+  }
+ },
+ "completed": true
+}

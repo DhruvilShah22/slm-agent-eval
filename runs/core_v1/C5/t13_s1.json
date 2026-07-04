@@ -1,0 +1,307 @@
+{
+ "task_id": "t13",
+ "seed": 1,
+ "cell": "C5",
+ "model": "qwen2.5:3b-instruct-q4_K_M",
+ "condition": "baseline",
+ "slice": "S2",
+ "started_utc": "2026-07-04T12:13:31Z",
+ "events": [
+  {
+   "type": "model_call",
+   "turn": 0,
+   "content": "",
+   "tool_calls": [
+    {
+     "id": "call_tcorkvy3",
+     "function": {
+      "index": 0,
+      "name": "get_order",
+      "arguments": {
+       "order_id": "ORD-1029"
+      }
+     }
+    }
+   ],
+   "infra_retries": 0,
+   "timings": {
+    "prompt_eval_count": 698,
+    "prompt_eval_duration": 122377000,
+    "eval_count": 26,
+    "eval_duration": 476696000,
+    "total_duration": 1006007737,
+    "load_duration": 249494446
+   }
+  },
+  {
+   "type": "tool_call",
+   "turn": 0,
+   "name": "get_order",
+   "args": {
+    "order_id": "ORD-1029"
+   },
+   "violations": [],
+   "blocked": false,
+   "fault_mode": null,
+   "executed": true,
+   "result_error": false,
+   "result": {
+    "order": {
+     "order_id": "ORD-1029",
+     "customer": "Noor Caldermont",
+     "status": "delayed",
+     "placed_date": "2026-05-10",
+     "region": "Atlantic"
+    },
+    "items": [
+     {
+      "sku": "ZO-126",
+      "name": "Nightquill 400",
+      "qty": 3,
+      "unit_price": 277.39
+     }
+    ]
+   }
+  },
+  {
+   "type": "model_call",
+   "turn": 1,
+   "content": "",
+   "tool_calls": [
+    {
+     "id": "call_qczsu65x",
+     "function": {
+      "index": 0,
+      "name": "calculator",
+      "arguments": {
+       "expr": "(date('now') - '2026-05-10').days * 2 + 14"
+      }
+     }
+    }
+   ],
+   "infra_retries": 0,
+   "timings": {
+    "prompt_eval_count": 837,
+    "prompt_eval_duration": 156688000,
+    "eval_count": 43,
+    "eval_duration": 817284000,
+    "total_duration": 1223120714,
+    "load_duration": 241847978
+   }
+  },
+  {
+   "type": "tool_call",
+   "turn": 1,
+   "name": "calculator",
+   "args": {
+    "expr": "(date('now') - '2026-05-10').days * 2 + 14"
+   },
+   "violations": [],
+   "blocked": false,
+   "fault_mode": null,
+   "executed": true,
+   "result_error": true,
+   "result": {
+    "error": "invalid expression: unsupported syntax: Attribute(value=BinOp(left=Call(func=Name(id='date', ctx=Loa"
+   }
+  },
+  {
+   "type": "model_call",
+   "turn": 2,
+   "content": "",
+   "tool_calls": [
+    {
+     "id": "call_osd229xj",
+     "function": {
+      "index": 0,
+      "name": "get_order",
+      "arguments": {
+       "order_id": "ORD-1029"
+      }
+     }
+    }
+   ],
+   "infra_retries": 0,
+   "timings": {
+    "prompt_eval_count": 927,
+    "prompt_eval_duration": 147606000,
+    "eval_count": 25,
+    "eval_duration": 469173000,
+    "total_duration": 855730296,
+    "load_duration": 231201922
+   }
+  },
+  {
+   "type": "tool_call",
+   "turn": 2,
+   "name": "get_order",
+   "args": {
+    "order_id": "ORD-1029"
+   },
+   "violations": [],
+   "blocked": false,
+   "fault_mode": null,
+   "executed": true,
+   "result_error": false,
+   "result": {
+    "order": {
+     "order_id": "ORD-1029",
+     "customer": "Noor Caldermont",
+     "status": "delayed",
+     "placed_date": "2026-05-10",
+     "region": "Atlantic"
+    },
+    "items": [
+     {
+      "sku": "ZO-126",
+      "name": "Nightquill 400",
+      "qty": 3,
+      "unit_price": 277.39
+     }
+    ]
+   }
+  },
+  {
+   "type": "model_call",
+   "turn": 3,
+   "content": "",
+   "tool_calls": [
+    {
+     "id": "call_jxkeblwl",
+     "function": {
+      "index": 0,
+      "name": "calculator",
+      "arguments": {
+       "expr": "(date('now') - '2026-05-10').days * 2 + 14"
+      }
+     }
+    }
+   ],
+   "infra_retries": 0,
+   "timings": {
+    "prompt_eval_count": 1066,
+    "prompt_eval_duration": 159179000,
+    "eval_count": 43,
+    "eval_duration": 829825000,
+    "total_duration": 1228428132,
+    "load_duration": 231296082
+   }
+  },
+  {
+   "type": "tool_call",
+   "turn": 3,
+   "name": "calculator",
+   "args": {
+    "expr": "(date('now') - '2026-05-10').days * 2 + 14"
+   },
+   "violations": [],
+   "blocked": false,
+   "fault_mode": null,
+   "executed": true,
+   "result_error": true,
+   "result": {
+    "error": "invalid expression: unsupported syntax: Attribute(value=BinOp(left=Call(func=Name(id='date', ctx=Loa"
+   }
+  },
+  {
+   "type": "model_call",
+   "turn": 4,
+   "content": "INVALID_EXPRESSION_ERROR_IN_CALCULATOR",
+   "tool_calls": null,
+   "infra_retries": 0,
+   "timings": {
+    "prompt_eval_count": 1156,
+    "prompt_eval_duration": 128880000,
+    "eval_count": 7,
+    "eval_duration": 120862000,
+    "total_duration": 491611678,
+    "load_duration": 230174423
+   }
+  },
+  {
+   "type": "nudge"
+  },
+  {
+   "type": "model_call",
+   "turn": 5,
+   "content": "",
+   "tool_calls": [
+    {
+     "id": "call_wey4lqpv",
+     "function": {
+      "index": 0,
+      "name": "run_python",
+      "arguments": {
+       "code": "from ecommerce import delivery_timeline; print(max(delivery_timeline['Atlantic'])['days'])"
+      }
+     }
+    }
+   ],
+   "infra_retries": 0,
+   "timings": {
+    "prompt_eval_count": 1197,
+    "prompt_eval_duration": 124091000,
+    "eval_count": 35,
+    "eval_duration": 678614000,
+    "total_duration": 1049311568,
+    "load_duration": 232834206
+   }
+  },
+  {
+   "type": "tool_call",
+   "turn": 5,
+   "name": "run_python",
+   "args": {
+    "code": "from ecommerce import delivery_timeline; print(max(delivery_timeline['Atlantic'])['days'])"
+   },
+   "violations": [],
+   "blocked": false,
+   "fault_mode": null,
+   "executed": true,
+   "result_error": true,
+   "result": {
+    "stdout": "",
+    "error": "Traceback (most recent call last):\n  File \"<string>\", line 1, in <module>\nModuleNotFoundError: No module named 'ecommerce'\n"
+   }
+  },
+  {
+   "type": "model_call",
+   "turn": 6,
+   "content": "INVALID_MODULE_ERROR_IN_EXECUTION_OF_PYTHON_CODE",
+   "tool_calls": null,
+   "infra_retries": 0,
+   "timings": {
+    "prompt_eval_count": 1294,
+    "prompt_eval_duration": 134779000,
+    "eval_count": 11,
+    "eval_duration": 205647000,
+    "total_duration": 585530355,
+    "load_duration": 232182947
+   }
+  }
+ ],
+ "final_answer": "INVALID_MODULE_ERROR_IN_EXECUTION_OF_PYTHON_CODE",
+ "asked_clarification": false,
+ "nudges": 1,
+ "hit_max_turns": false,
+ "wall_s": 6.54,
+ "turns": 7,
+ "blocks_used": 0,
+ "token_totals": {
+  "prompt_eval": 7175,
+  "eval": 190
+ },
+ "max_context_tokens": 1305,
+ "grade": {
+  "gold": "2026-05-13",
+  "gold_type": "date",
+  "extracted": "INVALID_MODULE_ERROR_IN_EXECUTION_OF_PYTHON_CODE",
+  "success": false,
+  "parse_failure": true,
+  "parsed": null
+ },
+ "attribution": {
+  "first_failure": "bad_arg_values"
+ },
+ "completed": true
+}

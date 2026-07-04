@@ -246,6 +246,35 @@ installed; no experiment-scale claims before that.
 4. Phase 3: analysis (Wilson CIs, pass^k, McNemar+Holm, cluster bootstrap),
    plots, paper-style report.
 
+### Pilot results + gate decisions (evidence: runs/pilot_core_v1/, artifacts/pilot_summary.json)
+- 60 episodes in 3.8 min wall on P100 → episodes 1.9–5.5 s mean/cell.
+  **Timing gate: PASSED**, matrix projects to ~1.5–2 GPU-h (vs 5–10 estimated).
+- Pass counts (n=10/cell, pilot slice = one task per slice, hard-skewed):
+  C1 0, C2 0 (1.5B Q4) | C3 1, C4 1 (1.5B Q8) | C5 5, C6 6 (3B Q4).
+  **Difficulty gate: 3B in-band (50–60%); 1.5B floors.** DECISION: no task
+  adjustment. Rationale: suite is calibrated per the 3B; pilot slice
+  over-samples probe tasks (4/5); 1.5B floor is itself a finding (consistent
+  w/ TinyLLM's 1–3B threshold + AgentBench's OSS gap). Known consequence,
+  documented up front: guardrail contrast at 1.5B may be statistically
+  undetectable (few discordant pairs) — will be reported honestly either way.
+- Trajectory reading (30 episodes inspected): 1.5B failures = wrong tool for
+  policy questions, no-tool garbage/pseudo-JSON answers, echoing the injected
+  error string as FINAL ANSWER; Q8 marginally saner than Q4. 3B behaves
+  agentically (fixes own malformed calls, chains tools). **0/6 cells recovered
+  from the injected fault in t22 — including 3B.** Ask-rate on S4 ≈ 2/12.
+- **Grader v2 (pre-matrix fix, logged):** pilot exposed (a) "last number" rule
+  parsing digits from product names ("Vexatrail 55" → 55 while the model's
+  words said "one-year"), (b) word-numbers unparsed. Fix: strip known product
+  names + ORD-/ZO- ids before parsing; word-number fallback (zero..twelve).
+  9/9 unit cases from observed answers pass. Inline grades are advisory;
+  Phase 3 re-grades ALL episodes from raw logs with the final grader.
+- **κ-validation protocol adjustment (logged deviation):** hand-labeling moves
+  from pilot episodes (graded w/ v1, now stale) to a blind random sample of
+  ~40 MATRIX episodes — stronger (validates the data actually reported) and
+  avoids re-validating a superseded grader. Blind = labels assigned from raw
+  trajectories printed WITHOUT classifier output.
+- Full core matrix kernel launched: kaggle.com/code/contactshahdhruvil/slm-agent-eval-core
+
 ### Lessons / corrections
 - PowerShell tool shells don't inherit PATH updates made mid-session by
   installers; invoke new binaries by absolute path.

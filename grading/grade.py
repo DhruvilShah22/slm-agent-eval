@@ -12,20 +12,43 @@ from grading import gold as goldmod
 
 _NUM_RE = re.compile(r"-?\d[\d,]*(?:\.\d+)?")
 _DATE_RE = re.compile(r"\d{4}-\d{2}-\d{2}")
+_ID_RE = re.compile(r"\b(?:ORD|ZO)-\d+\b")  # entity ids must not parse as numbers
+_WORD_NUMS = {"zero": 0, "one": 1, "two": 2, "three": 3, "four": 4, "five": 5,
+              "six": 6, "seven": 7, "eight": 8, "nine": 9, "ten": 10,
+              "eleven": 11, "twelve": 12}
+_product_names: list[str] | None = None
+
+
+def _known_product_names() -> list[str]:
+    """Product names contain digits ('Vexatrail 55') that must not be graded
+    as answer values (grader v2 fix — see NOTES.md pilot analysis)."""
+    global _product_names
+    if _product_names is None:
+        rows = goldmod._q("SELECT name FROM products")
+        _product_names = sorted((r["name"] for r in rows), key=len, reverse=True)
+    return _product_names
 
 
 def parse_number(text: str) -> float | None:
-    cleaned = text.replace("$", "").replace("%", "").strip()
+    cleaned = _ID_RE.sub(" ", text)
+    for name in _known_product_names():
+        cleaned = cleaned.replace(name, " ")
+    cleaned = cleaned.replace("$", "").replace("%", "").strip()
     try:
         return float(cleaned.replace(",", ""))
     except ValueError:
         pass
     matches = _NUM_RE.findall(cleaned)
-    if not matches:
-        return None
-    # Take the LAST number: answers like "with 5% off it is 522.50" end with
-    # the result. Deterministic; error patterns audited in the pilot.
-    return float(matches[-1].replace(",", ""))
+    if matches:
+        # Take the LAST number: answers like "with 5% off it is 522.50" end
+        # with the result. Deterministic; audited via hand-label validation.
+        return float(matches[-1].replace(",", ""))
+    # Word-number fallback for answers like "one-year warranty".
+    words = re.findall(r"[a-z]+", cleaned.lower())
+    for w in reversed(words):
+        if w in _WORD_NUMS:
+            return float(_WORD_NUMS[w])
+    return None
 
 
 def _norm_str(text: str) -> str:

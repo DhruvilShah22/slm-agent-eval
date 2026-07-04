@@ -1,0 +1,68 @@
+{
+ "task_id": "t14",
+ "seed": 1,
+ "cell": "C3",
+ "model": "qwen2.5:1.5b-instruct-q8_0",
+ "condition": "baseline",
+ "slice": "S3",
+ "started_utc": "2026-07-04T10:31:50Z",
+ "events": [
+  {
+   "type": "model_call",
+   "turn": 0,
+   "content": "Let me check.",
+   "tool_calls": null,
+   "infra_retries": 0,
+   "timings": {
+    "prompt_eval_count": 685,
+    "prompt_eval_duration": 53560000,
+    "eval_count": 5,
+    "eval_duration": 51183000,
+    "total_duration": 388025921,
+    "load_duration": 275215206
+   }
+  },
+  {
+   "type": "nudge"
+  },
+  {
+   "type": "model_call",
+   "turn": 1,
+   "content": "{\"name\": \"find_products\", \"arguments\": {\"category\": \"backpacks\", \"in_stock\": true}}",
+   "tool_calls": null,
+   "infra_retries": 0,
+   "timings": {
+    "prompt_eval_count": 724,
+    "prompt_eval_duration": 54740000,
+    "eval_count": 25,
+    "eval_duration": 305707000,
+    "total_duration": 646010179,
+    "load_duration": 276891899
+   }
+  }
+ ],
+ "final_answer": "{\"name\": \"find_products\", \"arguments\": {\"category\": \"backpacks\", \"in_stock\": true}}",
+ "asked_clarification": false,
+ "nudges": 1,
+ "hit_max_turns": false,
+ "wall_s": 1.04,
+ "turns": 2,
+ "blocks_used": 0,
+ "token_totals": {
+  "prompt_eval": 1409,
+  "eval": 30
+ },
+ "max_context_tokens": 749,
+ "grade": {
+  "gold": 1,
+  "gold_type": "number",
+  "extracted": "{\"name\": \"find_products\", \"arguments\": {\"category\": \"backpacks\", \"in_stock\": true}}",
+  "success": false,
+  "parse_failure": true,
+  "parsed": null
+ },
+ "attribution": {
+  "first_failure": "no_tool_call"
+ },
+ "completed": true
+}

@@ -176,6 +176,26 @@ installed; no experiment-scale claims before that.
   server-side on Kaggle's clock; expected ~20–40 min (≈14 GB of model pulls
   + timings). Results: benchmark_results.json in kernel output.
 
+### Kaggle P100 benchmark COMPLETE (evidence: artifacts/benchmark_results.json, kernel v2)
+| Model | Prefill @2.3k (t/s) | Decode (t/s) | vs laptop |
+|---|---|---|---|
+| qwen2.5:1.5b Q4_K_M | 2268 | 93.8 | ~48× / ~11× |
+| qwen2.5:1.5b Q8_0 | 2399 | 90.0 | — |
+| qwen2.5:3b Q4_K_M | 1362 | 56.7 | ~74× / ~13× |
+| qwen2.5:3b Q8_0 | 1468 | 59.9 | — |
+| qwen2.5:7b Q4_K_M | 688 | 36.3 | 7B viable on GPU |
+| llama3.2:1b Q8_0 | 3056 | 123.3 | — |
+- Episode estimate on P100 (~2.3k prefill + 870 decode): **10–30 s** → core
+  matrix ≈ **4–6 GPU-h** (within prior 5–10 est.); ALL extensions cheap too.
+- Q8 slightly *faster* than Q4 on GPU (dequant overhead) — quant axis costs
+  nothing extra in cloud runtime.
+- **New failure-mode anecdote (n=1):** tool_call_check on 1.5b-Q4 returned
+  arguments as `{"location": {"description":..., "type":"string", "value":
+  "Toronto"}}` — the model echoed the JSON-schema structure instead of plain
+  values ("schema-echo" malformed-args variant). Add to grading taxonomy
+  examples; guardrail schema gate should catch exactly this.
+- Model pulls on Kaggle are fast (10–25 s each; one outlier 444 s).
+
 ### RESUME POINT (start of next session — read this first)
 1. Check Kaggle benchmark run: `kaggle kernels status contactshahdhruvil/slm-agent-eval-benchmark`,
    then `kaggle kernels output` → benchmark_results.json → record T4 throughput

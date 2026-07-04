@@ -1,0 +1,173 @@
+{
+  "env": {
+    "gpu": "Tesla P100-PCIE-16GB, 16384 MiB",
+    "ollama_version": {
+      "version": "0.31.1"
+    }
+  },
+  "models": {
+    "qwen2.5:1.5b-instruct-q4_K_M": {
+      "pull_s": 12.2,
+      "pull_ok": true,
+      "short": {
+        "prompt_eval_count": 40,
+        "prompt_eval_duration": 501168000,
+        "eval_count": 44,
+        "eval_duration": 469122000,
+        "total_duration": 31653921693,
+        "load_duration": 30679823686,
+        "prefill_tps": 79.81,
+        "decode_tps": 93.79
+      },
+      "long": {
+        "prompt_eval_count": 2316,
+        "prompt_eval_duration": 1021040000,
+        "eval_count": 2,
+        "eval_duration": 13903000,
+        "total_duration": 1422239245,
+        "load_duration": 296128549,
+        "prefill_tps": 2268.28,
+        "decode_tps": 143.85
+      }
+    },
+    "qwen2.5:1.5b-instruct-q8_0": {
+      "pull_s": 9.8,
+      "pull_ok": true,
+      "short": {
+        "prompt_eval_count": 40,
+        "prompt_eval_duration": 75015000,
+        "eval_count": 104,
+        "eval_duration": 1155732000,
+        "total_duration": 4162931505,
+        "load_duration": 2929205127,
+        "prefill_tps": 533.23,
+        "decode_tps": 89.99
+      },
+      "long": {
+        "prompt_eval_count": 2316,
+        "prompt_eval_duration": 965465000,
+        "eval_count": 2,
+        "eval_duration": 14298000,
+        "total_duration": 1362370320,
+        "load_duration": 292233080,
+        "prefill_tps": 2398.84,
+        "decode_tps": 139.88
+      }
+    },
+    "qwen2.5:3b-instruct-q4_K_M": {
+      "pull_s": 13.2,
+      "pull_ok": true,
+      "short": {
+        "prompt_eval_count": 40,
+        "prompt_eval_duration": 143258000,
+        "eval_count": 85,
+        "eval_duration": 1499283000,
+        "total_duration": 4563676493,
+        "load_duration": 2918052441,
+        "prefill_tps": 279.22,
+        "decode_tps": 56.69
+      },
+      "long": {
+        "prompt_eval_count": 2316,
+        "prompt_eval_duration": 1700005000,
+        "eval_count": 2,
+        "eval_duration": 22955000,
+        "total_duration": 2119876965,
+        "load_duration": 288181026,
+        "prefill_tps": 1362.35,
+        "decode_tps": 87.13
+      }
+    },
+    "qwen2.5:3b-instruct-q8_0": {
+      "pull_s": 443.9,
+      "pull_ok": true,
+      "short": {
+        "prompt_eval_count": 40,
+        "prompt_eval_duration": 122949000,
+        "eval_count": 52,
+        "eval_duration": 868821000,
+        "total_duration": 4496807156,
+        "load_duration": 3502157670,
+        "prefill_tps": 325.34,
+        "decode_tps": 59.85
+      },
+      "long": {
+        "prompt_eval_count": 2316,
+        "prompt_eval_duration": 1578033000,
+        "eval_count": 2,
+        "eval_duration": 22510000,
+        "total_duration": 2001026991,
+        "load_duration": 290984083,
+        "prefill_tps": 1467.65,
+        "decode_tps": 88.85
+      }
+    },
+    "qwen2.5:7b-instruct-q4_K_M": {
+      "pull_s": 25.2,
+      "pull_ok": true,
+      "short": {
+        "prompt_eval_count": 40,
+        "prompt_eval_duration": 260507000,
+        "eval_count": 45,
+        "eval_duration": 1238817000,
+        "total_duration": 5254624889,
+        "load_duration": 3752000947,
+        "prefill_tps": 153.55,
+        "decode_tps": 36.32
+      },
+      "long": {
+        "prompt_eval_count": 2316,
+        "prompt_eval_duration": 3368616000,
+        "eval_count": 2,
+        "eval_duration": 34457000,
+        "total_duration": 3833463404,
+        "load_duration": 273995472,
+        "prefill_tps": 687.52,
+        "decode_tps": 58.04
+      }
+    },
+    "llama3.2:1b": {
+      "pull_s": 12.7,
+      "pull_ok": true,
+      "short": {
+        "prompt_eval_count": 36,
+        "prompt_eval_duration": 55781000,
+        "eval_count": 72,
+        "eval_duration": 584070000,
+        "total_duration": 3404754307,
+        "load_duration": 2762316658,
+        "prefill_tps": 645.38,
+        "decode_tps": 123.27
+      },
+      "long": {
+        "prompt_eval_count": 2312,
+        "prompt_eval_duration": 756593000,
+        "eval_count": 2,
+        "eval_duration": 10976000,
+        "total_duration": 1210065423,
+        "load_duration": 353633693,
+        "prefill_tps": 3055.8,
+        "decode_tps": 182.22
+      }
+    }
+  },
+  "tool_call_check": {
+    "model": "qwen2.5:1.5b-instruct-q4_K_M",
+    "tool_calls": [
+      {
+        "id": "call_o4q0wlpn",
+        "function": {
+          "index": 0,
+          "name": "get_current_weather",
+          "arguments": {
+            "location": {
+              "description": "City name",
+              "type": "string",
+              "value": "Toronto"
+            }
+          }
+        }
+      }
+    ]
+  }
+}

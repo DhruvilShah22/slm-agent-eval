@@ -1,0 +1,16 @@
+# Secrets — never commit credentials of any kind
+kaggle.json
+access_token
+*.token
+.env
+.kaggle/
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+
+# Experiment artifacts land in the repo ONLY via deliberate commits of logs/
+# (raw scratch outputs stay out)
+scratch/
+tmp/

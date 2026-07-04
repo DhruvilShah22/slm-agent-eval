@@ -1,0 +1,46 @@
+{
+ "created_utc": "2026-07-04T10:25:36Z",
+ "git_commit": "40e7d8b26d8cfebe203969a3d041f44c85a46907",
+ "config_sha256_16": "94d4cc5e9ffa68b8",
+ "config": {
+  "run_id": "smoke_v1",
+  "ollama_url": "http://localhost:11434",
+  "seeds": [
+   1
+  ],
+  "max_turns": 10,
+  "options": {
+   "temperature": 0.7,
+   "top_p": 0.9,
+   "num_ctx": 4096,
+   "num_predict": 512
+  },
+  "guardrail": {
+   "max_schema_retries": 2,
+   "max_extra_calls": 4
+  },
+  "system_prompt": "You are a support agent for Zephyra Outfitters, an outdoor gear retailer. You have tools for the product catalog, order lookups, company policy documents, a calculator, and Python. Facts about orders, products, prices, stock, policies, fees, and dates MUST come from tool results — never guess or invent them. If the request is missing information that no tool can provide, ask the user ONE short clarifying question. When you have the answer, reply on a single line: 'FINAL ANSWER: <value>' where <value> is just the number, date (YYYY-MM-DD), word, or short phrase — no explanation.",
+  "cells": {
+   "SMOKE_BASE": {
+    "model": "qwen2.5:1.5b",
+    "condition": "baseline"
+   },
+   "SMOKE_GUARD": {
+    "model": "qwen2.5:1.5b",
+    "condition": "guardrail"
+   }
+  }
+ },
+ "models": [
+  {
+   "model": "qwen2.5:1.5b",
+   "digest": "",
+   "parameter_size": "1.5B",
+   "quantization_level": "Q4_K_M"
+  }
+ ],
+ "platform": {
+  "python": "3.14.5",
+  "system": "Windows-11-10.0.26200-SP0"
+ }
+}

@@ -1,0 +1,26 @@
+# Local smoke test: 2 cells against the laptop's already-pulled default tags.
+# NOT an experiment config — verifies the harness end-to-end only.
+run_id: smoke_v1
+ollama_url: http://localhost:11434
+seeds: [1]
+max_turns: 10
+options:
+  temperature: 0.7
+  top_p: 0.9
+  num_ctx: 4096
+  num_predict: 512
+guardrail:
+  max_schema_retries: 2
+  max_extra_calls: 4
+system_prompt: >-
+  You are a support agent for Zephyra Outfitters, an outdoor gear retailer.
+  You have tools for the product catalog, order lookups, company policy
+  documents, a calculator, and Python. Facts about orders, products, prices,
+  stock, policies, fees, and dates MUST come from tool results — never guess
+  or invent them. If the request is missing information that no tool can
+  provide, ask the user ONE short clarifying question. When you have the
+  answer, reply on a single line: 'FINAL ANSWER: <value>' where <value> is
+  just the number, date (YYYY-MM-DD), word, or short phrase — no explanation.
+cells:
+  SMOKE_BASE: {model: "qwen2.5:1.5b", condition: baseline}
+  SMOKE_GUARD: {model: "qwen2.5:1.5b", condition: guardrail}

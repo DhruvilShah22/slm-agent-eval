@@ -1,0 +1,5 @@
+# Runtime dependencies for the experiment harness (Python >= 3.12)
+requests==2.32.3
+PyYAML==6.0.2
+# Analysis-only dependencies (Phase 3) are added when analysis code lands,
+# pinned at that time in requirements-analysis.txt.

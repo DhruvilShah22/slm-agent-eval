@@ -1,0 +1,218 @@
+# Task suite (design §5): 25 tasks, 5 slices. Golds are RESOLVED from the
+# generated world at grading time (grading/gold.py) — never hand-copied.
+# allowed_tools: calls outside this set count toward wrong-tool selection.
+# required_tools: must each succeed at least once for a grounded answer.
+# Run `python -m grading.check_tasks` after any edit to this file.
+
+# ---- S1: single tool -------------------------------------------------------
+- id: t01
+  slice: S1
+  prompt: "A customer buys gear worth $2,840 before tax. What is 7.5% of that
+    amount plus a flat fee of $129.99? Use the calculator."
+  allowed_tools: [calculator]
+  required_tools: [calculator]
+  gold: {fn: arith, args: {expr: "0.075*2840+129.99"}, type: number}
+
+- id: t02
+  slice: S1
+  prompt: "What is the return window, in days, for jackets?"
+  allowed_tools: [search_docs]
+  required_tools: [search_docs]
+  gold: {fn: fact, args: {path: return_window_days.jackets}, type: number}
+
+- id: t03
+  slice: S1
+  prompt: "What is the current status of order ORD-1011?"
+  allowed_tools: [get_order]
+  required_tools: [get_order]
+  gold: {fn: order_status, args: {order_id: ORD-1011}, type: string}
+
+- id: t04
+  slice: S1
+  prompt: "How many tent models in our catalog cost at most $300?"
+  allowed_tools: [find_products]
+  required_tools: [find_products]
+  gold: {fn: count_products, args: {category: tents, max_price: 300}, type: number}
+
+- id: t05
+  slice: S1
+  prompt: "How many calendar days are there between 2026-03-14 and 2026-11-09?
+    Compute it with Python."
+  allowed_tools: [run_python]
+  required_tools: [run_python]
+  gold: {fn: days_between, args: {d1: "2026-03-14", d2: "2026-11-09"}, type: number}
+
+# ---- S2: multi-tool chains -------------------------------------------------
+- id: t06
+  slice: S2
+  prompt: "What is the total merchandise value of order ORD-1009 (sum of
+    quantity times unit price across its items)?"
+  allowed_tools: [get_order, calculator, run_python]
+  required_tools: [get_order]
+  gold: {fn: order_subtotal, args: {order_id: ORD-1009}, type: number}
+
+- id: t07
+  slice: S2
+  prompt: "What does order ORD-1002 cost after applying our volume discount
+    policy to its merchandise subtotal?"
+  allowed_tools: [get_order, search_docs, calculator, run_python]
+  required_tools: [get_order, search_docs]
+  gold: {fn: order_total_bulk, args: {order_id: ORD-1002}, type: number}
+
+- id: t08
+  slice: S2
+  prompt: "Which order has the larger merchandise subtotal, ORD-1005 or
+    ORD-1025 — and by how many dollars? Answer with the difference."
+  allowed_tools: [get_order, calculator, run_python]
+  required_tools: [get_order]
+  gold: {fn: order_subtotal_diff, args: {a: ORD-1005, b: ORD-1025}, type: number}
+
+- id: t09
+  slice: S2
+  prompt: "What is the total cost of order ORD-1016 including standard
+    shipping to its delivery region?"
+  allowed_tools: [get_order, search_docs, calculator, run_python]
+  required_tools: [get_order, search_docs]
+  gold: {fn: order_total_shipping, args: {order_id: ORD-1016, method: standard}, type: number}
+
+- id: t10
+  slice: S2
+  prompt: "A customer wants three units of our cheapest in-stock backpack.
+    What would that cost in total?"
+  allowed_tools: [find_products, calculator, run_python]
+  required_tools: [find_products]
+  gold: {fn: cheapest_times, args: {category: backpacks, qty: 3}, type: number}
+
+- id: t11
+  slice: S2
+  prompt: "What is the average price of our in-stock stoves? Round to two
+    decimal places."
+  allowed_tools: [find_products, calculator, run_python]
+  required_tools: [find_products]
+  gold: {fn: avg_price_instock, args: {category: stoves}, type: number}
+
+- id: t12
+  slice: S2
+  prompt: "A customer is returning order ORD-1008 within the return window,
+    but the item was opened. Per our return policy, what refund do they
+    receive on the merchandise?"
+  allowed_tools: [get_order, search_docs, calculator, run_python]
+  required_tools: [get_order, search_docs]
+  gold: {fn: refund_restocking, args: {order_id: ORD-1008}, type: number}
+
+- id: t13
+  slice: S2
+  prompt: "By what date is order ORD-1029 due to arrive, given our delivery
+    timelines? Business days exclude Saturday and Sunday. Answer YYYY-MM-DD."
+  allowed_tools: [get_order, search_docs, run_python, calculator]
+  required_tools: [get_order, search_docs]
+  gold: {fn: delivery_date, args: {order_id: ORD-1029}, type: date}
+
+# ---- S3: distractor tool available -----------------------------------------
+- id: t14
+  slice: S3
+  prompt: "How many years of warranty coverage does the Vexatrail 55 backpack
+    come with?"
+  allowed_tools: [search_docs]
+  required_tools: [search_docs]
+  gold: {fn: fact, args: {path: warranty_years.backpacks}, type: number}
+
+- id: t15
+  slice: S3
+  prompt: "How many units of the Duskmere Dome tent do we currently have in
+    stock?"
+  allowed_tools: [find_products]
+  required_tools: [find_products]
+  gold: {fn: stock_of, args: {name: Duskmere Dome}, type: number}
+
+- id: t16
+  slice: S3
+  prompt: "What is the current price of the Emberforge Solo stove?"
+  allowed_tools: [find_products]
+  required_tools: [find_products]
+  gold: {fn: price_of, args: {name: Emberforge Solo}, type: number}
+
+- id: t17
+  slice: S3
+  prompt: "What percentage restocking fee applies when a customer returns an
+    opened item?"
+  allowed_tools: [search_docs]
+  required_tools: [search_docs]
+  gold: {fn: fact, args: {path: restocking_pct_opened}, type: number}
+
+# ---- S4: ambiguous / underspecified ----------------------------------------
+- id: t18
+  slice: S4
+  prompt: "A customer asks: how much would standard shipping cost for my
+    order?"
+  clarification: "The customer says they are in the Prairie region."
+  allowed_tools: [search_docs]
+  required_tools: [search_docs]
+  gold:
+    fn: conditional
+    asked: {fn: shipping_fee, args: {region: Prairie, method: standard}, type: number}
+    default: {fn: fact, args: {path: shipping_fee.Ontario.standard}, type: number}
+
+- id: t19
+  slice: S4
+  prompt: "A customer asks: how much would four sleeping bags cost?"
+  clarification: "The customer says they want the Snugmoor Trail."
+  allowed_tools: [find_products, search_docs, calculator, run_python]
+  required_tools: [find_products]
+  gold:
+    fn: conditional
+    asked: {fn: price_times, args: {name: Snugmoor Trail, qty: 4}, type: number}
+    default: {fn: cheapest_times, args: {category: sleeping_bags, qty: 4}, type: number}
+
+- id: t20
+  slice: S4
+  prompt: "A customer asks: when will my order arrive? Answer YYYY-MM-DD."
+  clarification: "The customer says it is order ORD-1030."
+  allowed_tools: [get_order, search_docs, run_python, calculator]
+  required_tools: [get_order, search_docs]
+  gold:
+    fn: conditional
+    asked: {fn: delivery_date, args: {order_id: ORD-1030}, type: date}
+    default: {fn: literal, args: {value: "__UNANSWERABLE__"}, type: string}
+
+- id: t21
+  slice: S4
+  prompt: "A customer asks: what is the fee to return my unopened jacket?"
+  clarification: "The customer says it is the Rainwhistle Shell, unopened."
+  allowed_tools: [search_docs]
+  required_tools: [search_docs]
+  gold: {fn: fact, args: {path: return_ship_fee_unopened}, type: number}
+
+# ---- S5: injected tool faults ----------------------------------------------
+- id: t22
+  slice: S5
+  prompt: "What is the current status of order ORD-1023?"
+  allowed_tools: [get_order]
+  required_tools: [get_order]
+  fault: {tool: get_order, mode: error}
+  gold: {fn: order_status, args: {order_id: ORD-1023}, type: string}
+
+- id: t23
+  slice: S5
+  prompt: "What is the return window, in days, for stoves?"
+  allowed_tools: [search_docs]
+  required_tools: [search_docs]
+  fault: {tool: search_docs, mode: empty}
+  gold: {fn: fact, args: {path: return_window_days.stoves}, type: number}
+
+- id: t24
+  slice: S5
+  prompt: "What is the price of our cheapest in-stock tent?"
+  allowed_tools: [find_products]
+  required_tools: [find_products]
+  fault: {tool: find_products, mode: timeout}
+  gold: {fn: cheapest_price, args: {category: tents}, type: number}
+
+- id: t25
+  slice: S5
+  prompt: "What is the total merchandise value of order ORD-1015 (sum of
+    quantity times unit price)?"
+  allowed_tools: [get_order, calculator, run_python]
+  required_tools: [get_order]
+  fault: {tool: calculator, mode: error}
+  gold: {fn: order_subtotal, args: {order_id: ORD-1015}, type: number}

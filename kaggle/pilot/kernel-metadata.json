@@ -1,0 +1,13 @@
+{
+  "id": "contactshahdhruvil/slm-agent-eval-pilot",
+  "title": "slm-agent-eval-pilot",
+  "code_file": "pilot.py",
+  "language": "python",
+  "kernel_type": "script",
+  "is_private": true,
+  "enable_gpu": true,
+  "enable_internet": true,
+  "dataset_sources": [],
+  "competition_sources": [],
+  "kernel_sources": []
+}

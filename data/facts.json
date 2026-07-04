@@ -1,0 +1,54 @@
+{
+  "company": "Zephyra Outfitters",
+  "return_window_days": {
+    "tents": 21,
+    "backpacks": 21,
+    "stoves": 45,
+    "sleeping_bags": 30,
+    "jackets": 30
+  },
+  "warranty_years": {
+    "tents": 2,
+    "backpacks": 1,
+    "stoves": 1,
+    "sleeping_bags": 5,
+    "jackets": 1
+  },
+  "restocking_pct_opened": 10,
+  "return_ship_fee_unopened": 7.99,
+  "shipping_fee": {
+    "Ontario": {
+      "standard": 6.99,
+      "express": 17.99
+    },
+    "Quebec": {
+      "standard": 4.99,
+      "express": 17.99
+    },
+    "Prairie": {
+      "standard": 9.99,
+      "express": 17.99
+    },
+    "Atlantic": {
+      "standard": 9.99,
+      "express": 19.99
+    },
+    "Pacific": {
+      "standard": 4.99,
+      "express": 17.99
+    }
+  },
+  "default_quote_region": "Ontario",
+  "default_model_policy": "cheapest in-stock",
+  "bulk_discount": {
+    "subtotal_threshold": 500,
+    "pct": 10
+  },
+  "delivery_business_days": {
+    "Ontario": 5,
+    "Quebec": 4,
+    "Prairie": 4,
+    "Atlantic": 3,
+    "Pacific": 3
+  }
+}

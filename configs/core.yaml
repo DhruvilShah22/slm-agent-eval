@@ -1,0 +1,29 @@
+# Core experiment matrix (design §9): 6 cells x 25 tasks x 8 seeds = 1,200 episodes.
+run_id: core_v1
+ollama_url: http://localhost:11434
+seeds: [1, 2, 3, 4, 5, 6, 7, 8]
+max_turns: 10
+options:
+  temperature: 0.7
+  top_p: 0.9
+  num_ctx: 4096
+  num_predict: 512
+guardrail:
+  max_schema_retries: 2   # consecutive blocks per tool before passing through
+  max_extra_calls: 4      # episode-level budget of blocked-call round-trips
+system_prompt: >-
+  You are a support agent for Zephyra Outfitters, an outdoor gear retailer.
+  You have tools for the product catalog, order lookups, company policy
+  documents, a calculator, and Python. Facts about orders, products, prices,
+  stock, policies, fees, and dates MUST come from tool results — never guess
+  or invent them. If the request is missing information that no tool can
+  provide, ask the user ONE short clarifying question. When you have the
+  answer, reply on a single line: 'FINAL ANSWER: <value>' where <value> is
+  just the number, date (YYYY-MM-DD), word, or short phrase — no explanation.
+cells:
+  C1: {model: "qwen2.5:1.5b-instruct-q4_K_M", condition: baseline}
+  C2: {model: "qwen2.5:1.5b-instruct-q4_K_M", condition: guardrail}
+  C3: {model: "qwen2.5:1.5b-instruct-q8_0", condition: baseline}
+  C4: {model: "qwen2.5:1.5b-instruct-q8_0", condition: guardrail}
+  C5: {model: "qwen2.5:3b-instruct-q4_K_M", condition: baseline}
+  C6: {model: "qwen2.5:3b-instruct-q4_K_M", condition: guardrail}

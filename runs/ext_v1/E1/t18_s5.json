@@ -1,0 +1,111 @@
+{
+ "task_id": "t18",
+ "seed": 5,
+ "cell": "E1",
+ "model": "llama3.2:1b",
+ "condition": "baseline",
+ "slice": "S4",
+ "started_utc": "2026-07-04T14:58:08Z",
+ "events": [
+  {
+   "type": "model_call",
+   "turn": 0,
+   "content": "",
+   "tool_calls": [
+    {
+     "id": "call_mpuh5xqd",
+     "function": {
+      "index": 0,
+      "name": "search_docs",
+      "arguments": {
+       "query": "standard shipping cost",
+       "top_k": 3
+      }
+     }
+    }
+   ],
+   "infra_retries": 0,
+   "timings": {
+    "prompt_eval_count": 702,
+    "prompt_eval_duration": 163880000,
+    "eval_count": 37,
+    "eval_duration": 319004000,
+    "total_duration": 787596364,
+    "load_duration": 300038496
+   }
+  },
+  {
+   "type": "tool_call",
+   "turn": 0,
+   "name": "search_docs",
+   "args": {
+    "query": "standard shipping cost",
+    "top_k": 3
+   },
+   "violations": [],
+   "blocked": false,
+   "fault_mode": null,
+   "executed": true,
+   "result_error": false,
+   "result": {
+    "results": [
+     {
+      "doc_id": "shipping-atlantic",
+      "score": 5.577,
+      "content": "Zephyra Outfitters Shipping — Atlantic region.\nStandard shipping to the Atlantic region costs $9.99 and express shipping costs $19.99. Orders to Atlantic arrive 3 business days after the order is placed. Shipping is calculated per order, not per item."
+     },
+     {
+      "doc_id": "shipping-ontario",
+      "score": 5.577,
+      "content": "Zephyra Outfitters Shipping — Ontario region.\nStandard shipping to the Ontario region costs $6.99 and express shipping costs $17.99. Orders to Ontario arrive 5 business days after the order is placed. Shipping is calculated per order, not per item."
+     },
+     {
+      "doc_id": "shipping-pacific",
+      "score": 5.577,
+      "content": "Zephyra Outfitters Shipping — Pacific region.\nStandard shipping to the Pacific region costs $4.99 and express shipping costs $17.99. Orders to Pacific arrive 3 business days after the order is placed. Shipping is calculated per order, not per item."
+     }
+    ]
+   }
+  },
+  {
+   "type": "model_call",
+   "turn": 1,
+   "content": "FINAL ANSWER: $9.99",
+   "tool_calls": null,
+   "infra_retries": 0,
+   "timings": {
+    "prompt_eval_count": 476,
+    "prompt_eval_duration": 83444000,
+    "eval_count": 9,
+    "eval_duration": 65057000,
+    "total_duration": 552200321,
+    "load_duration": 301486529
+   }
+  }
+ ],
+ "final_answer": "$9.99",
+ "asked_clarification": false,
+ "nudges": 0,
+ "hit_max_turns": false,
+ "wall_s": 1.34,
+ "turns": 2,
+ "blocks_used": 0,
+ "token_totals": {
+  "prompt_eval": 1178,
+  "eval": 46
+ },
+ "max_context_tokens": 739,
+ "grade": {
+  "gold": 6.99,
+  "gold_type": "number",
+  "extracted": "$9.99",
+  "success": false,
+  "parse_failure": false,
+  "parsed": 9.99
+ },
+ "attribution": {
+  "first_failure": "synthesis_error",
+  "s4_behavior": "looked_up"
+ },
+ "completed": true
+}

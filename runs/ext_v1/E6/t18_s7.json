@@ -1,0 +1,51 @@
+{
+ "task_id": "t18",
+ "seed": 7,
+ "cell": "E6",
+ "model": "qwen2.5:7b-instruct-q4_K_M",
+ "condition": "guardrail",
+ "slice": "S4",
+ "started_utc": "2026-07-04T15:46:54Z",
+ "events": [
+  {
+   "type": "model_call",
+   "turn": 0,
+   "content": "FINAL ANSWER: get_order {\"order_id\": \"ORD-1234\"}",
+   "tool_calls": null,
+   "infra_retries": 0,
+   "timings": {
+    "prompt_eval_count": 680,
+    "prompt_eval_duration": 31631000,
+    "eval_count": 19,
+    "eval_duration": 537568000,
+    "total_duration": 836473272,
+    "load_duration": 259881837
+   }
+  }
+ ],
+ "final_answer": "get_order {\"order_id\": \"ORD-1234\"}",
+ "asked_clarification": false,
+ "nudges": 0,
+ "hit_max_turns": false,
+ "wall_s": 0.84,
+ "turns": 1,
+ "blocks_used": 0,
+ "token_totals": {
+  "prompt_eval": 680,
+  "eval": 19
+ },
+ "max_context_tokens": 699,
+ "grade": {
+  "gold": 6.99,
+  "gold_type": "number",
+  "extracted": "get_order {\"order_id\": \"ORD-1234\"}",
+  "success": false,
+  "parse_failure": true,
+  "parsed": null
+ },
+ "attribution": {
+  "first_failure": "no_tool_call",
+  "s4_behavior": "guessed"
+ },
+ "completed": true
+}

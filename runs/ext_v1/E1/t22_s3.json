@@ -1,0 +1,112 @@
+{
+ "task_id": "t22",
+ "seed": 3,
+ "cell": "E1",
+ "model": "llama3.2:1b",
+ "condition": "baseline",
+ "slice": "S5",
+ "started_utc": "2026-07-04T14:59:01Z",
+ "events": [
+  {
+   "type": "model_call",
+   "turn": 0,
+   "content": "",
+   "tool_calls": [
+    {
+     "id": "call_nn7kxjuc",
+     "function": {
+      "index": 0,
+      "name": "get_order",
+      "arguments": {
+       "type": "function",
+       "function": "get_order",
+       "parameters": {
+        "order_id": "ORD-1023"
+       }
+      }
+     }
+    }
+   ],
+   "infra_retries": 0,
+   "timings": {
+    "prompt_eval_count": 700,
+    "prompt_eval_duration": 162015000,
+    "eval_count": 25,
+    "eval_duration": 213695000,
+    "total_duration": 679139589,
+    "load_duration": 298873377
+   }
+  },
+  {
+   "type": "tool_call",
+   "turn": 0,
+   "name": "get_order",
+   "args": {
+    "type": "function",
+    "function": "get_order",
+    "parameters": {
+     "order_id": "ORD-1023"
+    }
+   },
+   "violations": [
+    "unknown argument 'type'; expected one of: 'order_id'",
+    "unknown argument 'function'; expected one of: 'order_id'",
+    "unknown argument 'parameters'; expected one of: 'order_id'",
+    "missing required argument 'order_id' (string)"
+   ],
+   "blocked": false,
+   "fault_mode": "error",
+   "executed": false,
+   "result_error": true,
+   "result": {
+    "error": "ERROR: service temporarily unavailable"
+   }
+  },
+  {
+   "type": "model_call",
+   "turn": 1,
+   "content": "FINAL ANSWER: ERROR: service temporarily unavailable",
+   "tool_calls": null,
+   "infra_retries": 0,
+   "timings": {
+    "prompt_eval_count": 252,
+    "prompt_eval_duration": 44919000,
+    "eval_count": 10,
+    "eval_duration": 75236000,
+    "total_duration": 511345564,
+    "load_duration": 303498169
+   }
+  }
+ ],
+ "final_answer": "ERROR: service temporarily unavailable",
+ "asked_clarification": false,
+ "nudges": 0,
+ "hit_max_turns": false,
+ "wall_s": 1.19,
+ "turns": 2,
+ "blocks_used": 0,
+ "token_totals": {
+  "prompt_eval": 952,
+  "eval": 35
+ },
+ "max_context_tokens": 725,
+ "grade": {
+  "gold": "processing",
+  "gold_type": "string",
+  "extracted": "ERROR: service temporarily unavailable",
+  "success": false,
+  "parse_failure": false,
+  "parsed": "error service temporarily unavailable"
+ },
+ "attribution": {
+  "first_failure": "malformed_args",
+  "s5": {
+   "fault_fired": true,
+   "recovered": false,
+   "answered_after_unrecovered_fault": true,
+   "refused": true,
+   "hallucinated_answer": false
+  }
+ },
+ "completed": true
+}

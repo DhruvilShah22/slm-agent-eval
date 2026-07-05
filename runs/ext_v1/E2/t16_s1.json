@@ -1,0 +1,68 @@
+{
+ "task_id": "t16",
+ "seed": 1,
+ "cell": "E2",
+ "model": "llama3.2:1b",
+ "condition": "guardrail",
+ "slice": "S3",
+ "started_utc": "2026-07-04T15:03:01Z",
+ "events": [
+  {
+   "type": "model_call",
+   "turn": 0,
+   "content": "{\"type\":\"function\",\"function\":\"find_products\",\"\tdescription\":\"Search the product catalog by category, with optional price ceiling and stock filter.\\nReturns name, sku, price, and units in stock.\", \"parameters\":{\"category\":\"tents\", \"in_stock\":\"True\"}}",
+   "tool_calls": null,
+   "infra_retries": 0,
+   "timings": {
+    "prompt_eval_count": 700,
+    "prompt_eval_duration": 162278000,
+    "eval_count": 59,
+    "eval_duration": 513308000,
+    "total_duration": 979885256,
+    "load_duration": 299928650
+   }
+  },
+  {
+   "type": "nudge"
+  },
+  {
+   "type": "model_call",
+   "turn": 1,
+   "content": "{\"type\":\"function\",\"name\":\"calculate_price\",\"parameters\":{}}",
+   "tool_calls": null,
+   "infra_retries": 0,
+   "timings": {
+    "prompt_eval_count": 789,
+    "prompt_eval_duration": 203011000,
+    "eval_count": 15,
+    "eval_duration": 131707000,
+    "total_duration": 802477574,
+    "load_duration": 302498458
+   }
+  }
+ ],
+ "final_answer": "{\"type\":\"function\",\"name\":\"calculate_price\",\"parameters\":{}}",
+ "asked_clarification": false,
+ "nudges": 1,
+ "hit_max_turns": false,
+ "wall_s": 1.79,
+ "turns": 2,
+ "blocks_used": 0,
+ "token_totals": {
+  "prompt_eval": 1489,
+  "eval": 74
+ },
+ "max_context_tokens": 804,
+ "grade": {
+  "gold": 485.15,
+  "gold_type": "number",
+  "extracted": "{\"type\":\"function\",\"name\":\"calculate_price\",\"parameters\":{}}",
+  "success": false,
+  "parse_failure": true,
+  "parsed": null
+ },
+ "attribution": {
+  "first_failure": "no_tool_call"
+ },
+ "completed": true
+}

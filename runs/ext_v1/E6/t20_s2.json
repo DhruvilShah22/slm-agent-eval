@@ -1,0 +1,51 @@
+{
+ "task_id": "t20",
+ "seed": 2,
+ "cell": "E6",
+ "model": "qwen2.5:7b-instruct-q4_K_M",
+ "condition": "guardrail",
+ "slice": "S4",
+ "started_utc": "2026-07-04T15:47:27Z",
+ "events": [
+  {
+   "type": "model_call",
+   "turn": 0,
+   "content": "To answer this question, I need the order ID to check the delivery date.\nFINAL ANSWER: ORD-XXXX",
+   "tool_calls": null,
+   "infra_retries": 0,
+   "timings": {
+    "prompt_eval_count": 681,
+    "prompt_eval_duration": 30488000,
+    "eval_count": 24,
+    "eval_duration": 683086000,
+    "total_duration": 985874480,
+    "load_duration": 265190504
+   }
+  }
+ ],
+ "final_answer": "ORD-XXXX",
+ "asked_clarification": false,
+ "nudges": 0,
+ "hit_max_turns": false,
+ "wall_s": 0.99,
+ "turns": 1,
+ "blocks_used": 0,
+ "token_totals": {
+  "prompt_eval": 681,
+  "eval": 24
+ },
+ "max_context_tokens": 705,
+ "grade": {
+  "gold": "__UNANSWERABLE__",
+  "gold_type": "string",
+  "extracted": "ORD-XXXX",
+  "success": false,
+  "parse_failure": false,
+  "parsed": "ordxxxx"
+ },
+ "attribution": {
+  "first_failure": "no_tool_call",
+  "s4_behavior": "guessed"
+ },
+ "completed": true
+}

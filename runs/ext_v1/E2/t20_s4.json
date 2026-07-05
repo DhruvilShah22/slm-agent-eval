@@ -1,0 +1,93 @@
+{
+ "task_id": "t20",
+ "seed": 4,
+ "cell": "E2",
+ "model": "llama3.2:1b",
+ "condition": "guardrail",
+ "slice": "S4",
+ "started_utc": "2026-07-04T15:04:01Z",
+ "events": [
+  {
+   "type": "model_call",
+   "turn": 0,
+   "content": "",
+   "tool_calls": [
+    {
+     "id": "call_2fsjfglt",
+     "function": {
+      "index": 0,
+      "name": "get_order",
+      "arguments": {
+       "order_id": "ORD-1234"
+      }
+     }
+    }
+   ],
+   "infra_retries": 0,
+   "timings": {
+    "prompt_eval_count": 703,
+    "prompt_eval_duration": 164111000,
+    "eval_count": 21,
+    "eval_duration": 179240000,
+    "total_duration": 656304222,
+    "load_duration": 308034653
+   }
+  },
+  {
+   "type": "tool_call",
+   "turn": 0,
+   "name": "get_order",
+   "args": {
+    "order_id": "ORD-1234"
+   },
+   "violations": [],
+   "blocked": false,
+   "fault_mode": null,
+   "executed": true,
+   "result_error": true,
+   "result": {
+    "error": "order 'ORD-1234' not found"
+   }
+  },
+  {
+   "type": "model_call",
+   "turn": 1,
+   "content": "FINAL ANSWER: FINAL ANSWER: NOT FOUND",
+   "tool_calls": null,
+   "infra_retries": 0,
+   "timings": {
+    "prompt_eval_count": 248,
+    "prompt_eval_duration": 34038000,
+    "eval_count": 11,
+    "eval_duration": 83402000,
+    "total_duration": 464690316,
+    "load_duration": 342863193
+   }
+  }
+ ],
+ "final_answer": "NOT FOUND",
+ "asked_clarification": false,
+ "nudges": 0,
+ "hit_max_turns": false,
+ "wall_s": 1.12,
+ "turns": 2,
+ "blocks_used": 0,
+ "token_totals": {
+  "prompt_eval": 951,
+  "eval": 32
+ },
+ "max_context_tokens": 724,
+ "grade": {
+  "gold": "__UNANSWERABLE__",
+  "gold_type": "string",
+  "extracted": "NOT FOUND",
+  "success": false,
+  "parse_failure": false,
+  "parsed": "not found"
+ },
+ "attribution": {
+  "first_failure": "bad_arg_values",
+  "s4_behavior": "guessed"
+ },
+ "completed": true
+}

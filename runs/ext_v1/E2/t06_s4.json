@@ -1,0 +1,112 @@
+{
+ "task_id": "t06",
+ "seed": 4,
+ "cell": "E2",
+ "model": "llama3.2:1b",
+ "condition": "guardrail",
+ "slice": "S2",
+ "started_utc": "2026-07-04T15:01:00Z",
+ "events": [
+  {
+   "type": "model_call",
+   "turn": 0,
+   "content": "",
+   "tool_calls": [
+    {
+     "id": "call_bpyv5yjk",
+     "function": {
+      "index": 0,
+      "name": "get_order",
+      "arguments": {
+       "order_id": "ORD-1009"
+      }
+     }
+    }
+   ],
+   "infra_retries": 0,
+   "timings": {
+    "prompt_eval_count": 711,
+    "prompt_eval_duration": 9963000,
+    "eval_count": 21,
+    "eval_duration": 179236000,
+    "total_duration": 642289538,
+    "load_duration": 303428292
+   }
+  },
+  {
+   "type": "tool_call",
+   "turn": 0,
+   "name": "get_order",
+   "args": {
+    "order_id": "ORD-1009"
+   },
+   "violations": [],
+   "blocked": false,
+   "fault_mode": null,
+   "executed": true,
+   "result_error": false,
+   "result": {
+    "order": {
+     "order_id": "ORD-1009",
+     "customer": "Reese Birchwood",
+     "status": "shipped",
+     "placed_date": "2026-01-20",
+     "region": "Ontario"
+    },
+    "items": [
+     {
+      "sku": "ZO-132",
+      "name": "Mistcloak Pro",
+      "qty": 1,
+      "unit_price": 652.02
+     },
+     {
+      "sku": "ZO-133",
+      "name": "Rainwhistle Lite",
+      "qty": 1,
+      "unit_price": 294.32
+     }
+    ]
+   }
+  },
+  {
+   "type": "model_call",
+   "turn": 1,
+   "content": "FINAL ANSWER: $2,449.54",
+   "tool_calls": null,
+   "infra_retries": 0,
+   "timings": {
+    "prompt_eval_count": 358,
+    "prompt_eval_duration": 56015000,
+    "eval_count": 11,
+    "eval_duration": 85453000,
+    "total_duration": 518778902,
+    "load_duration": 305385647
+   }
+  }
+ ],
+ "final_answer": "$2,449.54",
+ "asked_clarification": false,
+ "nudges": 0,
+ "hit_max_turns": false,
+ "wall_s": 1.16,
+ "turns": 2,
+ "blocks_used": 0,
+ "token_totals": {
+  "prompt_eval": 1069,
+  "eval": 32
+ },
+ "max_context_tokens": 732,
+ "grade": {
+  "gold": 946.34,
+  "gold_type": "number",
+  "extracted": "$2,449.54",
+  "success": false,
+  "parse_failure": false,
+  "parsed": 2449.54
+ },
+ "attribution": {
+  "first_failure": "synthesis_error"
+ },
+ "completed": true
+}

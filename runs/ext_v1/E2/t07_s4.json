@@ -1,0 +1,112 @@
+{
+ "task_id": "t07",
+ "seed": 4,
+ "cell": "E2",
+ "model": "llama3.2:1b",
+ "condition": "guardrail",
+ "slice": "S2",
+ "started_utc": "2026-07-04T15:01:11Z",
+ "events": [
+  {
+   "type": "model_call",
+   "turn": 0,
+   "content": "",
+   "tool_calls": [
+    {
+     "id": "call_15x2hihr",
+     "function": {
+      "index": 0,
+      "name": "get_order",
+      "arguments": {
+       "order_id": "ORD-1002"
+      }
+     }
+    }
+   ],
+   "infra_retries": 0,
+   "timings": {
+    "prompt_eval_count": 707,
+    "prompt_eval_duration": 180352000,
+    "eval_count": 25,
+    "eval_duration": 213507000,
+    "total_duration": 698693694,
+    "load_duration": 300122375
+   }
+  },
+  {
+   "type": "tool_call",
+   "turn": 0,
+   "name": "get_order",
+   "args": {
+    "order_id": "ORD-1002"
+   },
+   "violations": [],
+   "blocked": false,
+   "fault_mode": null,
+   "executed": true,
+   "result_error": false,
+   "result": {
+    "order": {
+     "order_id": "ORD-1002",
+     "customer": "Oakley Fenwick",
+     "status": "delivered",
+     "placed_date": "2026-04-15",
+     "region": "Ontario"
+    },
+    "items": [
+     {
+      "sku": "ZO-112",
+      "name": "Mirebrook 75",
+      "qty": 1,
+      "unit_price": 205.73
+     },
+     {
+      "sku": "ZO-106",
+      "name": "Hollowfen 2",
+      "qty": 3,
+      "unit_price": 281.59
+     }
+    ]
+   }
+  },
+  {
+   "type": "model_call",
+   "turn": 1,
+   "content": "FINAL ANSWER: 1629.33",
+   "tool_calls": null,
+   "infra_retries": 0,
+   "timings": {
+    "prompt_eval_count": 356,
+    "prompt_eval_duration": 56990000,
+    "eval_count": 10,
+    "eval_duration": 72474000,
+    "total_duration": 436288114,
+    "load_duration": 302171301
+   }
+  }
+ ],
+ "final_answer": "1629.33",
+ "asked_clarification": false,
+ "nudges": 0,
+ "hit_max_turns": false,
+ "wall_s": 1.14,
+ "turns": 2,
+ "blocks_used": 0,
+ "token_totals": {
+  "prompt_eval": 1063,
+  "eval": 35
+ },
+ "max_context_tokens": 732,
+ "grade": {
+  "gold": 945.45,
+  "gold_type": "number",
+  "extracted": "1629.33",
+  "success": false,
+  "parse_failure": false,
+  "parsed": 1629.33
+ },
+ "attribution": {
+  "first_failure": "synthesis_error"
+ },
+ "completed": true
+}

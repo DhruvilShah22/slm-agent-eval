@@ -1,0 +1,106 @@
+{
+ "task_id": "t03",
+ "seed": 4,
+ "cell": "E3",
+ "model": "qwen2.5:3b-instruct-q8_0",
+ "condition": "baseline",
+ "slice": "S1",
+ "started_utc": "2026-07-04T15:05:52Z",
+ "events": [
+  {
+   "type": "model_call",
+   "turn": 0,
+   "content": "",
+   "tool_calls": [
+    {
+     "id": "call_251kdk7q",
+     "function": {
+      "index": 0,
+      "name": "get_order",
+      "arguments": {
+       "order_id": "ORD-1011"
+      }
+     }
+    }
+   ],
+   "infra_retries": 0,
+   "timings": {
+    "prompt_eval_count": 680,
+    "prompt_eval_duration": 19800000,
+    "eval_count": 26,
+    "eval_duration": 447509000,
+    "total_duration": 720826609,
+    "load_duration": 246499587
+   }
+  },
+  {
+   "type": "tool_call",
+   "turn": 0,
+   "name": "get_order",
+   "args": {
+    "order_id": "ORD-1011"
+   },
+   "violations": [],
+   "blocked": false,
+   "fault_mode": null,
+   "executed": true,
+   "result_error": false,
+   "result": {
+    "order": {
+     "order_id": "ORD-1011",
+     "customer": "Tatum Kirkbray",
+     "status": "delayed",
+     "placed_date": "2026-03-09",
+     "region": "Quebec"
+    },
+    "items": [
+     {
+      "sku": "ZO-126",
+      "name": "Nightquill 400",
+      "qty": 3,
+      "unit_price": 277.39
+     }
+    ]
+   }
+  },
+  {
+   "type": "model_call",
+   "turn": 1,
+   "content": "FINAL ANSWER: The status of order ORD-1011 is delayed, placed on 2026-03-09 from Quebec. It includes 3 units of Nightquill 400 at $277.39 each.",
+   "tool_calls": null,
+   "infra_retries": 0,
+   "timings": {
+    "prompt_eval_count": 821,
+    "prompt_eval_duration": 132453000,
+    "eval_count": 57,
+    "eval_duration": 1035492000,
+    "total_duration": 1425445271,
+    "load_duration": 249978177
+   }
+  }
+ ],
+ "final_answer": "The status of order ORD-1011 is delayed, placed on 2026-03-09 from Quebec. It includes 3 units of Nightquill 400 at $277.39 each.",
+ "asked_clarification": false,
+ "nudges": 0,
+ "hit_max_turns": false,
+ "wall_s": 2.15,
+ "turns": 2,
+ "blocks_used": 0,
+ "token_totals": {
+  "prompt_eval": 1501,
+  "eval": 83
+ },
+ "max_context_tokens": 878,
+ "grade": {
+  "gold": "delayed",
+  "gold_type": "string",
+  "extracted": "The status of order ORD-1011 is delayed, placed on 2026-03-09 from Quebec. It includes 3 units of Nightquill 400 at $277.39 each.",
+  "success": true,
+  "parse_failure": false,
+  "parsed": "the status of order ord1011 is delayed placed on 20260309 from quebec it includes 3 units of nightquill 400 at 27739 each"
+ },
+ "attribution": {
+  "first_failure": null
+ },
+ "completed": true
+}

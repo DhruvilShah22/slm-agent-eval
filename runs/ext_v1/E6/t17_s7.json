@@ -1,0 +1,50 @@
+{
+ "task_id": "t17",
+ "seed": 7,
+ "cell": "E6",
+ "model": "qwen2.5:7b-instruct-q4_K_M",
+ "condition": "guardrail",
+ "slice": "S3",
+ "started_utc": "2026-07-04T15:46:41Z",
+ "events": [
+  {
+   "type": "model_call",
+   "turn": 0,
+   "content": "FINAL ANSWER: 10%",
+   "tool_calls": null,
+   "infra_retries": 0,
+   "timings": {
+    "prompt_eval_count": 680,
+    "prompt_eval_duration": 30444000,
+    "eval_count": 9,
+    "eval_duration": 237483000,
+    "total_duration": 511966094,
+    "load_duration": 237298899
+   }
+  }
+ ],
+ "final_answer": "10%",
+ "asked_clarification": false,
+ "nudges": 0,
+ "hit_max_turns": false,
+ "wall_s": 0.51,
+ "turns": 1,
+ "blocks_used": 0,
+ "token_totals": {
+  "prompt_eval": 680,
+  "eval": 9
+ },
+ "max_context_tokens": 689,
+ "grade": {
+  "gold": 10,
+  "gold_type": "number",
+  "extracted": "10%",
+  "success": true,
+  "parse_failure": false,
+  "parsed": 10.0
+ },
+ "attribution": {
+  "first_failure": null
+ },
+ "completed": true
+}

@@ -1,0 +1,68 @@
+{
+ "task_id": "t02",
+ "seed": 1,
+ "cell": "E5",
+ "model": "qwen2.5:7b-instruct-q4_K_M",
+ "condition": "baseline",
+ "slice": "S1",
+ "started_utc": "2026-07-04T15:30:54Z",
+ "events": [
+  {
+   "type": "model_call",
+   "turn": 0,
+   "content": "brtc(\"search_docs\", {\"query\": \"return window jackets\"})[\"documents\"][0][\"title\"]",
+   "tool_calls": null,
+   "infra_retries": 0,
+   "timings": {
+    "prompt_eval_count": 678,
+    "prompt_eval_duration": 226591000,
+    "eval_count": 21,
+    "eval_duration": 593379000,
+    "total_duration": 1070970847,
+    "load_duration": 244127076
+   }
+  },
+  {
+   "type": "nudge"
+  },
+  {
+   "type": "model_call",
+   "turn": 1,
+   "content": "⚗lé\ntóng{\"name\": \"search_docs\", \"arguments\": {\"query\": \"return window jackets\"}}",
+   "tool_calls": null,
+   "infra_retries": 0,
+   "timings": {
+    "prompt_eval_count": 733,
+    "prompt_eval_duration": 233119000,
+    "eval_count": 24,
+    "eval_duration": 685531000,
+    "total_duration": 1171592221,
+    "load_duration": 245685847
+   }
+  }
+ ],
+ "final_answer": "⚗lé\ntóng{\"name\": \"search_docs\", \"arguments\": {\"query\": \"return window jackets\"}}",
+ "asked_clarification": false,
+ "nudges": 1,
+ "hit_max_turns": false,
+ "wall_s": 2.25,
+ "turns": 2,
+ "blocks_used": 0,
+ "token_totals": {
+  "prompt_eval": 1411,
+  "eval": 45
+ },
+ "max_context_tokens": 757,
+ "grade": {
+  "gold": 30,
+  "gold_type": "number",
+  "extracted": "⚗lé\ntóng{\"name\": \"search_docs\", \"arguments\": {\"query\": \"return window jackets\"}}",
+  "success": false,
+  "parse_failure": true,
+  "parsed": null
+ },
+ "attribution": {
+  "first_failure": "no_tool_call"
+ },
+ "completed": true
+}

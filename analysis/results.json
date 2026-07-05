@@ -346,5 +346,321 @@
     "hallucinated_answer": 6
    }
   }
+ },
+ "ext_v1": {
+  "cells": {
+   "E1": {
+    "model": "llama3.2:1b",
+    "condition": "baseline",
+    "n": 200,
+    "successes": 29,
+    "rate": 0.145,
+    "wilson95": [
+     0.1029,
+     0.2005
+    ],
+    "pass^1": 0.145,
+    "pass^2": 0.0986,
+    "pass^4": 0.0457,
+    "pass^8": 0.0,
+    "parse_failure_rate": 0.125,
+    "first_failures": {
+     "bad_arg_values": 16,
+     "synthesis_error": 32,
+     "malformed_args": 86,
+     "wrong_tool": 22,
+     "no_tool_call": 4,
+     "ignored_tool_error": 11
+    },
+    "mean_wall_s": 1.76,
+    "mean_model_calls": 2.17,
+    "mean_tok_prompt": 1256.5,
+    "mean_tok_eval": 61.8,
+    "mean_blocks": 0.0,
+    "derived_cpu_s": 34.1
+   },
+   "E2": {
+    "model": "llama3.2:1b",
+    "condition": "guardrail",
+    "n": 200,
+    "successes": 16,
+    "rate": 0.08,
+    "wilson95": [
+     0.0498,
+     0.126
+    ],
+    "pass^1": 0.08,
+    "pass^2": 0.0357,
+    "pass^4": 0.0091,
+    "pass^8": 0.0,
+    "parse_failure_rate": 0.16,
+    "first_failures": {
+     "bad_arg_values": 15,
+     "synthesis_error": 30,
+     "malformed_args": 97,
+     "wrong_tool": 24,
+     "no_tool_call": 8,
+     "ignored_tool_error": 10
+    },
+    "mean_wall_s": 1.61,
+    "mean_model_calls": 2.23,
+    "mean_tok_prompt": 1222.3,
+    "mean_tok_eval": 63.5,
+    "mean_blocks": 0.555,
+    "derived_cpu_s": 33.5
+   },
+   "E3": {
+    "model": "qwen2.5:3b-instruct-q8_0",
+    "condition": "baseline",
+    "n": 200,
+    "successes": 87,
+    "rate": 0.435,
+    "wilson95": [
+     0.3682,
+     0.5043
+    ],
+    "pass^1": 0.435,
+    "pass^2": 0.3514,
+    "pass^4": 0.2606,
+    "pass^8": 0.16,
+    "parse_failure_rate": 0.23,
+    "first_failures": {
+     "synthesis_error": 23,
+     "no_tool_call": 34,
+     "bad_arg_values": 26,
+     "malformed_args": 17,
+     "wrong_tool": 4,
+     "ignored_tool_error": 9
+    },
+    "mean_wall_s": 3.69,
+    "mean_model_calls": 2.92,
+    "mean_tok_prompt": 2624.4,
+    "mean_tok_eval": 138.3,
+    "mean_blocks": 0.0,
+    "derived_cpu_s": null
+   },
+   "E4": {
+    "model": "qwen2.5:3b-instruct-q8_0",
+    "condition": "guardrail",
+    "n": 200,
+    "successes": 84,
+    "rate": 0.42,
+    "wilson95": [
+     0.3537,
+     0.4893
+    ],
+    "pass^1": 0.42,
+    "pass^2": 0.3257,
+    "pass^4": 0.2371,
+    "pass^8": 0.16,
+    "parse_failure_rate": 0.22,
+    "first_failures": {
+     "synthesis_error": 23,
+     "no_tool_call": 33,
+     "bad_arg_values": 26,
+     "malformed_args": 21,
+     "wrong_tool": 5,
+     "ignored_tool_error": 8
+    },
+    "mean_wall_s": 3.93,
+    "mean_model_calls": 3.04,
+    "mean_tok_prompt": 2783.0,
+    "mean_tok_eval": 149.7,
+    "mean_blocks": 0.225,
+    "derived_cpu_s": null
+   },
+   "E5": {
+    "model": "qwen2.5:7b-instruct-q4_K_M",
+    "condition": "baseline",
+    "n": 200,
+    "successes": 86,
+    "rate": 0.43,
+    "wilson95": [
+     0.3633,
+     0.4993
+    ],
+    "pass^1": 0.43,
+    "pass^2": 0.3371,
+    "pass^4": 0.2634,
+    "pass^8": 0.16,
+    "parse_failure_rate": 0.11,
+    "first_failures": {
+     "no_tool_call": 33,
+     "synthesis_error": 61,
+     "bad_arg_values": 4,
+     "malformed_args": 1,
+     "wrong_tool": 1,
+     "ignored_tool_error": 14
+    },
+    "mean_wall_s": 2.8,
+    "mean_model_calls": 2.26,
+    "mean_tok_prompt": 1841.8,
+    "mean_tok_eval": 57.8,
+    "mean_blocks": 0.0,
+    "derived_cpu_s": 305.5
+   },
+   "E6": {
+    "model": "qwen2.5:7b-instruct-q4_K_M",
+    "condition": "guardrail",
+    "n": 200,
+    "successes": 85,
+    "rate": 0.425,
+    "wilson95": [
+     0.3585,
+     0.4943
+    ],
+    "pass^1": 0.425,
+    "pass^2": 0.3271,
+    "pass^4": 0.2434,
+    "pass^8": 0.12,
+    "parse_failure_rate": 0.115,
+    "first_failures": {
+     "no_tool_call": 33,
+     "synthesis_error": 62,
+     "bad_arg_values": 4,
+     "malformed_args": 1,
+     "wrong_tool": 1,
+     "ignored_tool_error": 14
+    },
+    "mean_wall_s": 2.82,
+    "mean_model_calls": 2.26,
+    "mean_tok_prompt": 1842.5,
+    "mean_tok_eval": 58.9,
+    "mean_blocks": 0.005,
+    "derived_cpu_s": 306.3
+   }
+  },
+  "contrasts": [
+   {
+    "name": "guardrail@1B-Q8",
+    "cells": "E2 vs E1",
+    "n_pairs": 200,
+    "risk_difference": -0.065,
+    "rd_ci95_cluster_boot": [
+     -0.15,
+     0.0
+    ],
+    "discordant_only_E2": 2,
+    "discordant_only_E1": 15,
+    "mcnemar_p": 0.00235,
+    "delta_wall_s_paired": -0.14,
+    "delta_tokens_paired": -32.6,
+    "mcnemar_p_holm": 0.00705
+   },
+   {
+    "name": "guardrail@3B-Q8",
+    "cells": "E4 vs E3",
+    "n_pairs": 200,
+    "risk_difference": -0.015,
+    "rd_ci95_cluster_boot": [
+     -0.04,
+     0.005
+    ],
+    "discordant_only_E4": 4,
+    "discordant_only_E3": 7,
+    "mcnemar_p": 0.54883,
+    "delta_wall_s_paired": 0.24,
+    "delta_tokens_paired": 170.1,
+    "mcnemar_p_holm": 1.0
+   },
+   {
+    "name": "guardrail@7B-Q4",
+    "cells": "E6 vs E5",
+    "n_pairs": 200,
+    "risk_difference": -0.005,
+    "rd_ci95_cluster_boot": [
+     -0.015,
+     0.0
+    ],
+    "discordant_only_E6": 0,
+    "discordant_only_E5": 1,
+    "mcnemar_p": 1.0,
+    "delta_wall_s_paired": 0.02,
+    "delta_tokens_paired": 1.8,
+    "mcnemar_p_holm": 1.0
+   }
+  ],
+  "s4": {
+   "E1": {
+    "asked": 0.0,
+    "looked_up": 0.438,
+    "guessed": 0.562
+   },
+   "E2": {
+    "asked": 0.0,
+    "looked_up": 0.219,
+    "guessed": 0.781
+   },
+   "E3": {
+    "asked": 0.062,
+    "looked_up": 0.25,
+    "guessed": 0.688
+   },
+   "E4": {
+    "asked": 0.094,
+    "looked_up": 0.25,
+    "guessed": 0.656
+   },
+   "E5": {
+    "asked": 0.188,
+    "looked_up": 0.188,
+    "guessed": 0.625
+   },
+   "E6": {
+    "asked": 0.188,
+    "looked_up": 0.188,
+    "guessed": 0.625
+   }
+  },
+  "s5": {
+   "E1": {
+    "n_s5": 32,
+    "fault_fired": 20,
+    "recovered": 1,
+    "answered_unrecovered": 19,
+    "refused": 6,
+    "hallucinated_answer": 13
+   },
+   "E2": {
+    "n_s5": 32,
+    "fault_fired": 10,
+    "recovered": 0,
+    "answered_unrecovered": 10,
+    "refused": 6,
+    "hallucinated_answer": 4
+   },
+   "E3": {
+    "n_s5": 32,
+    "fault_fired": 24,
+    "recovered": 15,
+    "answered_unrecovered": 9,
+    "refused": 8,
+    "hallucinated_answer": 2
+   },
+   "E4": {
+    "n_s5": 32,
+    "fault_fired": 24,
+    "recovered": 16,
+    "answered_unrecovered": 8,
+    "refused": 3,
+    "hallucinated_answer": 5
+   },
+   "E5": {
+    "n_s5": 32,
+    "fault_fired": 23,
+    "recovered": 8,
+    "answered_unrecovered": 15,
+    "refused": 7,
+    "hallucinated_answer": 7
+   },
+   "E6": {
+    "n_s5": 32,
+    "fault_fired": 22,
+    "recovered": 8,
+    "answered_unrecovered": 14,
+    "refused": 7,
+    "hallucinated_answer": 7
+   }
+  }
  }
 }

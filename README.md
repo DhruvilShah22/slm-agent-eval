@@ -12,10 +12,32 @@ reproducible at zero cost (Kaggle free GPU or any consumer CPU).
 
 ## Status
 
-- Phase 0 (research framing): done, approved — see `PHASE0_RESEARCH_FRAMING.md`
-- Phase 1 (design): done, approved — see `PHASE1_DESIGN.md`
-- Phase 2 (build): **in progress**
-- Phase 3 (experiments + paper-style report): pending
+All phases complete. **Findings and paper-style write-up: `REPORT.md`.**
+Headlines: at 1.5B, Q8_0 more than doubles agent success over the default
+Q4_K_M build (+16pp, Holm p=2e-5) and changes *how* the model fails; a
+deterministic schema-validation guardrail does not help small models and
+significantly hurts at 1.5B-Q8 (−7.5pp), yet triples fault recovery at 3B;
+pass^k collapses under repetition (best cell 0.34 → 0.08 at k=8); 1.5B models
+recovered from 0/84 injected tool faults and usually hallucinate afterwards.
+
+## Reproducing
+
+Every number in REPORT.md regenerates from the committed raw logs — CI does
+it on each push (`.github/workflows/reproduce.yml`):
+
+```
+pip install -r requirements.txt -r requirements-analysis.txt
+python data/generate.py            # deterministic world (CI asserts no diff)
+python -m grading.check_tasks      # all 25 golds resolve
+python analysis/compare_labels.py  # grader vs blind hand labels (kappa)
+python analysis/analyze.py --runs core_v1 ext_v1
+python analysis/make_figures.py
+```
+
+Re-running the *experiments* (new episodes, ~2 GPU-h on a free Kaggle tier or
+days on a consumer CPU): `ollama pull` the models in `configs/*.yaml`, then
+`python run.py --config configs/core.yaml` (resumable; see `kaggle/core/` for
+the cloud kernel).
 
 `NOTES.md` is the chronological project log: every measurement, decision,
 and correction, with evidence pointers.

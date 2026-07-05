@@ -315,6 +315,21 @@ Provisional observations (to be tested properly in Phase 3, NOT results yet):
    method, results, limitations, future work. Every number from analysis/
    outputs; cite only verified papers in NOTES literature list.
 
+### EXTENSION MATRIX COMPLETE + PROJECT WRAP (evidence: runs/ext_v1/, analysis/)
+- ext_v1 (1,200 eps, 55.4 min GPU): E1 llama1b-Q8 base 14.5% / guard 8.0%
+  (**guardrail harm replicates cross-family**, discord 15:2, p_holm .007;
+  llama fingerprint = malformed_args 86–97/200, invents arg names);
+  E3/E4 3b-Q8 43.5/42.0; E5/E6 7b-Q4 43.0/42.5.
+- Patterns: quant effect recurs at 3B (+13pp Q8 vs Q4, descriptive);
+  **3B-Q8 ≈ 7B-Q4** (quant trades against size, twice observed); native
+  fault recovery tracks quality (3B-Q8 15/24 w/o guardrail vs 3B-Q4 3/16 —
+  the gap the guardrail closed); 7B failures ≈ pure synthesis (61/200).
+- REPORT.md complete (all sections, incl. §5). CI workflow
+  (.github/workflows/reproduce.yml) regenerates tables/figures from
+  committed logs + re-checks grader vs blind labels + world determinism.
+- Total project compute: ~3.7 GPU-h free Kaggle + laptop smoke/pilot. Zero
+  paid API calls, as constrained.
+
 ### Lessons / corrections
 - PowerShell tool shells don't inherit PATH updates made mid-session by
   installers; invoke new binaries by absolute path.

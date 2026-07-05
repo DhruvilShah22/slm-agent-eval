@@ -1,0 +1,99 @@
+{
+ "task_id": "t22",
+ "seed": 8,
+ "cell": "E5",
+ "model": "qwen2.5:7b-instruct-q4_K_M",
+ "condition": "baseline",
+ "slice": "S5",
+ "started_utc": "2026-07-04T15:38:45Z",
+ "events": [
+  {
+   "type": "model_call",
+   "turn": 0,
+   "content": "",
+   "tool_calls": [
+    {
+     "id": "call_lo2vro6p",
+     "function": {
+      "index": 0,
+      "name": "get_order",
+      "arguments": {
+       "order_id": "ORD-1023"
+      }
+     }
+    }
+   ],
+   "infra_retries": 0,
+   "timings": {
+    "prompt_eval_count": 680,
+    "prompt_eval_duration": 30372000,
+    "eval_count": 26,
+    "eval_duration": 738516000,
+    "total_duration": 1007435299,
+    "load_duration": 231782656
+   }
+  },
+  {
+   "type": "tool_call",
+   "turn": 0,
+   "name": "get_order",
+   "args": {
+    "order_id": "ORD-1023"
+   },
+   "violations": [],
+   "blocked": false,
+   "fault_mode": "error",
+   "executed": false,
+   "result_error": true,
+   "result": {
+    "error": "ERROR: service temporarily unavailable"
+   }
+  },
+  {
+   "type": "model_call",
+   "turn": 1,
+   "content": "FINAL ANSWER: Service temporarily unavailable",
+   "tool_calls": null,
+   "infra_retries": 0,
+   "timings": {
+    "prompt_eval_count": 732,
+    "prompt_eval_duration": 234245000,
+    "eval_count": 8,
+    "eval_duration": 206999000,
+    "total_duration": 711062271,
+    "load_duration": 262757813
+   }
+  }
+ ],
+ "final_answer": "Service temporarily unavailable",
+ "asked_clarification": false,
+ "nudges": 0,
+ "hit_max_turns": false,
+ "wall_s": 1.72,
+ "turns": 2,
+ "blocks_used": 0,
+ "token_totals": {
+  "prompt_eval": 1412,
+  "eval": 34
+ },
+ "max_context_tokens": 740,
+ "grade": {
+  "gold": "processing",
+  "gold_type": "string",
+  "extracted": "Service temporarily unavailable",
+  "success": false,
+  "parse_failure": false,
+  "parsed": "service temporarily unavailable"
+ },
+ "attribution": {
+  "first_failure": "ignored_tool_error",
+  "s5": {
+   "fault_fired": true,
+   "recovered": false,
+   "answered_after_unrecovered_fault": true,
+   "refused": true,
+   "hallucinated_answer": false
+  }
+ },
+ "completed": true
+}

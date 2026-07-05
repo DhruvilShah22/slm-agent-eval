@@ -1,0 +1,102 @@
+{
+ "task_id": "t13",
+ "seed": 4,
+ "cell": "E1",
+ "model": "llama3.2:1b",
+ "condition": "baseline",
+ "slice": "S2",
+ "started_utc": "2026-07-04T14:57:04Z",
+ "events": [
+  {
+   "type": "model_call",
+   "turn": 0,
+   "content": "",
+   "tool_calls": [
+    {
+     "id": "call_l8y1shqn",
+     "function": {
+      "index": 0,
+      "name": "search_docs",
+      "arguments": {
+       "query": "arrival date for order ORD-1029",
+       "top_k": "1"
+      }
+     }
+    }
+   ],
+   "infra_retries": 0,
+   "timings": {
+    "prompt_eval_count": 718,
+    "prompt_eval_duration": 181699000,
+    "eval_count": 36,
+    "eval_duration": 311373000,
+    "total_duration": 797681191,
+    "load_duration": 299934562
+   }
+  },
+  {
+   "type": "tool_call",
+   "turn": 0,
+   "name": "search_docs",
+   "args": {
+    "query": "arrival date for order ORD-1029",
+    "top_k": "1"
+   },
+   "violations": [
+    "argument 'top_k' must be integer, got str ('1')"
+   ],
+   "blocked": false,
+   "fault_mode": null,
+   "executed": true,
+   "result_error": false,
+   "result": {
+    "results": [
+     {
+      "doc_id": "shipping-atlantic",
+      "score": 2.727,
+      "content": "Zephyra Outfitters Shipping — Atlantic region.\nStandard shipping to the Atlantic region costs $9.99 and express shipping costs $19.99. Orders to Atlantic arrive 3 business days after the order is placed. Shipping is calculated per order, not per item."
+     }
+    ]
+   }
+  },
+  {
+   "type": "model_call",
+   "turn": 1,
+   "content": "FINAL ANSWER: YYYY-MM-DD-03-15",
+   "tool_calls": null,
+   "infra_retries": 0,
+   "timings": {
+    "prompt_eval_count": 340,
+    "prompt_eval_duration": 56379000,
+    "eval_count": 12,
+    "eval_duration": 94312000,
+    "total_duration": 552375948,
+    "load_duration": 301429740
+   }
+  }
+ ],
+ "final_answer": "YYYY-MM-DD-03-15",
+ "asked_clarification": false,
+ "nudges": 0,
+ "hit_max_turns": false,
+ "wall_s": 1.35,
+ "turns": 2,
+ "blocks_used": 0,
+ "token_totals": {
+  "prompt_eval": 1058,
+  "eval": 48
+ },
+ "max_context_tokens": 754,
+ "grade": {
+  "gold": "2026-05-13",
+  "gold_type": "date",
+  "extracted": "YYYY-MM-DD-03-15",
+  "success": false,
+  "parse_failure": true,
+  "parsed": null
+ },
+ "attribution": {
+  "first_failure": "malformed_args"
+ },
+ "completed": true
+}

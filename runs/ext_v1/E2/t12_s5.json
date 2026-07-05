@@ -1,0 +1,106 @@
+{
+ "task_id": "t12",
+ "seed": 5,
+ "cell": "E2",
+ "model": "llama3.2:1b",
+ "condition": "guardrail",
+ "slice": "S2",
+ "started_utc": "2026-07-04T15:02:20Z",
+ "events": [
+  {
+   "type": "model_call",
+   "turn": 0,
+   "content": "",
+   "tool_calls": [
+    {
+     "id": "call_qaytuwz5",
+     "function": {
+      "index": 0,
+      "name": "get_order",
+      "arguments": {
+       "order_id": "ORD-1008"
+      }
+     }
+    }
+   ],
+   "infra_retries": 0,
+   "timings": {
+    "prompt_eval_count": 722,
+    "prompt_eval_duration": 10477000,
+    "eval_count": 21,
+    "eval_duration": 178442000,
+    "total_duration": 636585791,
+    "load_duration": 296087742
+   }
+  },
+  {
+   "type": "tool_call",
+   "turn": 0,
+   "name": "get_order",
+   "args": {
+    "order_id": "ORD-1008"
+   },
+   "violations": [],
+   "blocked": false,
+   "fault_mode": null,
+   "executed": true,
+   "result_error": false,
+   "result": {
+    "order": {
+     "order_id": "ORD-1008",
+     "customer": "Sage Ashford",
+     "status": "delivered",
+     "placed_date": "2026-01-02",
+     "region": "Pacific"
+    },
+    "items": [
+     {
+      "sku": "ZO-137",
+      "name": "Rainwhistle Shell",
+      "qty": 3,
+      "unit_price": 72.92
+     }
+    ]
+   }
+  },
+  {
+   "type": "model_call",
+   "turn": 1,
+   "content": "FINAL ANSWER: Refund of full merchandise cost.",
+   "tool_calls": null,
+   "infra_retries": 0,
+   "timings": {
+    "prompt_eval_count": 336,
+    "prompt_eval_duration": 50837000,
+    "eval_count": 12,
+    "eval_duration": 94081000,
+    "total_duration": 605869877,
+    "load_duration": 311289829
+   }
+  }
+ ],
+ "final_answer": "Refund of full merchandise cost.",
+ "asked_clarification": false,
+ "nudges": 0,
+ "hit_max_turns": false,
+ "wall_s": 1.25,
+ "turns": 2,
+ "blocks_used": 0,
+ "token_totals": {
+  "prompt_eval": 1058,
+  "eval": 33
+ },
+ "max_context_tokens": 743,
+ "grade": {
+  "gold": 196.88,
+  "gold_type": "number",
+  "extracted": "Refund of full merchandise cost.",
+  "success": false,
+  "parse_failure": true,
+  "parsed": null
+ },
+ "attribution": {
+  "first_failure": "synthesis_error"
+ },
+ "completed": true
+}

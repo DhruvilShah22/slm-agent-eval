@@ -56,6 +56,30 @@ def _norm_str(text: str) -> str:
     return text.translate(str.maketrans("", "", string.punctuation)).strip()
 
 
+def _edit1(a: str, b: str) -> bool:
+    """True if edit distance <= 1 (grader v3: catches contractions like
+    'delay'd' -> 'delayd' vs 'delayed'; validated via blind labels)."""
+    if a == b:
+        return True
+    if abs(len(a) - len(b)) > 1:
+        return False
+    if len(a) > len(b):
+        a, b = b, a
+    i = j = diffs = 0
+    while i < len(a) and j < len(b):
+        if a[i] == b[j]:
+            i += 1
+            j += 1
+            continue
+        diffs += 1
+        if diffs > 1:
+            return False
+        if len(a) == len(b):
+            i += 1
+        j += 1
+    return True
+
+
 def grade(episode: dict, task: dict) -> dict:
     answer = episode.get("final_answer")
     value, gtype, tol = goldmod.resolve(task["gold"],
@@ -81,5 +105,7 @@ def grade(episode: dict, task: dict) -> dict:
     else:  # string
         got, want = _norm_str(answer), _norm_str(str(value))
         out["parsed"] = got
-        out["success"] = bool(want) and (got == want or want in got)
+        fuzzy = (len(want) >= 5 and " " not in want
+                 and any(_edit1(w, want) for w in got.split()))
+        out["success"] = bool(want) and (got == want or want in got or fuzzy)
     return out

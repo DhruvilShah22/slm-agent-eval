@@ -1,0 +1,115 @@
+{
+ "task_id": "t25",
+ "seed": 6,
+ "cell": "E2",
+ "model": "llama3.2:1b",
+ "condition": "guardrail",
+ "slice": "S5",
+ "started_utc": "2026-07-04T15:05:05Z",
+ "events": [
+  {
+   "type": "model_call",
+   "turn": 0,
+   "content": "",
+   "tool_calls": [
+    {
+     "id": "call_tc1vnv8b",
+     "function": {
+      "index": 0,
+      "name": "get_order",
+      "arguments": {
+       "order_id": "ORD-1015"
+      }
+     }
+    }
+   ],
+   "infra_retries": 0,
+   "timings": {
+    "prompt_eval_count": 708,
+    "prompt_eval_duration": 180867000,
+    "eval_count": 21,
+    "eval_duration": 178335000,
+    "total_duration": 667745984,
+    "load_duration": 303739639
+   }
+  },
+  {
+   "type": "tool_call",
+   "turn": 0,
+   "name": "get_order",
+   "args": {
+    "order_id": "ORD-1015"
+   },
+   "violations": [],
+   "blocked": false,
+   "fault_mode": null,
+   "executed": true,
+   "result_error": false,
+   "result": {
+    "order": {
+     "order_id": "ORD-1015",
+     "customer": "Devon Ivorsen",
+     "status": "shipped",
+     "placed_date": "2026-03-10",
+     "region": "Pacific"
+    },
+    "items": [
+     {
+      "sku": "ZO-106",
+      "name": "Hollowfen 2",
+      "qty": 1,
+      "unit_price": 281.59
+     },
+     {
+      "sku": "ZO-108",
+      "name": "Galecrest 40",
+      "qty": 1,
+      "unit_price": 436.16
+     }
+    ]
+   }
+  },
+  {
+   "type": "model_call",
+   "turn": 1,
+   "content": "FINAL ANSWER: $707.15",
+   "tool_calls": null,
+   "infra_retries": 0,
+   "timings": {
+    "prompt_eval_count": 357,
+    "prompt_eval_duration": 57576000,
+    "eval_count": 9,
+    "eval_duration": 68335000,
+    "total_duration": 428787095,
+    "load_duration": 298875818
+   }
+  }
+ ],
+ "final_answer": "$707.15",
+ "asked_clarification": false,
+ "nudges": 0,
+ "hit_max_turns": false,
+ "wall_s": 1.1,
+ "turns": 2,
+ "blocks_used": 0,
+ "token_totals": {
+  "prompt_eval": 1065,
+  "eval": 30
+ },
+ "max_context_tokens": 729,
+ "grade": {
+  "gold": 717.75,
+  "gold_type": "number",
+  "extracted": "$707.15",
+  "success": false,
+  "parse_failure": false,
+  "parsed": 707.15
+ },
+ "attribution": {
+  "first_failure": "synthesis_error",
+  "s5": {
+   "fault_fired": false
+  }
+ },
+ "completed": true
+}

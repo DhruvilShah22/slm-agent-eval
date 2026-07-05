@@ -1,0 +1,81 @@
+{
+ "created_utc": "2026-07-04T14:53:55Z",
+ "git_commit": "60f566972ff0997b7d0162593a93c682faece33c",
+ "config_sha256_16": "ab750835794eaa00",
+ "config": {
+  "run_id": "ext_v1",
+  "ollama_url": "http://localhost:11434",
+  "seeds": [
+   1,
+   2,
+   3,
+   4,
+   5,
+   6,
+   7,
+   8
+  ],
+  "max_turns": 10,
+  "options": {
+   "temperature": 0.7,
+   "top_p": 0.9,
+   "num_ctx": 4096,
+   "num_predict": 512
+  },
+  "guardrail": {
+   "max_schema_retries": 2,
+   "max_extra_calls": 4
+  },
+  "system_prompt": "You are a support agent for Zephyra Outfitters, an outdoor gear retailer. You have tools for the product catalog, order lookups, company policy documents, a calculator, and Python. Facts about orders, products, prices, stock, policies, fees, and dates MUST come from tool results — never guess or invent them. If the request is missing information that no tool can provide, ask the user ONE short clarifying question. When you have the answer, reply on a single line: 'FINAL ANSWER: <value>' where <value> is just the number, date (YYYY-MM-DD), word, or short phrase — no explanation.",
+  "cells": {
+   "E1": {
+    "model": "llama3.2:1b",
+    "condition": "baseline"
+   },
+   "E2": {
+    "model": "llama3.2:1b",
+    "condition": "guardrail"
+   },
+   "E3": {
+    "model": "qwen2.5:3b-instruct-q8_0",
+    "condition": "baseline"
+   },
+   "E4": {
+    "model": "qwen2.5:3b-instruct-q8_0",
+    "condition": "guardrail"
+   },
+   "E5": {
+    "model": "qwen2.5:7b-instruct-q4_K_M",
+    "condition": "baseline"
+   },
+   "E6": {
+    "model": "qwen2.5:7b-instruct-q4_K_M",
+    "condition": "guardrail"
+   }
+  }
+ },
+ "models": [
+  {
+   "model": "llama3.2:1b",
+   "digest": "baf6a787fdffd633537aa2eb51cfd54cb93ff08e28040095462bb63daf552878",
+   "parameter_size": "1.2B",
+   "quantization_level": "Q8_0"
+  },
+  {
+   "model": "qwen2.5:3b-instruct-q8_0",
+   "digest": "cd6aa8b25d7af6e11b3d06e0b5f318ab1cd6c9da19813f4bf21a33e1e278ce9a",
+   "parameter_size": "3.1B",
+   "quantization_level": "Q8_0"
+  },
+  {
+   "model": "qwen2.5:7b-instruct-q4_K_M",
+   "digest": "845dbda0ea48ed749caafd9e6037047aa19acfcfd82e704d7ca97d631a0b697e",
+   "parameter_size": "7.6B",
+   "quantization_level": "Q4_K_M"
+  }
+ ],
+ "platform": {
+  "python": "3.12.13",
+  "system": "Linux-6.12.90+-x86_64-with-glibc2.35"
+ }
+}

@@ -1,0 +1,71 @@
+{
+ "task_id": "t22",
+ "seed": 5,
+ "cell": "E2",
+ "model": "llama3.2:1b",
+ "condition": "guardrail",
+ "slice": "S5",
+ "started_utc": "2026-07-04T15:04:26Z",
+ "events": [
+  {
+   "type": "model_call",
+   "turn": 0,
+   "content": "{\"type\":\"function\",\"function\":\"\"\"get_order\",\"parameters\":{\"order_id\":\"ORD-1023\"}}\"{\"type\":\"function\",\"name\":\"search_docs\",\"parameters\":{\"query\":\"\",\"top_k\":\"1\"}}",
+   "tool_calls": null,
+   "infra_retries": 0,
+   "timings": {
+    "prompt_eval_count": 700,
+    "prompt_eval_duration": 162431000,
+    "eval_count": 43,
+    "eval_duration": 367922000,
+    "total_duration": 879936571,
+    "load_duration": 345342967
+   }
+  },
+  {
+   "type": "nudge"
+  },
+  {
+   "type": "model_call",
+   "turn": 1,
+   "content": "{\"type\":\"function\",\"name\":\"run_python\",\"parameters\":{\"code\":\"get_order(ORD-1023)\",\"properties\":{\"code\":\"\"\"import datetime\nfrom datetime import date\nfrom zephyra_outfitters import order_status_dict\norder_id = 'ORD-1023'\nstatus, order_date, region, line_items = get_order(order_id)\nprint(f\"Status: {order_status_dict(status)}\")\nprint(f\"Order Date: {order_date}\")\nprint(f\"Region: {region}\")\nprint(f\"Line Items:\")\nfor item in line_items:\n    print(item)\"\"\"}}",
+   "tool_calls": null,
+   "infra_retries": 0,
+   "timings": {
+    "prompt_eval_count": 776,
+    "prompt_eval_duration": 201684000,
+    "eval_count": 120,
+    "eval_duration": 1086055000,
+    "total_duration": 1684675228,
+    "load_duration": 294092637
+   }
+  }
+ ],
+ "final_answer": "{\"type\":\"function\",\"name\":\"run_python\",\"parameters\":{\"code\":\"get_order(ORD-1023)\",\"properties\":{\"code\":\"\"\"import datetime\nfrom datetime import date\nfrom zephyra_outfitters import order_status_dict\norder_id = 'ORD-1023'\nstatus, order_date, region, line_items = get_order(order_id)\nprint(f\"Status: {order_status_dict(status)}\")\nprint(f\"Order Date: {order_date}\")\nprint(f\"Region: {region}\")\nprint(f\"Line Items:\")\nfor item in line_items:\n    print(item)\"\"\"}}",
+ "asked_clarification": false,
+ "nudges": 1,
+ "hit_max_turns": false,
+ "wall_s": 2.57,
+ "turns": 2,
+ "blocks_used": 0,
+ "token_totals": {
+  "prompt_eval": 1476,
+  "eval": 163
+ },
+ "max_context_tokens": 896,
+ "grade": {
+  "gold": "processing",
+  "gold_type": "string",
+  "extracted": "{\"type\":\"function\",\"name\":\"run_python\",\"parameters\":{\"code\":\"get_order(ORD-1023)\",\"properties\":{\"code\":\"\"\"import datetime\nfrom datetime import date\nfrom zephyra_outfitters import order_status_dict\norder_id = 'ORD-1023'\nstatus, order_date, region, line_items = get_order(order_id)\nprint(f\"Status: {order_status_dict(status)}\")\nprint(f\"Order Date: {order_date}\")\nprint(f\"Region: {region}\")\nprint(f\"Line Items:\")\nfor item in line_items:\n    print(item)\"\"\"}}",
+  "success": false,
+  "parse_failure": false,
+  "parsed": "typefunctionnamerunpythonparameterscodegetorderord1023propertiescodeimport datetime\nfrom datetime import date\nfrom zephyraoutfitters import orderstatusdict\norderid  ord1023\nstatus orderdate region lineitems  getorderorderid\nprintfstatus orderstatusdictstatus\nprintforder date orderdate\nprintfregion region\nprintfline items\nfor item in lineitems\n    printitem"
+ },
+ "attribution": {
+  "first_failure": "no_tool_call",
+  "s5": {
+   "fault_fired": false
+  }
+ },
+ "completed": true
+}

@@ -1,0 +1,69 @@
+{
+ "task_id": "t18",
+ "seed": 1,
+ "cell": "E1",
+ "model": "llama3.2:1b",
+ "condition": "baseline",
+ "slice": "S4",
+ "started_utc": "2026-07-04T14:58:02Z",
+ "events": [
+  {
+   "type": "model_call",
+   "turn": 0,
+   "content": "{\"type\":\"function\",\"function\":{\"name\":\"get_order\",\"description\":\"Look up a customer order by its id (format ORD-XXXX). Returns status, dates, region, and line items with quantities and unit prices.\",\"parameters\":{\"type\":\"object\",\"required\":[\"order_id\"],\"properties\":{\"order_id\":{\"type\":\"string\",\"description\":\"Order id, e.g. ORD-1007\"}}}}",
+   "tool_calls": null,
+   "infra_retries": 0,
+   "timings": {
+    "prompt_eval_count": 702,
+    "prompt_eval_duration": 32420000,
+    "eval_count": 79,
+    "eval_duration": 688646000,
+    "total_duration": 1201067977,
+    "load_duration": 308766115
+   }
+  },
+  {
+   "type": "nudge"
+  },
+  {
+   "type": "model_call",
+   "turn": 1,
+   "content": "{\"name\": \"calculate_shipping\", \"parameters\": {\"expr\": \"standard shipping cost for my order\"}}",
+   "tool_calls": null,
+   "infra_retries": 0,
+   "timings": {
+    "prompt_eval_count": 815,
+    "prompt_eval_duration": 204793000,
+    "eval_count": 22,
+    "eval_duration": 182015000,
+    "total_duration": 842961681,
+    "load_duration": 301824477
+   }
+  }
+ ],
+ "final_answer": "{\"name\": \"calculate_shipping\", \"parameters\": {\"expr\": \"standard shipping cost for my order\"}}",
+ "asked_clarification": false,
+ "nudges": 1,
+ "hit_max_turns": false,
+ "wall_s": 2.05,
+ "turns": 2,
+ "blocks_used": 0,
+ "token_totals": {
+  "prompt_eval": 1517,
+  "eval": 101
+ },
+ "max_context_tokens": 837,
+ "grade": {
+  "gold": 6.99,
+  "gold_type": "number",
+  "extracted": "{\"name\": \"calculate_shipping\", \"parameters\": {\"expr\": \"standard shipping cost for my order\"}}",
+  "success": false,
+  "parse_failure": true,
+  "parsed": null
+ },
+ "attribution": {
+  "first_failure": "no_tool_call",
+  "s4_behavior": "guessed"
+ },
+ "completed": true
+}

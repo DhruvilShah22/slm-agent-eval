@@ -1,0 +1,36 @@
+# Reproduction CI: regenerates the synthetic world (determinism check),
+# re-validates the grader against the committed blind labels, and rebuilds
+# every table and figure from the committed raw episode logs.
+# Analysis only — no model inference happens here.
+name: reproduce-analysis
+on: [push, workflow_dispatch]
+
+jobs:
+  reproduce:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install dependencies
+        run: pip install -r requirements.txt -r requirements-analysis.txt
+      - name: World generator determinism
+        run: |
+          python data/generate.py
+          git diff --exit-code data/facts.json data/corpus
+      - name: Task-suite integrity (all golds resolve)
+        run: python -m grading.check_tasks
+      - name: Grader validation vs committed blind labels
+        run: python analysis/compare_labels.py
+      - name: Rebuild all tables from raw episode logs
+        run: python analysis/analyze.py --runs core_v1 ext_v1
+      - name: Rebuild all figures
+        run: python analysis/make_figures.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: analysis-outputs
+          path: |
+            analysis/results.json
+            analysis/tables.md
+            analysis/figures/

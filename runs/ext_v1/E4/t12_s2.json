@@ -1,0 +1,126 @@
+{
+ "task_id": "t12",
+ "seed": 2,
+ "cell": "E4",
+ "model": "qwen2.5:3b-instruct-q8_0",
+ "condition": "guardrail",
+ "slice": "S2",
+ "started_utc": "2026-07-04T15:22:41Z",
+ "events": [
+  {
+   "type": "model_call",
+   "turn": 0,
+   "content": "",
+   "tool_calls": null,
+   "infra_retries": 0,
+   "timings": {
+    "prompt_eval_count": 702,
+    "prompt_eval_duration": 19929000,
+    "eval_count": 26,
+    "eval_duration": 450737000,
+    "total_duration": 716068640,
+    "load_duration": 238502866
+   }
+  },
+  {
+   "type": "nudge"
+  },
+  {
+   "type": "model_call",
+   "turn": 1,
+   "content": "",
+   "tool_calls": [
+    {
+     "id": "call_bc2t1zc9",
+     "function": {
+      "index": 0,
+      "name": "search_docs",
+      "arguments": {
+       "query": "return policy"
+      }
+     }
+    }
+   ],
+   "infra_retries": 0,
+   "timings": {
+    "prompt_eval_count": 737,
+    "prompt_eval_duration": 95865000,
+    "eval_count": 58,
+    "eval_duration": 1035336000,
+    "total_duration": 1384613174,
+    "load_duration": 246033896
+   }
+  },
+  {
+   "type": "tool_call",
+   "turn": 1,
+   "name": "search_docs",
+   "args": {
+    "query": "return policy"
+   },
+   "violations": [],
+   "blocked": false,
+   "fault_mode": null,
+   "executed": true,
+   "result_error": false,
+   "result": {
+    "results": [
+     {
+      "doc_id": "return-policy-backpacks",
+      "score": 2.469,
+      "content": "Zephyra Outfitters Return Policy — backpacks.\nCustomers may return backpacks within 21 days of delivery. Items must include original tags. Opened items are subject to a 10% restocking fee of the item price. Unopened returns pay only the flat return shipping fee of $7.99. Refunds are issued to the original payment method within 5 business days of inspection."
+     },
+     {
+      "doc_id": "return-policy-jackets",
+      "score": 2.469,
+      "content": "Zephyra Outfitters Return Policy — jackets.\nCustomers may return jackets within 30 days of delivery. Items must include original tags. Opened items are subject to a 10% restocking fee of the item price. Unopened returns pay only the flat return shipping fee of $7.99. Refunds are issued to the original payment method within 5 business days of inspection."
+     },
+     {
+      "doc_id": "return-policy-stoves",
+      "score": 2.469,
+      "content": "Zephyra Outfitters Return Policy — stoves.\nCustomers may return stoves within 45 days of delivery. Items must include original tags. Opened items are subject to a 10% restocking fee of the item price. Unopened returns pay only the flat return shipping fee of $7.99. Refunds are issued to the original payment method within 5 business days of inspection."
+     }
+    ]
+   }
+  },
+  {
+   "type": "model_call",
+   "turn": 2,
+   "content": "",
+   "tool_calls": null,
+   "infra_retries": 0,
+   "timings": {
+    "prompt_eval_count": 1107,
+    "prompt_eval_duration": 325630000,
+    "eval_count": 26,
+    "eval_duration": 476917000,
+    "total_duration": 1060618612,
+    "load_duration": 245157134
+   }
+  }
+ ],
+ "final_answer": "",
+ "asked_clarification": false,
+ "nudges": 1,
+ "hit_max_turns": false,
+ "wall_s": 3.17,
+ "turns": 3,
+ "blocks_used": 0,
+ "token_totals": {
+  "prompt_eval": 2546,
+  "eval": 110
+ },
+ "max_context_tokens": 1133,
+ "grade": {
+  "gold": 196.88,
+  "gold_type": "number",
+  "extracted": "",
+  "success": false,
+  "parse_failure": true,
+  "parsed": null
+ },
+ "attribution": {
+  "first_failure": "synthesis_error"
+ },
+ "completed": true
+}

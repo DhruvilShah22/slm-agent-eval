@@ -1,0 +1,106 @@
+{
+ "task_id": "t03",
+ "seed": 7,
+ "cell": "E2",
+ "model": "llama3.2:1b",
+ "condition": "guardrail",
+ "slice": "S1",
+ "started_utc": "2026-07-04T15:00:24Z",
+ "events": [
+  {
+   "type": "model_call",
+   "turn": 0,
+   "content": "",
+   "tool_calls": [
+    {
+     "id": "call_7yob2dy2",
+     "function": {
+      "index": 0,
+      "name": "get_order",
+      "arguments": {
+       "order_id": "ORD-1011"
+      }
+     }
+    }
+   ],
+   "infra_retries": 0,
+   "timings": {
+    "prompt_eval_count": 700,
+    "prompt_eval_duration": 162718000,
+    "eval_count": 21,
+    "eval_duration": 177548000,
+    "total_duration": 646055867,
+    "load_duration": 301035117
+   }
+  },
+  {
+   "type": "tool_call",
+   "turn": 0,
+   "name": "get_order",
+   "args": {
+    "order_id": "ORD-1011"
+   },
+   "violations": [],
+   "blocked": false,
+   "fault_mode": null,
+   "executed": true,
+   "result_error": false,
+   "result": {
+    "order": {
+     "order_id": "ORD-1011",
+     "customer": "Tatum Kirkbray",
+     "status": "delayed",
+     "placed_date": "2026-03-09",
+     "region": "Quebec"
+    },
+    "items": [
+     {
+      "sku": "ZO-126",
+      "name": "Nightquill 400",
+      "qty": 3,
+      "unit_price": 277.39
+     }
+    ]
+   }
+  },
+  {
+   "type": "model_call",
+   "turn": 1,
+   "content": "FINAL ANSWER: delayed",
+   "tool_calls": null,
+   "infra_retries": 0,
+   "timings": {
+    "prompt_eval_count": 317,
+    "prompt_eval_duration": 54776000,
+    "eval_count": 6,
+    "eval_duration": 42934000,
+    "total_duration": 497590472,
+    "load_duration": 298588574
+   }
+  }
+ ],
+ "final_answer": "delayed",
+ "asked_clarification": false,
+ "nudges": 0,
+ "hit_max_turns": false,
+ "wall_s": 1.15,
+ "turns": 2,
+ "blocks_used": 0,
+ "token_totals": {
+  "prompt_eval": 1017,
+  "eval": 27
+ },
+ "max_context_tokens": 721,
+ "grade": {
+  "gold": "delayed",
+  "gold_type": "string",
+  "extracted": "delayed",
+  "success": true,
+  "parse_failure": false,
+  "parsed": "delayed"
+ },
+ "attribution": {
+  "first_failure": null
+ },
+ "completed": true
+}

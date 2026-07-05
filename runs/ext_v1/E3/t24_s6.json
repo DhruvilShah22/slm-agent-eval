@@ -1,0 +1,121 @@
+{
+ "task_id": "t24",
+ "seed": 6,
+ "cell": "E3",
+ "model": "qwen2.5:3b-instruct-q8_0",
+ "condition": "baseline",
+ "slice": "S5",
+ "started_utc": "2026-07-04T15:16:46Z",
+ "events": [
+  {
+   "type": "model_call",
+   "turn": 0,
+   "content": "",
+   "tool_calls": [
+    {
+     "id": "call_noxhm4ay",
+     "function": {
+      "index": 0,
+      "name": "find_products",
+      "arguments": {
+       "category": "tents",
+       "in_stock": true,
+       "max_price": -1
+      }
+     }
+    }
+   ],
+   "infra_retries": 0,
+   "timings": {
+    "prompt_eval_count": 677,
+    "prompt_eval_duration": 19930000,
+    "eval_count": 34,
+    "eval_duration": 589619000,
+    "total_duration": 915016627,
+    "load_duration": 298476624
+   }
+  },
+  {
+   "type": "tool_call",
+   "turn": 0,
+   "name": "find_products",
+   "args": {
+    "category": "tents",
+    "in_stock": true,
+    "max_price": -1
+   },
+   "violations": [],
+   "blocked": false,
+   "fault_mode": "timeout",
+   "executed": false,
+   "result_error": true,
+   "result": {
+    "error": "ERROR: request timed out"
+   }
+  },
+  {
+   "type": "model_call",
+   "turn": 1,
+   "content": "",
+   "tool_calls": null,
+   "infra_retries": 0,
+   "timings": {
+    "prompt_eval_count": 734,
+    "prompt_eval_duration": 98412000,
+    "eval_count": 84,
+    "eval_duration": 1512619000,
+    "total_duration": 1864740906,
+    "load_duration": 246334227
+   }
+  },
+  {
+   "type": "nudge"
+  },
+  {
+   "type": "model_call",
+   "turn": 2,
+   "content": "",
+   "tool_calls": null,
+   "infra_retries": 0,
+   "timings": {
+    "prompt_eval_count": 769,
+    "prompt_eval_duration": 97054000,
+    "eval_count": 33,
+    "eval_duration": 591733000,
+    "total_duration": 940778175,
+    "load_duration": 244578899
+   }
+  }
+ ],
+ "final_answer": "",
+ "asked_clarification": false,
+ "nudges": 1,
+ "hit_max_turns": false,
+ "wall_s": 3.73,
+ "turns": 3,
+ "blocks_used": 0,
+ "token_totals": {
+  "prompt_eval": 2180,
+  "eval": 151
+ },
+ "max_context_tokens": 818,
+ "grade": {
+  "gold": 222.9,
+  "gold_type": "number",
+  "extracted": "",
+  "success": false,
+  "parse_failure": true,
+  "parsed": null
+ },
+ "attribution": {
+  "first_failure": "ignored_tool_error",
+  "s5": {
+   "fault_fired": true,
+   "recovered": false,
+   "answered_after_unrecovered_fault": true,
+   "refused": false,
+   "hallucinated_answer": true
+  }
+ },
+ "completed": true
+}

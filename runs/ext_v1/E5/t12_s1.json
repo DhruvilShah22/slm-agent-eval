@@ -1,0 +1,68 @@
+{
+ "task_id": "t12",
+ "seed": 1,
+ "cell": "E5",
+ "model": "qwen2.5:7b-instruct-q4_K_M",
+ "condition": "baseline",
+ "slice": "S2",
+ "started_utc": "2026-07-04T15:35:11Z",
+ "events": [
+  {
+   "type": "model_call",
+   "turn": 0,
+   "content": " InterracialSearchDocs{\"query\":\"return policy opened item\",\"top_k\":3}",
+   "tool_calls": null,
+   "infra_retries": 0,
+   "timings": {
+    "prompt_eval_count": 702,
+    "prompt_eval_duration": 236053000,
+    "eval_count": 17,
+    "eval_duration": 474590000,
+    "total_duration": 961959208,
+    "load_duration": 244586845
+   }
+  },
+  {
+   "type": "nudge"
+  },
+  {
+   "type": "model_call",
+   "turn": 1,
+   "content": "",
+   "tool_calls": null,
+   "infra_retries": 0,
+   "timings": {
+    "prompt_eval_count": 753,
+    "prompt_eval_duration": 233125000,
+    "eval_count": 33,
+    "eval_duration": 962318000,
+    "total_duration": 1446843862,
+    "load_duration": 244257293
+   }
+  }
+ ],
+ "final_answer": "",
+ "asked_clarification": false,
+ "nudges": 1,
+ "hit_max_turns": false,
+ "wall_s": 2.41,
+ "turns": 2,
+ "blocks_used": 0,
+ "token_totals": {
+  "prompt_eval": 1455,
+  "eval": 50
+ },
+ "max_context_tokens": 786,
+ "grade": {
+  "gold": 196.88,
+  "gold_type": "number",
+  "extracted": "",
+  "success": false,
+  "parse_failure": true,
+  "parsed": null
+ },
+ "attribution": {
+  "first_failure": "no_tool_call"
+ },
+ "completed": true
+}

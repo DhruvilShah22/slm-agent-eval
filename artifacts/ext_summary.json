@@ -1,0 +1,89 @@
+{
+ "ext_wall_min": 55.4,
+ "cells": {
+  "E1": {
+   "n": 200,
+   "pass": 29,
+   "mean_wall_s": 1.8,
+   "first_failures": {
+    "None": 29,
+    "bad_arg_values": 16,
+    "ignored_tool_error": 11,
+    "malformed_args": 86,
+    "no_tool_call": 4,
+    "synthesis_error": 32,
+    "wrong_tool": 22
+   }
+  },
+  "E2": {
+   "n": 200,
+   "pass": 16,
+   "mean_wall_s": 1.6,
+   "first_failures": {
+    "None": 16,
+    "bad_arg_values": 15,
+    "ignored_tool_error": 10,
+    "malformed_args": 97,
+    "no_tool_call": 8,
+    "synthesis_error": 30,
+    "wrong_tool": 24
+   }
+  },
+  "E3": {
+   "n": 200,
+   "pass": 87,
+   "mean_wall_s": 3.7,
+   "first_failures": {
+    "None": 87,
+    "bad_arg_values": 26,
+    "ignored_tool_error": 9,
+    "malformed_args": 17,
+    "no_tool_call": 34,
+    "synthesis_error": 23,
+    "wrong_tool": 4
+   }
+  },
+  "E4": {
+   "n": 200,
+   "pass": 84,
+   "mean_wall_s": 3.9,
+   "first_failures": {
+    "None": 84,
+    "bad_arg_values": 26,
+    "ignored_tool_error": 8,
+    "malformed_args": 21,
+    "no_tool_call": 33,
+    "synthesis_error": 23,
+    "wrong_tool": 5
+   }
+  },
+  "E5": {
+   "n": 200,
+   "pass": 86,
+   "mean_wall_s": 2.8,
+   "first_failures": {
+    "None": 86,
+    "bad_arg_values": 4,
+    "ignored_tool_error": 14,
+    "malformed_args": 1,
+    "no_tool_call": 33,
+    "synthesis_error": 61,
+    "wrong_tool": 1
+   }
+  },
+  "E6": {
+   "n": 200,
+   "pass": 85,
+   "mean_wall_s": 2.8,
+   "first_failures": {
+    "None": 85,
+    "bad_arg_values": 4,
+    "ignored_tool_error": 14,
+    "malformed_args": 1,
+    "no_tool_call": 33,
+    "synthesis_error": 62,
+    "wrong_tool": 1
+   }
+  }
+ }
+}

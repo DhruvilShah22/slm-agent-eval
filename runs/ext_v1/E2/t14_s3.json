@@ -1,0 +1,100 @@
+{
+ "task_id": "t14",
+ "seed": 3,
+ "cell": "E2",
+ "model": "llama3.2:1b",
+ "condition": "guardrail",
+ "slice": "S3",
+ "started_utc": "2026-07-04T15:02:40Z",
+ "events": [
+  {
+   "type": "model_call",
+   "turn": 0,
+   "content": "",
+   "tool_calls": [
+    {
+     "id": "call_r31sx1r2",
+     "function": {
+      "index": 0,
+      "name": "search_docs",
+      "arguments": {
+       "query": "warranty duration",
+       "top_k": 1
+      }
+     }
+    }
+   ],
+   "infra_retries": 0,
+   "timings": {
+    "prompt_eval_count": 706,
+    "prompt_eval_duration": 179877000,
+    "eval_count": 27,
+    "eval_duration": 230477000,
+    "total_duration": 718360817,
+    "load_duration": 303490647
+   }
+  },
+  {
+   "type": "tool_call",
+   "turn": 0,
+   "name": "search_docs",
+   "args": {
+    "query": "warranty duration",
+    "top_k": 1
+   },
+   "violations": [],
+   "blocked": false,
+   "fault_mode": null,
+   "executed": true,
+   "result_error": false,
+   "result": {
+    "results": [
+     {
+      "doc_id": "warranty-backpacks",
+      "score": 0.674,
+      "content": "Zephyra Outfitters Warranty — backpacks.\nAll backpacks sold by Zephyra Outfitters carry a 1-year manufacturer warranty covering defects in materials and workmanship. The warranty excludes normal wear, misuse, and unauthorized repairs. Warranty claims require the original order number."
+     }
+    ]
+   }
+  },
+  {
+   "type": "model_call",
+   "turn": 1,
+   "content": "FINAL ANSWER: 1",
+   "tool_calls": null,
+   "infra_retries": 0,
+   "timings": {
+    "prompt_eval_count": 326,
+    "prompt_eval_duration": 55797000,
+    "eval_count": 7,
+    "eval_duration": 53157000,
+    "total_duration": 504762964,
+    "load_duration": 306693222
+   }
+  }
+ ],
+ "final_answer": "1",
+ "asked_clarification": false,
+ "nudges": 0,
+ "hit_max_turns": false,
+ "wall_s": 1.23,
+ "turns": 2,
+ "blocks_used": 0,
+ "token_totals": {
+  "prompt_eval": 1032,
+  "eval": 34
+ },
+ "max_context_tokens": 733,
+ "grade": {
+  "gold": 1,
+  "gold_type": "number",
+  "extracted": "1",
+  "success": true,
+  "parse_failure": false,
+  "parsed": 1.0
+ },
+ "attribution": {
+  "first_failure": null
+ },
+ "completed": true
+}

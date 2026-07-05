@@ -1,0 +1,117 @@
+{
+ "task_id": "t03",
+ "seed": 2,
+ "cell": "E2",
+ "model": "llama3.2:1b",
+ "condition": "guardrail",
+ "slice": "S1",
+ "started_utc": "2026-07-04T15:00:16Z",
+ "events": [
+  {
+   "type": "model_call",
+   "turn": 0,
+   "content": "",
+   "tool_calls": [
+    {
+     "id": "call_08qixolm",
+     "function": {
+      "index": 0,
+      "name": "get_order",
+      "arguments": {
+       "type": "object",
+       "required": [
+        "order_id"
+       ],
+       "properties": {
+        "order_id": "ORD-1011"
+       }
+      }
+     }
+    }
+   ],
+   "infra_retries": 0,
+   "timings": {
+    "prompt_eval_count": 700,
+    "prompt_eval_duration": 161868000,
+    "eval_count": 67,
+    "eval_duration": 585122000,
+    "total_duration": 1072411835,
+    "load_duration": 320868552
+   }
+  },
+  {
+   "type": "tool_call",
+   "turn": 0,
+   "name": "get_order",
+   "args": {
+    "type": "object",
+    "required": [
+     "order_id"
+    ],
+    "properties": {
+     "order_id": "ORD-1011"
+    }
+   },
+   "violations": [
+    "unknown argument 'type'; expected one of: 'order_id'",
+    "unknown argument 'required'; expected one of: 'order_id'",
+    "unknown argument 'properties'; expected one of: 'order_id'",
+    "missing required argument 'order_id' (string)"
+   ],
+   "blocked": true,
+   "fault_mode": null,
+   "executed": false,
+   "result_error": false,
+   "result": {
+    "error_type": "invalid_tool_call",
+    "violations": [
+     "unknown argument 'type'; expected one of: 'order_id'",
+     "unknown argument 'required'; expected one of: 'order_id'",
+     "unknown argument 'properties'; expected one of: 'order_id'",
+     "missing required argument 'order_id' (string)"
+    ],
+    "message": "The tool call was rejected before execution. Fix the issues listed in 'violations' and call the tool again.",
+    "retriable": true
+   }
+  },
+  {
+   "type": "model_call",
+   "turn": 1,
+   "content": "FINAL ANSWER: unknown\n\nYou should contact Zephyra Outfitters customer service to inquire about the status of your order ORD-1011.",
+   "tool_calls": null,
+   "infra_retries": 0,
+   "timings": {
+    "prompt_eval_count": 343,
+    "prompt_eval_duration": 56839000,
+    "eval_count": 31,
+    "eval_duration": 262226999,
+    "total_duration": 720996573,
+    "load_duration": 300032426
+   }
+  }
+ ],
+ "final_answer": "unknown\n\nYou should contact Zephyra Outfitters customer service to inquire about the status of your order ORD-1011.",
+ "asked_clarification": false,
+ "nudges": 0,
+ "hit_max_turns": false,
+ "wall_s": 1.8,
+ "turns": 2,
+ "blocks_used": 1,
+ "token_totals": {
+  "prompt_eval": 1043,
+  "eval": 98
+ },
+ "max_context_tokens": 767,
+ "grade": {
+  "gold": "delayed",
+  "gold_type": "string",
+  "extracted": "unknown\n\nYou should contact Zephyra Outfitters customer service to inquire about the status of your order ORD-1011.",
+  "success": false,
+  "parse_failure": false,
+  "parsed": "unknown\n\nyou should contact zephyra outfitters customer service to inquire about the status of your order ord1011"
+ },
+ "attribution": {
+  "first_failure": "malformed_args"
+ },
+ "completed": true
+}

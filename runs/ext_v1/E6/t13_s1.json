@@ -1,0 +1,50 @@
+{
+ "task_id": "t13",
+ "seed": 1,
+ "cell": "E6",
+ "model": "qwen2.5:7b-instruct-q4_K_M",
+ "condition": "guardrail",
+ "slice": "S2",
+ "started_utc": "2026-07-04T15:44:56Z",
+ "events": [
+  {
+   "type": "model_call",
+   "turn": 0,
+   "content": "brtcEndDate = datetime.datetime(2023, 10, 5) - datetime.timedelta(days=1) - datetime.timedelta(days=(7-brtcEndDate.weekday())%7)\n FINAL ANSWER: 2023-10-06",
+   "tool_calls": null,
+   "infra_retries": 0,
+   "timings": {
+    "prompt_eval_count": 698,
+    "prompt_eval_duration": 234240000,
+    "eval_count": 56,
+    "eval_duration": 1632066000,
+    "total_duration": 2151401403,
+    "load_duration": 278177743
+   }
+  }
+ ],
+ "final_answer": "2023-10-06",
+ "asked_clarification": false,
+ "nudges": 0,
+ "hit_max_turns": false,
+ "wall_s": 2.15,
+ "turns": 1,
+ "blocks_used": 0,
+ "token_totals": {
+  "prompt_eval": 698,
+  "eval": 56
+ },
+ "max_context_tokens": 754,
+ "grade": {
+  "gold": "2026-05-13",
+  "gold_type": "date",
+  "extracted": "2023-10-06",
+  "success": false,
+  "parse_failure": false,
+  "parsed": "2023-10-06"
+ },
+ "attribution": {
+  "first_failure": "no_tool_call"
+ },
+ "completed": true
+}

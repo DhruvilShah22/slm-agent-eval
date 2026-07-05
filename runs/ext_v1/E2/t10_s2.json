@@ -1,0 +1,68 @@
+{
+ "task_id": "t10",
+ "seed": 2,
+ "cell": "E2",
+ "model": "llama3.2:1b",
+ "condition": "guardrail",
+ "slice": "S2",
+ "started_utc": "2026-07-04T15:01:43Z",
+ "events": [
+  {
+   "type": "model_call",
+   "turn": 0,
+   "content": "{\"type\":\"function\", \"name\":\"calculator\", \"parameters\": {\"expr\": \"3 * (find_products\", \"category\", \"backpacks\", \"in_stock\", \"max_price\"}}",
+   "tool_calls": null,
+   "infra_retries": 0,
+   "timings": {
+    "prompt_eval_count": 707,
+    "prompt_eval_duration": 180636000,
+    "eval_count": 40,
+    "eval_duration": 343865000,
+    "total_duration": 833623128,
+    "load_duration": 304641508
+   }
+  },
+  {
+   "type": "nudge"
+  },
+  {
+   "type": "model_call",
+   "turn": 1,
+   "content": "{\"type\":\"function\", \"name\":\"calculator\", \"parameters\": {\"expr\": \"3 * (find_products\", \"category\", \"backpacks\", \"in_stock\", \"max_price\"}}",
+   "tool_calls": null,
+   "infra_retries": 0,
+   "timings": {
+    "prompt_eval_count": 781,
+    "prompt_eval_duration": 202181000,
+    "eval_count": 40,
+    "eval_duration": 360087000,
+    "total_duration": 962908580,
+    "load_duration": 297798705
+   }
+  }
+ ],
+ "final_answer": "{\"type\":\"function\", \"name\":\"calculator\", \"parameters\": {\"expr\": \"3 * (find_products\", \"category\", \"backpacks\", \"in_stock\", \"max_price\"}}",
+ "asked_clarification": false,
+ "nudges": 1,
+ "hit_max_turns": false,
+ "wall_s": 1.8,
+ "turns": 2,
+ "blocks_used": 0,
+ "token_totals": {
+  "prompt_eval": 1488,
+  "eval": 80
+ },
+ "max_context_tokens": 821,
+ "grade": {
+  "gold": 942.57,
+  "gold_type": "number",
+  "extracted": "{\"type\":\"function\", \"name\":\"calculator\", \"parameters\": {\"expr\": \"3 * (find_products\", \"category\", \"backpacks\", \"in_stock\", \"max_price\"}}",
+  "success": false,
+  "parse_failure": false,
+  "parsed": 3.0
+ },
+ "attribution": {
+  "first_failure": "no_tool_call"
+ },
+ "completed": true
+}

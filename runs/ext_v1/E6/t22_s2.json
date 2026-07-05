@@ -1,0 +1,119 @@
+{
+ "task_id": "t22",
+ "seed": 2,
+ "cell": "E6",
+ "model": "qwen2.5:7b-instruct-q4_K_M",
+ "condition": "guardrail",
+ "slice": "S5",
+ "started_utc": "2026-07-04T15:47:56Z",
+ "events": [
+  {
+   "type": "model_call",
+   "turn": 0,
+   "content": "",
+   "tool_calls": [
+    {
+     "id": "call_uq1og2tn",
+     "function": {
+      "index": 0,
+      "name": "get_order",
+      "arguments": {
+       "order_id": "ORD-1023"
+      }
+     }
+    }
+   ],
+   "infra_retries": 0,
+   "timings": {
+    "prompt_eval_count": 680,
+    "prompt_eval_duration": 30412000,
+    "eval_count": 26,
+    "eval_duration": 739795000,
+    "total_duration": 1028033385,
+    "load_duration": 250951936
+   }
+  },
+  {
+   "type": "tool_call",
+   "turn": 0,
+   "name": "get_order",
+   "args": {
+    "order_id": "ORD-1023"
+   },
+   "violations": [],
+   "blocked": false,
+   "fault_mode": "error",
+   "executed": false,
+   "result_error": true,
+   "result": {
+    "error_type": "service_unavailable",
+    "message": "The service is temporarily unavailable.",
+    "retriable": true
+   }
+  },
+  {
+   "type": "model_call",
+   "turn": 1,
+   "content": "The service providing order information is currently unavailable. Please try again later or contact our support team for assistance.",
+   "tool_calls": null,
+   "infra_retries": 0,
+   "timings": {
+    "prompt_eval_count": 748,
+    "prompt_eval_duration": 240015000,
+    "eval_count": 22,
+    "eval_duration": 622868000,
+    "total_duration": 1131263943,
+    "load_duration": 261211440
+   }
+  },
+  {
+   "type": "nudge"
+  },
+  {
+   "type": "model_call",
+   "turn": 2,
+   "content": "FINAL ANSWER: The service is temporarily unavailable. Please try again later or contact our support team for assistance.",
+   "tool_calls": null,
+   "infra_retries": 0,
+   "timings": {
+    "prompt_eval_count": 804,
+    "prompt_eval_duration": 234422000,
+    "eval_count": 23,
+    "eval_duration": 676363000,
+    "total_duration": 1161173298,
+    "load_duration": 242849127
+   }
+  }
+ ],
+ "final_answer": "The service is temporarily unavailable. Please try again later or contact our support team for assistance.",
+ "asked_clarification": false,
+ "nudges": 1,
+ "hit_max_turns": false,
+ "wall_s": 3.32,
+ "turns": 3,
+ "blocks_used": 0,
+ "token_totals": {
+  "prompt_eval": 2232,
+  "eval": 71
+ },
+ "max_context_tokens": 827,
+ "grade": {
+  "gold": "processing",
+  "gold_type": "string",
+  "extracted": "The service is temporarily unavailable. Please try again later or contact our support team for assistance.",
+  "success": false,
+  "parse_failure": false,
+  "parsed": "the service is temporarily unavailable please try again later or contact our support team for assistance"
+ },
+ "attribution": {
+  "first_failure": "ignored_tool_error",
+  "s5": {
+   "fault_fired": true,
+   "recovered": false,
+   "answered_after_unrecovered_fault": true,
+   "refused": true,
+   "hallucinated_answer": false
+  }
+ },
+ "completed": true
+}

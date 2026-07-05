@@ -1,0 +1,4 @@
+# Analysis-only dependencies (Phase 3): pinned to the versions used for the
+# reported numbers and figures.
+numpy==2.5.1
+matplotlib==3.11.0

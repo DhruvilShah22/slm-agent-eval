@@ -1,0 +1,92 @@
+{
+ "task_id": "t01",
+ "seed": 6,
+ "cell": "E2",
+ "model": "llama3.2:1b",
+ "condition": "guardrail",
+ "slice": "S1",
+ "started_utc": "2026-07-04T14:59:54Z",
+ "events": [
+  {
+   "type": "model_call",
+   "turn": 0,
+   "content": "",
+   "tool_calls": [
+    {
+     "id": "call_by312edq",
+     "function": {
+      "index": 0,
+      "name": "calculator",
+      "arguments": {
+       "expr": "0.075 * (2840 + 129.99)"
+      }
+     }
+    }
+   ],
+   "infra_retries": 0,
+   "timings": {
+    "prompt_eval_count": 724,
+    "prompt_eval_duration": 183116000,
+    "eval_count": 33,
+    "eval_duration": 283469000,
+    "total_duration": 772020337,
+    "load_duration": 300831779
+   }
+  },
+  {
+   "type": "tool_call",
+   "turn": 0,
+   "name": "calculator",
+   "args": {
+    "expr": "0.075 * (2840 + 129.99)"
+   },
+   "violations": [],
+   "blocked": false,
+   "fault_mode": null,
+   "executed": true,
+   "result_error": false,
+   "result": {
+    "result": 222.74925
+   }
+  },
+  {
+   "type": "model_call",
+   "turn": 1,
+   "content": "FINAL ANSWER: 223",
+   "tool_calls": null,
+   "infra_retries": 0,
+   "timings": {
+    "prompt_eval_count": 271,
+    "prompt_eval_duration": 49975000,
+    "eval_count": 7,
+    "eval_duration": 52079000,
+    "total_duration": 506517446,
+    "load_duration": 301075973
+   }
+  }
+ ],
+ "final_answer": "223",
+ "asked_clarification": false,
+ "nudges": 0,
+ "hit_max_turns": false,
+ "wall_s": 1.28,
+ "turns": 2,
+ "blocks_used": 0,
+ "token_totals": {
+  "prompt_eval": 995,
+  "eval": 40
+ },
+ "max_context_tokens": 757,
+ "grade": {
+  "gold": 342.99,
+  "gold_type": "number",
+  "extracted": "223",
+  "success": false,
+  "parse_failure": false,
+  "parsed": 223.0
+ },
+ "attribution": {
+  "first_failure": "synthesis_error"
+ },
+ "completed": true
+}

@@ -49,3 +49,51 @@
 - C4: fired 17/32, recovered 0, answered-unrecovered 17 (refused 9, hallucinated 8)
 - C5: fired 16/32, recovered 3, answered-unrecovered 13 (refused 3, hallucinated 10)
 - C6: fired 17/32, recovered 10, answered-unrecovered 7 (refused 1, hallucinated 6)
+
+## ext_v1
+
+### Per-cell results
+
+| cell | model | cond | n | pass | rate | Wilson95 | pass^1 | pass^4 | pass^8 | wall s | derived CPU s |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| E1 | llama3.2:1b | baseline | 200 | 29 | 0.145 | (0.1029, 0.2005) | 0.145 | 0.0457 | 0.0 | 1.76 | 34.1 |
+| E2 | llama3.2:1b | guardrail | 200 | 16 | 0.080 | (0.0498, 0.126) | 0.08 | 0.0091 | 0.0 | 1.61 | 33.5 |
+| E3 | qwen2.5:3b-instruct-q8_0 | baseline | 200 | 87 | 0.435 | (0.3682, 0.5043) | 0.435 | 0.2606 | 0.16 | 3.69 | None |
+| E4 | qwen2.5:3b-instruct-q8_0 | guardrail | 200 | 84 | 0.420 | (0.3537, 0.4893) | 0.42 | 0.2371 | 0.16 | 3.93 | None |
+| E5 | qwen2.5:7b-instruct-q4_K_M | baseline | 200 | 86 | 0.430 | (0.3633, 0.4993) | 0.43 | 0.2634 | 0.16 | 2.8 | 305.5 |
+| E6 | qwen2.5:7b-instruct-q4_K_M | guardrail | 200 | 85 | 0.425 | (0.3585, 0.4943) | 0.425 | 0.2434 | 0.12 | 2.82 | 306.3 |
+
+### Pre-registered contrasts (paired; Holm-corrected)
+
+| contrast | RD | 95% CI (cluster boot) | discordants | p (McNemar) | p (Holm) | Δwall s | Δtokens |
+|---|---|---|---|---|---|---|---|
+| guardrail@1B-Q8 | -0.065 | (-0.15, 0.0) | E2:2, E1:15 | 0.00235 | 0.00705 | -0.14 | -32.6 |
+| guardrail@3B-Q8 | -0.015 | (-0.04, 0.005) | E4:4, E3:7 | 0.54883 | 1.0 | +0.24 | +170.1 |
+| guardrail@7B-Q4 | -0.005 | (-0.015, 0.0) | E6:0, E5:1 | 1.0 | 1.0 | +0.02 | +1.8 |
+
+### First-failure distributions
+
+- **E1** (llama3.2:1b, baseline): malformed_args 86, synthesis_error 32, wrong_tool 22, bad_arg_values 16, ignored_tool_error 11, no_tool_call 4
+- **E2** (llama3.2:1b, guardrail): malformed_args 97, synthesis_error 30, wrong_tool 24, bad_arg_values 15, ignored_tool_error 10, no_tool_call 8
+- **E3** (qwen2.5:3b-instruct-q8_0, baseline): no_tool_call 34, bad_arg_values 26, synthesis_error 23, malformed_args 17, ignored_tool_error 9, wrong_tool 4
+- **E4** (qwen2.5:3b-instruct-q8_0, guardrail): no_tool_call 33, bad_arg_values 26, synthesis_error 23, malformed_args 21, ignored_tool_error 8, wrong_tool 5
+- **E5** (qwen2.5:7b-instruct-q4_K_M, baseline): synthesis_error 61, no_tool_call 33, ignored_tool_error 14, bad_arg_values 4, malformed_args 1, wrong_tool 1
+- **E6** (qwen2.5:7b-instruct-q4_K_M, guardrail): synthesis_error 62, no_tool_call 33, ignored_tool_error 14, bad_arg_values 4, malformed_args 1, wrong_tool 1
+
+### S4 (ambiguity) behavior rates
+
+- E1: asked 0.0, looked_up 0.438, guessed 0.562
+- E2: asked 0.0, looked_up 0.219, guessed 0.781
+- E3: asked 0.062, looked_up 0.25, guessed 0.688
+- E4: asked 0.094, looked_up 0.25, guessed 0.656
+- E5: asked 0.188, looked_up 0.188, guessed 0.625
+- E6: asked 0.188, looked_up 0.188, guessed 0.625
+
+### S5 (fault injection) outcomes
+
+- E1: fired 20/32, recovered 1, answered-unrecovered 19 (refused 6, hallucinated 13)
+- E2: fired 10/32, recovered 0, answered-unrecovered 10 (refused 6, hallucinated 4)
+- E3: fired 24/32, recovered 15, answered-unrecovered 9 (refused 8, hallucinated 2)
+- E4: fired 24/32, recovered 16, answered-unrecovered 8 (refused 3, hallucinated 5)
+- E5: fired 23/32, recovered 8, answered-unrecovered 15 (refused 7, hallucinated 7)
+- E6: fired 22/32, recovered 8, answered-unrecovered 14 (refused 7, hallucinated 7)

@@ -1,0 +1,106 @@
+{
+ "task_id": "t09",
+ "seed": 5,
+ "cell": "E6",
+ "model": "qwen2.5:7b-instruct-q4_K_M",
+ "condition": "guardrail",
+ "slice": "S2",
+ "started_utc": "2026-07-04T15:42:47Z",
+ "events": [
+  {
+   "type": "model_call",
+   "turn": 0,
+   "content": "",
+   "tool_calls": [
+    {
+     "id": "call_m0pzxshn",
+     "function": {
+      "index": 0,
+      "name": "get_order",
+      "arguments": {
+       "order_id": "ORD-1016"
+      }
+     }
+    }
+   ],
+   "infra_retries": 0,
+   "timings": {
+    "prompt_eval_count": 687,
+    "prompt_eval_duration": 31504000,
+    "eval_count": 26,
+    "eval_duration": 739246000,
+    "total_duration": 1014562313,
+    "load_duration": 236659824
+   }
+  },
+  {
+   "type": "tool_call",
+   "turn": 0,
+   "name": "get_order",
+   "args": {
+    "order_id": "ORD-1016"
+   },
+   "violations": [],
+   "blocked": false,
+   "fault_mode": null,
+   "executed": true,
+   "result_error": false,
+   "result": {
+    "order": {
+     "order_id": "ORD-1016",
+     "customer": "Jules Ivorsen",
+     "status": "delivered",
+     "placed_date": "2026-03-28",
+     "region": "Ontario"
+    },
+    "items": [
+     {
+      "sku": "ZO-121",
+      "name": "Emberforge Solo",
+      "qty": 1,
+      "unit_price": 485.15
+     }
+    ]
+   }
+  },
+  {
+   "type": "model_call",
+   "turn": 1,
+   "content": "FINAL ANSWER: 497.15",
+   "tool_calls": null,
+   "infra_retries": 0,
+   "timings": {
+    "prompt_eval_count": 825,
+    "prompt_eval_duration": 380561000,
+    "eval_count": 12,
+    "eval_duration": 333454000,
+    "total_duration": 955027670,
+    "load_duration": 233582367
+   }
+  }
+ ],
+ "final_answer": "497.15",
+ "asked_clarification": false,
+ "nudges": 0,
+ "hit_max_turns": false,
+ "wall_s": 1.97,
+ "turns": 2,
+ "blocks_used": 0,
+ "token_totals": {
+  "prompt_eval": 1512,
+  "eval": 38
+ },
+ "max_context_tokens": 837,
+ "grade": {
+  "gold": 492.14,
+  "gold_type": "number",
+  "extracted": "497.15",
+  "success": false,
+  "parse_failure": false,
+  "parsed": 497.15
+ },
+ "attribution": {
+  "first_failure": "synthesis_error"
+ },
+ "completed": true
+}

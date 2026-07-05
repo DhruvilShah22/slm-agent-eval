@@ -1,0 +1,254 @@
+[
+ {
+  "cell": "C1",
+  "task": "t03",
+  "seed": 5,
+  "file": "runs\\core_v1\\C1\\t03_s5.json"
+ },
+ {
+  "cell": "C1",
+  "task": "t08",
+  "seed": 4,
+  "file": "runs\\core_v1\\C1\\t08_s4.json"
+ },
+ {
+  "cell": "C1",
+  "task": "t17",
+  "seed": 2,
+  "file": "runs\\core_v1\\C1\\t17_s2.json"
+ },
+ {
+  "cell": "C1",
+  "task": "t18",
+  "seed": 4,
+  "file": "runs\\core_v1\\C1\\t18_s4.json"
+ },
+ {
+  "cell": "C1",
+  "task": "t22",
+  "seed": 5,
+  "file": "runs\\core_v1\\C1\\t22_s5.json"
+ },
+ {
+  "cell": "C1",
+  "task": "t18",
+  "seed": 6,
+  "file": "runs\\core_v1\\C1\\t18_s6.json"
+ },
+ {
+  "cell": "C1",
+  "task": "t04",
+  "seed": 2,
+  "file": "runs\\core_v1\\C1\\t04_s2.json"
+ },
+ {
+  "cell": "C2",
+  "task": "t03",
+  "seed": 8,
+  "file": "runs\\core_v1\\C2\\t03_s8.json"
+ },
+ {
+  "cell": "C2",
+  "task": "t06",
+  "seed": 8,
+  "file": "runs\\core_v1\\C2\\t06_s8.json"
+ },
+ {
+  "cell": "C2",
+  "task": "t15",
+  "seed": 6,
+  "file": "runs\\core_v1\\C2\\t15_s6.json"
+ },
+ {
+  "cell": "C2",
+  "task": "t18",
+  "seed": 3,
+  "file": "runs\\core_v1\\C2\\t18_s3.json"
+ },
+ {
+  "cell": "C2",
+  "task": "t22",
+  "seed": 6,
+  "file": "runs\\core_v1\\C2\\t22_s6.json"
+ },
+ {
+  "cell": "C2",
+  "task": "t15",
+  "seed": 2,
+  "file": "runs\\core_v1\\C2\\t15_s2.json"
+ },
+ {
+  "cell": "C2",
+  "task": "t14",
+  "seed": 6,
+  "file": "runs\\core_v1\\C2\\t14_s6.json"
+ },
+ {
+  "cell": "C3",
+  "task": "t01",
+  "seed": 5,
+  "file": "runs\\core_v1\\C3\\t01_s5.json"
+ },
+ {
+  "cell": "C3",
+  "task": "t09",
+  "seed": 7,
+  "file": "runs\\core_v1\\C3\\t09_s7.json"
+ },
+ {
+  "cell": "C3",
+  "task": "t14",
+  "seed": 6,
+  "file": "runs\\core_v1\\C3\\t14_s6.json"
+ },
+ {
+  "cell": "C3",
+  "task": "t21",
+  "seed": 4,
+  "file": "runs\\core_v1\\C3\\t21_s4.json"
+ },
+ {
+  "cell": "C3",
+  "task": "t22",
+  "seed": 4,
+  "file": "runs\\core_v1\\C3\\t22_s4.json"
+ },
+ {
+  "cell": "C3",
+  "task": "t19",
+  "seed": 4,
+  "file": "runs\\core_v1\\C3\\t19_s4.json"
+ },
+ {
+  "cell": "C3",
+  "task": "t05",
+  "seed": 1,
+  "file": "runs\\core_v1\\C3\\t05_s1.json"
+ },
+ {
+  "cell": "C4",
+  "task": "t02",
+  "seed": 7,
+  "file": "runs\\core_v1\\C4\\t02_s7.json"
+ },
+ {
+  "cell": "C4",
+  "task": "t06",
+  "seed": 8,
+  "file": "runs\\core_v1\\C4\\t06_s8.json"
+ },
+ {
+  "cell": "C4",
+  "task": "t17",
+  "seed": 2,
+  "file": "runs\\core_v1\\C4\\t17_s2.json"
+ },
+ {
+  "cell": "C4",
+  "task": "t18",
+  "seed": 4,
+  "file": "runs\\core_v1\\C4\\t18_s4.json"
+ },
+ {
+  "cell": "C4",
+  "task": "t23",
+  "seed": 7,
+  "file": "runs\\core_v1\\C4\\t23_s7.json"
+ },
+ {
+  "cell": "C4",
+  "task": "t02",
+  "seed": 4,
+  "file": "runs\\core_v1\\C4\\t02_s4.json"
+ },
+ {
+  "cell": "C4",
+  "task": "t19",
+  "seed": 3,
+  "file": "runs\\core_v1\\C4\\t19_s3.json"
+ },
+ {
+  "cell": "C5",
+  "task": "t02",
+  "seed": 1,
+  "file": "runs\\core_v1\\C5\\t02_s1.json"
+ },
+ {
+  "cell": "C5",
+  "task": "t10",
+  "seed": 6,
+  "file": "runs\\core_v1\\C5\\t10_s6.json"
+ },
+ {
+  "cell": "C5",
+  "task": "t17",
+  "seed": 3,
+  "file": "runs\\core_v1\\C5\\t17_s3.json"
+ },
+ {
+  "cell": "C5",
+  "task": "t19",
+  "seed": 2,
+  "file": "runs\\core_v1\\C5\\t19_s2.json"
+ },
+ {
+  "cell": "C5",
+  "task": "t22",
+  "seed": 8,
+  "file": "runs\\core_v1\\C5\\t22_s8.json"
+ },
+ {
+  "cell": "C5",
+  "task": "t19",
+  "seed": 7,
+  "file": "runs\\core_v1\\C5\\t19_s7.json"
+ },
+ {
+  "cell": "C5",
+  "task": "t11",
+  "seed": 1,
+  "file": "runs\\core_v1\\C5\\t11_s1.json"
+ },
+ {
+  "cell": "C6",
+  "task": "t05",
+  "seed": 4,
+  "file": "runs\\core_v1\\C6\\t05_s4.json"
+ },
+ {
+  "cell": "C6",
+  "task": "t08",
+  "seed": 8,
+  "file": "runs\\core_v1\\C6\\t08_s8.json"
+ },
+ {
+  "cell": "C6",
+  "task": "t14",
+  "seed": 7,
+  "file": "runs\\core_v1\\C6\\t14_s7.json"
+ },
+ {
+  "cell": "C6",
+  "task": "t19",
+  "seed": 5,
+  "file": "runs\\core_v1\\C6\\t19_s5.json"
+ },
+ {
+  "cell": "C6",
+  "task": "t24",
+  "seed": 8,
+  "file": "runs\\core_v1\\C6\\t24_s8.json"
+ },
+ {
+  "cell": "C6",
+  "task": "t04",
+  "seed": 1,
+  "file": "runs\\core_v1\\C6\\t04_s1.json"
+ },
+ {
+  "cell": "C6",
+  "task": "t18",
+  "seed": 8,
+  "file": "runs\\core_v1\\C6\\t18_s8.json"
+ }
+]

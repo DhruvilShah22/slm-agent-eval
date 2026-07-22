@@ -20,6 +20,8 @@ significantly hurts at 1.5B-Q8 (−7.5pp), yet triples fault recovery at 3B;
 pass^k collapses under repetition (best cell 0.34 → 0.08 at k=8); 1.5B models
 recovered from 0/84 injected tool faults and usually hallucinate afterwards.
 
+![Task success rate by model and quantization, baseline vs guardrail, with Wilson 95% CIs](analysis/figures/fig1_success_rates.png)
+
 ## Reproducing
 
 Every number in REPORT.md regenerates from the committed raw logs — CI does

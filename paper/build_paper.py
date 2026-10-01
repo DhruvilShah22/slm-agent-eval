@@ -225,7 +225,7 @@ def main() -> None:
     body(doc, (
         "We answer these with a deliberately transparent testbed: a "
         "five-tool customer-support agent over a fully synthetic world, a "
-        "25-task suite with five probe slices, fully programmatic grading, "
+        "25-task suite with five probe slices, rule-based grading, "
         "and 2,400 episodes across "
         "five model×quantization settings, each with and without the "
         "guardrail. Hypotheses, contrasts, and gates were fixed in a design "

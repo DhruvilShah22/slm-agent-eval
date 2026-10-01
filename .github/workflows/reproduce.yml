@@ -1,5 +1,5 @@
 # Reproduction CI: regenerates the synthetic world (determinism check),
-# re-validates the grader against the committed blind labels, and rebuilds
+# re-checks the grader against the committed reference labels, and rebuilds
 # every table and figure from the committed raw episode logs.
 # Analysis only — no model inference happens here.
 name: reproduce-analysis
@@ -21,7 +21,7 @@ jobs:
           git diff --exit-code data/facts.json data/corpus
       - name: Task-suite integrity (all golds resolve)
         run: python -m grading.check_tasks
-      - name: Grader validation vs committed blind labels
+      - name: Grader check vs committed reference labels
         run: python analysis/compare_labels.py
       - name: Rebuild all tables from raw episode logs
         run: python analysis/analyze.py --runs core_v1 ext_v1

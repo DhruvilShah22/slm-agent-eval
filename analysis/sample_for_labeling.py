@@ -6,7 +6,7 @@ slice per cell plus two extra per cell (7 x 6 = 42) — and writes:
   analysis/labeling/blind_sample.md   trajectories WITHOUT grades/attribution
   analysis/labeling/sample_keys.json  which episodes were drawn
 
-A human labeler reads blind_sample.md and fills labels.json with, per episode:
+A labeler reads blind_sample.md and fills labels.json with, per episode:
   success: true/false   and   first_failure: <category or null>
 compare_labels.py then computes Cohen's kappa against the classifier.
 """

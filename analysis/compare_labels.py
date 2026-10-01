@@ -1,4 +1,4 @@
-"""Compare blind hand labels against the programmatic grader/attributor.
+"""Compare committed reference labels against the programmatic grader/attributor.
 
 Recomputes grade+attribution with the CURRENT code (not the inline values
 stored at run time), so this validates whatever grader version analysis will

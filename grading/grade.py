@@ -2,7 +2,7 @@
 
 The system prompt instructs models to answer `FINAL ANSWER: <value>`; the
 agent loop extracts the value. Normalization rules below are deterministic
-and validated against hand labels during the pilot (Cohen's kappa reported).
+and checked against reference labels during the pilot (Cohen's kappa).
 """
 
 import re
@@ -41,7 +41,7 @@ def parse_number(text: str) -> float | None:
     matches = _NUM_RE.findall(cleaned)
     if matches:
         # Take the LAST number: answers like "with 5% off it is 522.50" end
-        # with the result. Deterministic; audited via hand-label validation.
+        # with the result. Deterministic; audited via the reference-label check.
         return float(matches[-1].replace(",", ""))
     # Word-number fallback for answers like "one-year warranty".
     words = re.findall(r"[a-z]+", cleaned.lower())
@@ -58,7 +58,7 @@ def _norm_str(text: str) -> str:
 
 def _edit1(a: str, b: str) -> bool:
     """True if edit distance <= 1 (grader v3: catches contractions like
-    'delay'd' -> 'delayd' vs 'delayed'; validated via blind labels)."""
+    'delay'd' -> 'delayd' vs 'delayed'; checked via reference labels)."""
     if a == b:
         return True
     if abs(len(a) - len(b)) > 1:

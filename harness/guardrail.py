@@ -7,7 +7,7 @@ error to the model, bounded retries).
 
 Supported schema subset (all our tools): object parameters with properties of
 type string/number/integer/boolean, `enum`, and `required`. Kept intentionally
-small and readable; validated against hand labels in the pilot.
+small and readable; checked against reference labels in the pilot.
 """
 
 _TYPES = {

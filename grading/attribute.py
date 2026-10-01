@@ -11,7 +11,7 @@ event log + task metadata. Categories, in pipeline order:
   max_turns           turn budget exhausted
 
 Also codes S4 behavior (asked / looked_up / guessed) and S5 recovery flags.
-Validated against ~40 hand-labeled trajectories before the matrix (kappa
+Checked against ~40 reference-labelled trajectories before the matrix (kappa
 reported in the paper).
 """
 

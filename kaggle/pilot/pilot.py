@@ -3,7 +3,7 @@ x 2 seeds = 60 episodes on the free GPU.
 
 Purpose: (1) replace episode-time estimates with cloud measurements,
 (2) difficulty gate (base success within 20-80%?), (3) produce diverse
-trajectories for hand-label validation of the failure-attribution classifier.
+trajectories for the reference-label check of the failure-attribution classifier.
 Outputs land in /kaggle/working/runs/ (kernel output artifact).
 """
 

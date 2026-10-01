@@ -13,8 +13,7 @@ five-tool customer-support agent harness with a 25-task suite spanning five
 probe slices (single-tool, multi-tool chains, distractor tools, underspecified
 requests, injected tool faults), run 1,200 seeded episodes across a
 model-size × quantization × mitigation matrix on free cloud GPUs, and grade
-programmatically (blind-validated: κ = 0.86 success / 0.94 failure-category
-before reconciliation). Three findings. **(1) Quantization dominates:** at
+programmatically with no LLM judge. Three findings. **(1) Quantization dominates:** at
 1.5B, Q8_0 more than doubles task success over the Q4_K_M build everyone
 downloads by default (31.0% vs 15.0%; +16pp, Holm-corrected McNemar
 p = 2×10⁻⁵) — an effect as large as doubling model size, and concentrated in
@@ -128,13 +127,7 @@ normalized match of the extracted final answer (numeric tolerance, date, or
 fuzzy string). First-failure attribution walks the event log:
 `no_tool_call, wrong_tool, malformed_args, bad_arg_values,
 ignored_tool_error, synthesis_error, max_turns`; plus S4 behavior
-(asked / looked-up / guessed) and S5 recovery flags. **Validation:** 42
-stratified episodes were hand-labeled *blind* (trajectories printed without
-classifier output). Agreement before any reconciliation: 40/42 on both
-success (Cohen's κ = 0.86) and failure category (κ = 0.94). Both
-disagreements shared one root cause (a contraction, "delay'd", missed by
-string normalization); after a one-line edit-distance fix the same sample
-agrees 42/42 (in-sample, reported as such). Two grader defects found earlier
+(asked / looked-up / guessed) and S5 recovery flags. Two grader defects found earlier
 in the pilot (digits inside product names parsed as answers; word-numbers
 unparsed) were fixed before the matrix and are logged in NOTES.md.
 
@@ -285,8 +278,7 @@ one stage no tool-layer guardrail can reach.
   uses cluster bootstrap + McNemar, which respects the pairing.
 - **The 1.5B-Q4 floor** (15%) leaves little room to detect guardrail effects
   there (documented before the matrix ran; NOTES.md pilot gate).
-- **Grader ceiling.** Programmatic grading was blind-validated (κ 0.86/0.94,
-  42 episodes) and post-fix agreement is in-sample; residual grader error is
+- **Grader ceiling.** Grading is rule-based; residual grader error is
   possible on unusual answer phrasings.
 - **One guardrail design.** Different error wording, tighter budgets, or
   in-context repair examples might behave differently; we tested one

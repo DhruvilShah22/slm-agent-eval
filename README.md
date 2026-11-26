@@ -31,7 +31,7 @@ it on each push (`.github/workflows/reproduce.yml`):
 pip install -r requirements.txt -r requirements-analysis.txt
 python data/generate.py            # deterministic world (CI asserts no diff)
 python -m grading.check_tasks      # all 25 golds resolve
-python analysis/compare_labels.py  # grader vs committed reference labels
+python analysis/compare_labels.py  # grader check
 python analysis/analyze.py --runs core_v1 ext_v1
 python analysis/make_figures.py
 ```

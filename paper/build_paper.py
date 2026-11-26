@@ -15,8 +15,8 @@ ROOT = Path(__file__).resolve().parent.parent
 FIGS = ROOT / "analysis" / "figures"
 OUT = ROOT / "paper" / "paper.docx"
 
-AUTHOR = "Dhruvil Shah"
-EMAIL = "[EMAIL — confirm before submission]"
+AUTHOR = "Dhruvil Amit Shah"
+EMAIL = "contactshahdhruvil@gmail.com"
 AFFIL = "Independent Researcher"
 
 TITLE = ("Quantization, Not Just Scale: Reliability and Failure Anatomy of "
@@ -46,8 +46,9 @@ ABSTRACT = (
     "anything an argument-level check can reach. The same guardrail, "
     "however, triples recovery from injected tool faults at 3B, indicating "
     "the mechanism works once a model can act on error feedback. Third, "
-    "reliability collapses under repetition: the best cell completes all "
-    "eight seeded repeats of a task only 16% of the time, and 1.5B models "
+    "reliability collapses under repetition: the best core cell completes "
+    "all eight seeded repeats of a task only 8% of the time (16% for the "
+    "best exploratory-extension cell), and 1.5B models "
     "recovered from 0 of 84 injected faults, typically hallucinating a "
     "concrete answer instead. The harness, raw logs, and analysis are "
     "public, every reported number regenerates from the logs in CI, and the "
@@ -181,6 +182,15 @@ def main() -> None:
     a.alignment = WD_ALIGN_PARAGRAPH.CENTER
     a.add_run(f"{AUTHOR}\n").font.size = Pt(11.5)
     a.add_run(f"{AFFIL}\n{EMAIL}").font.size = Pt(10)
+    meta = doc.add_paragraph()
+    meta.alignment = WD_ALIGN_PARAGRAPH.CENTER
+    meta.add_run(
+        "Preprint \u00b7 July 2026\n"
+        "Code and data: https://github.com/DhruvilShah22/slm-agent-eval\n"
+        "License: Creative Commons Attribution 4.0 International (CC BY 4.0)\n"
+        f"Cite as: D. A. Shah, \u201c{TITLE},\u201d Zenodo, 2026, "
+        "doi:10.5281/zenodo.21205405."
+    ).font.size = Pt(9)
 
     # ---- Abstract ----
     ah = doc.add_paragraph()
@@ -545,8 +555,7 @@ def main() -> None:
         "Code, task suite, raw logs for all 2,400 episodes, analysis "
         "scripts, and figure generation are available at "
         "https://github.com/DhruvilShah22/slm-agent-eval. A CI workflow "
-        "regenerates the synthetic world (asserting determinism), "
-        "re-checks the grader against the committed reference labels, and "
+        "regenerates the synthetic world (asserting determinism) and "
         "rebuilds every table and figure from the raw logs on each push. "
         "The full experiment reruns in under four GPU-hours on a free "
         "Kaggle tier, or on a consumer CPU. No paid APIs were used at any "

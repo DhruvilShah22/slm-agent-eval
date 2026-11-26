@@ -1,4 +1,4 @@
-"""Builds paper/paper.docx, the arXiv submission manuscript.
+"""Builds paper/Quantization Reliability and Failure Anatomy Research Paper.docx, the arXiv submission manuscript.
 
 Regenerable: python paper/build_paper.py. Numbers in the text were taken from
 analysis/results.json (commit-pinned); figures are embedded from
@@ -13,7 +13,7 @@ from docx.shared import Inches, Pt, RGBColor
 
 ROOT = Path(__file__).resolve().parent.parent
 FIGS = ROOT / "analysis" / "figures"
-OUT = ROOT / "paper" / "paper.docx"
+OUT = ROOT / "paper" / "Quantization Reliability and Failure Anatomy Research Paper.docx"
 
 AUTHOR = "Dhruvil Amit Shah"
 EMAIL = "contactshahdhruvil@gmail.com"

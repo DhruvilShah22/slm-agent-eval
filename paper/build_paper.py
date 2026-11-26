@@ -5,6 +5,7 @@ analysis/results.json (commit-pinned); figures are embedded from
 analysis/figures/. Single-column, Times New Roman, standard preprint layout.
 """
 
+import re
 from pathlib import Path
 
 from docx import Document
@@ -18,40 +19,32 @@ OUT = ROOT / "paper" / "Quantization Reliability and Failure Anatomy Research Pa
 AUTHOR = "Dhruvil Amit Shah"
 EMAIL = "contactshahdhruvil@gmail.com"
 AFFIL = "Independent Researcher"
+ORCID = "0009-0008-2988-5216"
 
 TITLE = ("Quantization, Not Just Scale: Reliability and Failure Anatomy of "
          "Small Open-Weight Tool Agents")
 
 ABSTRACT = (
     "If you want to run an AI agent for free, you are realistically looking at "
-    "a small open-weight model, one to seven billion parameters. Yet most "
-    "reliability numbers for agents come from frontier APIs. So we built a "
-    "five-tool agent harness with 25 tasks covering five kinds of probe: "
-    "single-tool use, multi-tool chains, distractor tools, vague requests, and "
-    "tool faults we inject on purpose. Then we ran 2,400 seeded episodes across "
-    "model size, quantization and one mitigation. Grading is by rules. No LLM "
-    "judge. Quantization turned out to matter most. At 1.5B, the 8-bit build "
-    "more than doubled task success compared with the default 4-bit download "
-    "(31.0% vs 15.0%, +16 points, Holm-corrected exact McNemar "
-    "p = 2×10⁻⁵). That's roughly what you'd get from doubling the "
-    "parameters, and twice in our matrix a smaller model at higher precision "
-    "kept up with a bigger 4-bit one. How the models failed changed too. The "
-    "4-bit model often never called a tool at all. The 8-bit model did call "
-    "tools, and slipped up later, when putting the answer together. We also "
-    "tested a deterministic verification-and-retry guardrail (schema checks, "
-    "typed errors, a few bounded retries). It never significantly helped "
-    "overall, and in two model families it made things significantly worse "
-    "(−7.5 points at Qwen2.5-1.5B-Q8, −6.5 at Llama-3.2-1B). Most "
-    "failures start at picking the tool or writing the answer, before any "
-    "argument check even gets a look in. At 3B, though, the same guardrail "
-    "tripled recovery from injected faults, so it works once the model is good "
-    "enough to use the error message. Running each task over and over showed "
-    "how shaky all of this is. The best core cell got all eight seeded repeats "
-    "of a task right only 8% of the time (16% for the best exploratory cell). "
-    "The 1.5B models recovered from 0 of 84 injected faults and usually just "
-    "made up an answer. The harness, raw logs and analysis are public, CI "
-    "rebuilds every number from the logs, and the full study reruns in under "
-    "four GPU-hours on a free tier or a consumer CPU.")
+    "a small open-weight model of one to seven billion parameters, yet most "
+    "reliability numbers for agents come from frontier APIs. We built a "
+    "five-tool agent harness with 25 tasks covering five kinds of probe "
+    "(single-tool use, multi-tool chains, distractor tools, vague requests and "
+    "injected tool faults) and ran 2,400 seeded episodes across model size, "
+    "quantization and one mitigation, graded by rules with no LLM judge. "
+    "Quantization mattered most. At 1.5B, the 8-bit build more than doubled "
+    "task success over the default 4-bit download (31.0% vs 15.0%, "
+    "Holm-corrected exact McNemar p\u00a0=\u00a02\u00d710\u207b\u2075), about what "
+    "doubling the parameters buys, and it changed how the model failed: the "
+    "4-bit build often never called a tool, while the 8-bit build slipped "
+    "later, when writing the answer. A deterministic verification-and-retry "
+    "guardrail never significantly helped overall and significantly hurt in "
+    "two model families, though at 3B it tripled recovery from injected "
+    "faults. Repetition showed how fragile all of this is: the best core cell "
+    "got all eight seeded repeats of a task right only 8% of the time (16% "
+    "for the best exploratory cell), and the 1.5B models recovered from none "
+    "of 84 injected faults. The harness, raw logs and analysis are public, and "
+    "the full study reruns in under four GPU-hours on a free tier.")
 
 FIG_CAPTIONS = {
     "fig1_success_rates.png":
@@ -113,7 +106,10 @@ REFERENCES = [
 
 
 def body(doc: Document, text: str, first_indent: bool = True) -> None:
-    p = doc.add_paragraph(text)
+    p = doc.add_paragraph()
+    for i, part in enumerate(re.split(r"\*([^*]+)\*", text)):
+        if part:
+            p.add_run(part).italic = bool(i % 2)
     p.paragraph_format.alignment = WD_ALIGN_PARAGRAPH.JUSTIFY
     p.paragraph_format.space_after = Pt(4)
     if first_indent:
@@ -154,7 +150,8 @@ def table(doc: Document, header: list[str], rows: list[list[str]],
 def figure(doc: Document, filename: str) -> None:
     p = doc.add_paragraph()
     p.alignment = WD_ALIGN_PARAGRAPH.CENTER
-    p.add_run().add_picture(str(FIGS / filename), width=Inches(5.6))
+    p.paragraph_format.keep_with_next = True
+    p.add_run().add_picture(str(FIGS / filename), width=Inches(4.9))
     cap = doc.add_paragraph(FIG_CAPTIONS[filename])
     cap.alignment = WD_ALIGN_PARAGRAPH.CENTER
     cap.runs[0].font.size = Pt(9)
@@ -179,13 +176,13 @@ def main() -> None:
     a = doc.add_paragraph()
     a.alignment = WD_ALIGN_PARAGRAPH.CENTER
     a.add_run(f"{AUTHOR}\n").font.size = Pt(11.5)
-    a.add_run(f"{AFFIL}\n{EMAIL}").font.size = Pt(10)
+    a.add_run(f"{AFFIL} \u00b7 {EMAIL} \u00b7 ORCID {ORCID}").font.size = Pt(10)
     meta = doc.add_paragraph()
     meta.alignment = WD_ALIGN_PARAGRAPH.CENTER
     meta.add_run(
-        "Preprint \u00b7 July 2026\n"
-        "Code and data: https://github.com/DhruvilShah22/slm-agent-eval\n"
-        "License: Creative Commons Attribution 4.0 International (CC BY 4.0)\n"
+        "Preprint \u00b7 July 2026, revised November 2026\n"
+        "Code and data: https://github.com/DhruvilShah22/slm-agent-eval"
+        " \u00b7 License: CC BY 4.0\n"
         f"Cite as: D. A. Shah, \u201c{TITLE},\u201d Zenodo, 2026, "
         "doi:10.5281/zenodo.21205405."
     ).font.size = Pt(9)
@@ -566,6 +563,11 @@ def main() -> None:
         for run in p.runs:
             run.font.size = Pt(9.5)
 
+    cp = doc.core_properties
+    cp.title = TITLE
+    cp.author = AUTHOR
+    cp.last_modified_by = AUTHOR
+    cp.subject = "Preprint, Zenodo doi:10.5281/zenodo.21205405"
     OUT.parent.mkdir(exist_ok=True)
     doc.save(OUT)
     print(f"wrote {OUT}")

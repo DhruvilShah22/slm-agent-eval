@@ -1,4 +1,4 @@
-"""Builds paper/paper.docx — the arXiv submission manuscript.
+"""Builds paper/paper.docx, the arXiv submission manuscript.
 
 Regenerable: python paper/build_paper.py. Numbers in the text were taken from
 analysis/results.json (commit-pinned); figures are embedded from
@@ -23,45 +23,43 @@ TITLE = ("Quantization, Not Just Scale: Reliability and Failure Anatomy of "
          "Small Open-Weight Tool Agents")
 
 ABSTRACT = (
-    "Small open-weight language models (1–7B parameters) are the only "
-    "agents most practitioners can run at zero cost, yet agent reliability "
-    "has mostly been measured on frontier APIs. We build a five-tool agent "
-    "harness with a 25-task suite spanning five probe slices (single-tool "
-    "use, multi-tool chains, distractor tools, underspecified requests, and "
-    "injected tool faults) and run 2,400 seeded episodes across a model-size "
-    "× quantization × mitigation matrix, graded programmatically "
-    "with no LLM judge. Three results stand out. First, quantization dominates: at "
-    "1.5B, the 8-bit build more than doubles task success over the default "
-    "4-bit download (31.0% vs 15.0%; +16 points, Holm-corrected exact "
-    "McNemar p = 2×10⁻⁵), matching the gain from doubling "
-    "parameters, and twice in our matrix a higher-precision smaller model "
-    "matched a larger 4-bit one. The damage is qualitative, not just "
-    "quantitative: the 4-bit model often never calls a tool, while the 8-bit "
-    "model calls tools and fails later, at synthesis. Second, a "
-    "deterministic verification-and-retry guardrail (schema validation, "
-    "typed errors, bounded retries) never significantly improves overall "
-    "success, and significantly reduces it in two different model families "
-    "(−7.5 points at Qwen2.5-1.5B-Q8, −6.5 at Llama-3.2-1B); most "
-    "failures originate at tool selection or answer synthesis, upstream of "
-    "anything an argument-level check can reach. The same guardrail, "
-    "however, triples recovery from injected tool faults at 3B, indicating "
-    "the mechanism works once a model can act on error feedback. Third, "
-    "reliability collapses under repetition: the best core cell completes "
-    "all eight seeded repeats of a task only 8% of the time (16% for the "
-    "best exploratory-extension cell), and 1.5B models "
-    "recovered from 0 of 84 injected faults, typically hallucinating a "
-    "concrete answer instead. The harness, raw logs, and analysis are "
-    "public, every reported number regenerates from the logs in CI, and the "
-    "full study reproduces in under four GPU-hours on a free tier or on a "
-    "consumer CPU.")
+    "If you want to run an AI agent for free, you are realistically looking at "
+    "a small open-weight model, one to seven billion parameters. Yet most "
+    "reliability numbers for agents come from frontier APIs. So we built a "
+    "five-tool agent harness with 25 tasks covering five kinds of probe: "
+    "single-tool use, multi-tool chains, distractor tools, vague requests, and "
+    "tool faults we inject on purpose. Then we ran 2,400 seeded episodes across "
+    "model size, quantization and one mitigation. Grading is by rules. No LLM "
+    "judge. Quantization turned out to matter most. At 1.5B, the 8-bit build "
+    "more than doubled task success compared with the default 4-bit download "
+    "(31.0% vs 15.0%, +16 points, Holm-corrected exact McNemar "
+    "p = 2×10⁻⁵). That's roughly what you'd get from doubling the "
+    "parameters, and twice in our matrix a smaller model at higher precision "
+    "kept up with a bigger 4-bit one. How the models failed changed too. The "
+    "4-bit model often never called a tool at all. The 8-bit model did call "
+    "tools, and slipped up later, when putting the answer together. We also "
+    "tested a deterministic verification-and-retry guardrail (schema checks, "
+    "typed errors, a few bounded retries). It never significantly helped "
+    "overall, and in two model families it made things significantly worse "
+    "(−7.5 points at Qwen2.5-1.5B-Q8, −6.5 at Llama-3.2-1B). Most "
+    "failures start at picking the tool or writing the answer, before any "
+    "argument check even gets a look in. At 3B, though, the same guardrail "
+    "tripled recovery from injected faults, so it works once the model is good "
+    "enough to use the error message. Running each task over and over showed "
+    "how shaky all of this is. The best core cell got all eight seeded repeats "
+    "of a task right only 8% of the time (16% for the best exploratory cell). "
+    "The 1.5B models recovered from 0 of 84 injected faults and usually just "
+    "made up an answer. The harness, raw logs and analysis are public, CI "
+    "rebuilds every number from the logs, and the full study reruns in under "
+    "four GPU-hours on a free tier or a consumer CPU.")
 
 FIG_CAPTIONS = {
     "fig1_success_rates.png":
         "Figure 1: Task success rate by cell with Wilson 95% intervals "
         "(core matrix, n = 200 episodes per cell).",
     "fig2_passk.png":
-        "Figure 2: pass^k — the probability that all k seeded repeats "
-        "of a task succeed — for the six core cells.",
+        "Figure 2: pass^k, the probability that all k seeded repeats "
+        "of a task succeed, for the six core cells.",
     "fig3_first_failures.png":
         "Figure 3: First-failure composition of all 200 episodes per core "
         "cell. Quantization changes how the 1.5B model fails, not only how "
@@ -225,15 +223,15 @@ def main() -> None:
     body(doc, (
         "We ask four questions about small open-weight tool agents. How "
         "reliably do they complete multi-step tool tasks, measured across "
-        "repeated seeded trials rather than single shots? Where in the "
-        "pipeline do failures start — tool selection, argument "
+        "repeated seeded trials instead of single shots? Where in the "
+        "pipeline do failures start: tool selection, argument "
         "construction, error handling, or answer synthesis? Does a "
         "deterministic verification-and-retry guardrail close any of the "
-        "gap, and at what cost? And how does weight quantization — the "
-        "knob every local deployment turns — modulate all of the "
-        "above?"))
+        "gap, and at what cost? And how does weight quantization, the "
+        "setting every local deployment has to choose, change all of "
+        "this?"))
     body(doc, (
-        "We answer these with a deliberately transparent testbed: a "
+        "To answer them we built a small, fully logged testbed: a "
         "five-tool customer-support agent over a fully synthetic world, a "
         "25-task suite with five probe slices, rule-based grading, "
         "and 2,400 episodes across "
@@ -243,8 +241,8 @@ def main() -> None:
         "falsified and is reported as such. Our contributions:"))
     for bullet in (
         "A reliability-first measurement of 1–7B GGUF-quantized agents "
-        "with pass^k, per-stage failure attribution, and paired statistics "
-        "— the regime prior agent benchmarks mostly skip.",
+        "with pass^k, per-stage failure attribution, and paired statistics. "
+        "Prior agent benchmarks mostly skip this size range.",
         "Evidence that quantization is a first-order variable for agentic "
         "use: +16 points from Q4_K_M to Q8_0 at 1.5B (p = 2×10⁻"
         "⁵), with a qualitative shift in failure mode, and two "
@@ -253,9 +251,9 @@ def main() -> None:
         "A cautionary result for the most common mitigation: schema "
         "validation with typed-error retries never significantly helped "
         "overall success in five settings and significantly hurt in two "
-        "model families — while still tripling fault recovery at 3B, "
-        "locating a capability threshold below which verification feedback "
-        "is noise.",
+        "model families. It still tripled fault recovery at 3B, which "
+        "points to a capability threshold below which verification "
+        "feedback does not help.",
         "A zero-cost, fully reproducible harness: every number in this "
         "paper is regenerated from committed raw logs by CI, and the whole "
         "study reruns in under four GPU-hours on a free tier."):
@@ -271,7 +269,7 @@ def main() -> None:
         "over repeated trials and an LLM-simulated user, applied to "
         "frontier API models [2]. We adopt pass^k and move the object of "
         "study to small local models; our clarification turns are scripted "
-        "rather than LLM-simulated, which keeps the study free and "
+        "instead of LLM-simulated, which keeps the study free and "
         "deterministic. AgentBench established the API-vs-open gap across "
         "eight environments [3]. BFCL defines the standard schema-level "
         "grading of function calls [4], which our grader follows, but "
@@ -283,9 +281,9 @@ def main() -> None:
         "100-task fault-injection benchmark with budgeted recovery and "
         "verification [5]. Their evaluation abstracts the model away "
         "(unnamed, no repeated-trial metrics or intervals, call-count cost "
-        "proxies), which is precisely the gap we fill with named quantized "
-        "models, paired tests, and wall-clock accounting — and our "
-        "results add a boundary condition their abstraction cannot see: "
+        "proxies). We use named quantized models, paired tests, and "
+        "wall-clock accounting, and our results add a boundary condition "
+        "their setup cannot show: "
         "below a capability threshold, verification feedback reduces "
         "success. PALADIN trains recovery behavior from failure-injected "
         "trajectories [10]; our guardrail is deliberately training-free. "
@@ -300,7 +298,7 @@ def main() -> None:
         "1.5B, suggesting single-shot static evaluation understates "
         "quantization damage to sequential agentic behavior. TinyLLM "
         "studies sub-3B function calling and improves it by fine-tuning "
-        "[7]; we measure, rather than train, and target the inference-time "
+        "[7]; we measure instead of training, and target the inference-time "
         "question. MAST taxonomizes failures of multi-agent systems [11]; "
         "our taxonomy is single-agent and pipeline-staged, designed to be "
         "assignable by deterministic rules. ToolEmu uses an LM-emulated "
@@ -312,7 +310,7 @@ def main() -> None:
     heading(doc, "3  Testbed", 1)
     body(doc, (
         "Agent loop. A minimal ReAct-style loop with native tool calling "
-        "through Ollama's chat API — no agent framework, so every "
+        "through Ollama's chat API. There is no agent framework, so every "
         "token the model sees is in the logs. System prompt, task, then "
         "up to ten model calls; temperature 0.7, top-p 0.9, context 4,096 "
         "tokens, seeds 1–8 per task. Episodes are logged in full "
@@ -328,13 +326,13 @@ def main() -> None:
         "from memorization: an ungrounded answer is detectably wrong."))
     body(doc, (
         "Tasks. Twenty-five hand-written tasks in five slices: S1 "
-        "single-tool (5), S2 multi-tool chains (8), S3 distractor — a "
+        "single-tool (5), S2 multi-tool chains (8), S3 distractor, where a "
         "plausible but wrong tool is available (4), S4 underspecified "
         "requests, where the harness answers one clarifying question with "
         "a scripted reply (4), and S5 injected tool faults (error, "
         "timeout, or empty result on the first call, clearing afterwards) "
         "(4). Gold answers are resolved from the generated world at "
-        "grading time rather than stored, so data and answers cannot "
+        "grading time, not stored, so data and answers cannot "
         "drift; S4 golds are conditional on whether the agent asked."))
     body(doc, (
         "Grading and failure attribution. Success is a normalized match "
@@ -354,7 +352,7 @@ def main() -> None:
         "four extra model calls per episode; tool runtime errors are "
         "wrapped as structured, retriable error objects. The baseline "
         "passes calls through unchanged and lets the tool layer fail the "
-        "way a real API does — terse strings. Schema validity is "
+        "way a real API does, with terse strings. Schema validity is "
         "logged in both conditions, so malformed-call rates are always "
         "measurable."))
 
@@ -374,8 +372,8 @@ def main() -> None:
     body(doc, (
         "Statistics. Five contrasts were pre-registered and paired on "
         "(task, seed): the guardrail effect within each core "
-        "model×quantization, Q8 vs Q4 at 1.5B, and 3B vs 1.5B at Q4 "
-        "— exact McNemar tests with Holm correction, risk differences "
+        "model×quantization, Q8 vs Q4 at 1.5B, and 3B vs 1.5B at Q4. "
+        "We use exact McNemar tests with Holm correction, and risk differences "
         "with cluster-bootstrap 95% intervals (10,000 resamples, clustered "
         "by task). Per-cell uncertainty uses Wilson intervals; reliability "
         "uses the unbiased pass^k estimator over 8 seeds, averaged over "
@@ -384,7 +382,7 @@ def main() -> None:
 
     # ---- 5 Results ----
     heading(doc, "5  Results", 1)
-    heading(doc, "5.1  No cell is reliable, and repetition is brutal", 2)
+    heading(doc, "5.1  No cell is reliable, and repetition makes it worse", 2)
     table(doc,
           ["Cell", "Model", "Condition", "Success", "95% CI", "pass^8"],
           [["C1", "1.5B Q4_K_M", "baseline", "15.0%", "10.7–20.6", "0.00"],
@@ -409,11 +407,11 @@ def main() -> None:
     body(doc, (
         "Q8_0 versus Q4_K_M at 1.5B (baseline): +16.0 points (cluster-"
         "bootstrap CI +6.0 to +27.0; discordant pairs 40:8; Holm "
-        "p = 2×10⁻⁵) — the same magnitude as doubling "
+        "p = 2×10⁻⁵). That is about the same gain as doubling "
         "parameters at fixed quantization (3B-Q4 vs 1.5B-Q4: +15.5, CI "
         "+0.5 to +31.0, p = 3.5×10⁻⁴). Figure 3 shows the "
         "effect is qualitative: the Q4 build's modal first failure is "
-        "no_tool_call (61/200 — it answers from nothing, often "
+        "no_tool_call (61/200: it answers without calling anything, often "
         "emitting pseudo-JSON), which nearly vanishes at Q8 (5/200); Q8's "
         "failures migrate downstream to synthesis. On ambiguity probes "
         "the Q8 build asks a clarifying question twice as often (44% vs "
@@ -422,11 +420,11 @@ def main() -> None:
         "higher-precision model matched a larger 4-bit one (1.5B-Q8 ≈ "
         "3B-Q4; 3B-Q8 ≈ 7B-Q4). Under a fixed memory budget, "
         "precision appears to buy as much agentic reliability as "
-        "parameters — static compression benchmarks [6] do not "
-        "predict this (H3 supported at 1.5B)."), first_indent=False)
+        "parameters, which static compression benchmarks [6] do not "
+        "predict (H3 supported at 1.5B)."), first_indent=False)
     figure(doc, "fig3_first_failures.png")
 
-    heading(doc, "5.3  The guardrail never helps overall — and can hurt "
+    heading(doc, "5.3  The guardrail never helps overall, and can hurt "
                  "(H2 falsified)", 2)
     table(doc,
           ["Contrast", "RD", "95% CI", "Discordants", "Holm p"],
@@ -445,15 +443,15 @@ def main() -> None:
           "pre-registered family; extension rows corrected within theirs.")
     body(doc, (
         "In five model×quantization settings the guardrail never "
-        "significantly improved success, and in two — from two "
-        "different model families — it significantly reduced it "
+        "significantly improved success, and in two settings from "
+        "different model families it significantly reduced it "
         "(Table 2). At 1.5B-Q8 it flipped sixteen task-seed pairs from "
         "success to failure while rescuing one. The logs show why. First, "
         "most failures begin upstream of arguments (Figure 3): wrong or "
         "missing tool selection and bad synthesis are inert to schema "
         "validation. Second, when the guardrail does block a malformed "
-        "call, the verbose typed error often derails a small model rather "
-        "than repairing it — one Llama episode re-sent an invented "
+        "call, the verbose typed error often throws a small model off "
+        "instead of fixing the call. One Llama episode re-sent an invented "
         "order_by argument eight times, alternating blocked and "
         "passed-through, until the turn budget expired. Malformed-args as "
         "a first failure rises under the guardrail at 1.5B-Q8 (19 → "
@@ -463,25 +461,24 @@ def main() -> None:
         "86–97/200), and the guardrail still costs it 6.5 points."),
         first_indent=False)
 
-    heading(doc, "5.4  Error recovery is a capability cliff — and the "
-                 "guardrail's one real win", 2)
+    heading(doc, "5.4  Error recovery needs a capable model, and this is "
+                 "where the guardrail helps", 2)
     body(doc, (
         "Across all four 1.5B cells, zero of 84 fired faults were "
-        "recovered — not one retry. Afterwards the models usually "
+        "recovered; none of them retried. Afterwards the models usually "
         "answered anyway: 22 of 25 fired faults in the 1.5B-Q4 baseline "
         "ended in a fabricated concrete answer (a status, a price), "
         "versus three honest refusals. Typed errors shift some "
         "fabrications to refusals (22 → 13) without enabling "
-        "recovery — arguably the guardrail's only benefit at that "
-        "scale, and a safety-relevant one. At 3B-Q4 the guardrail's "
+        "recovery. At that scale this is probably the guardrail's only "
+        "benefit, though it matters for safety. At 3B-Q4 the guardrail's "
         "structured, retriable errors raise recovery from 3/16 to 10/17 "
         "(Figure 4), and ignored_tool_error as a first failure halves. "
         "The extension matrix explains the mechanism: native recovery "
-        "tracks model quality — 3B-Q8 recovers 15/24 with no "
-        "guardrail at all, 7B-Q4 8/23 — so the guardrail at 3B-Q4 "
+        "tracks model quality (3B-Q8 recovers 15/24 with no "
+        "guardrail at all, 7B-Q4 8/23), so the guardrail at 3B-Q4 "
         "was compensating for what Q4 quantization had removed. "
-        "Verification feedback, in short, is only useful to a model "
-        "capable of acting on it."), first_indent=False)
+        "Verification feedback only helps a model that can act on it."), first_indent=False)
     figure(doc, "fig4_fault_recovery.png")
 
     heading(doc, "5.5  Cost", 2)
@@ -492,23 +489,22 @@ def main() -> None:
         "(token counts × measured laptop throughput; derived, not "
         "measured) are ≈50 s at 1.5B-Q4 and ≈225–245 s at "
         "3B-Q4. The efficiency question is thus not the guardrail's "
-        "latency but whether it does anything useful — below 3B, it "
+        "latency but whether it does anything useful. Below 3B, it "
         "does not."), first_indent=False)
 
     # ---- 6 Discussion ----
     heading(doc, "6  Discussion", 1)
     body(doc, (
-        "Three practical readings. For practitioners: the default 4-bit "
-        "download is the wrong default for agentic use at small scale "
-        "— if the memory budget allows any move, spend it on "
+        "For practitioners, the default 4-bit download is the wrong "
+        "choice for agentic use at small scale. If the memory budget allows any move, spend it on "
         "precision before parameters, and treat published static-"
         "benchmark compression costs as a lower bound. For system "
-        "builders: argument-level verification is not a free lunch; below "
+        "builders, argument-level verification has a cost; below "
         "a capability threshold it subtracts value, and failure "
-        "composition (Figure 3) predicts where — selection- and "
-        "synthesis-stage failures are out of its reach by construction. "
+        "composition (Figure 3) shows where: selection- and "
+        "synthesis-stage failures are out of its reach by design. "
         "Mitigations that act on tool selection, or that repair instead "
-        "of re-prompt, are the natural next experiments. For evaluators: "
+        "of re-prompt, are the obvious next experiments. For evaluators, "
         "single-shot leaderboard accuracy hides both the repetition "
         "collapse (Figure 2) and the failure-mode shifts that "
         "quantization induces; pass^k and per-stage attribution are cheap "
@@ -530,7 +526,7 @@ def main() -> None:
         "wording, budgets, or in-context repair examples may behave "
         "differently. Seeded sampling is reproducible on the same "
         "software and hardware, but bit-exact reproduction across GPUs is "
-        "not guaranteed — which is why the raw logs, not the "
+        "not guaranteed. That is why the raw logs, not the "
         "hardware, are the artifact of record. The extension matrix was "
         "not pre-registered and is reported as exploratory."),
         first_indent=False)
@@ -538,17 +534,16 @@ def main() -> None:
     # ---- 8 Conclusion ----
     heading(doc, "8  Conclusion", 1)
     body(doc, (
-        "We measured, rather than assumed, the reliability of the "
-        "language-model agents anyone can run for free. Quantization "
+        "We measured the reliability of the language-model agents "
+        "anyone can run for free. Quantization "
         "emerged as a first-order variable that changes how small agents "
-        "fail, not just how often; the cheapest standard mitigation "
+        "fail, as well as how often; the cheapest standard mitigation "
         "turned out to help only above a capability threshold and to "
         "hurt below it; and repetition exposed unreliability that "
-        "single-shot scores conceal. Everything — harness, tasks, "
-        "2,400 raw episode logs, analysis, and figures — is public "
-        "and regenerates in CI, so every claim in this paper can be "
-        "checked, and every future small model can be dropped into the "
-        "same testbed in an afternoon."), first_indent=False)
+        "single-shot scores hide. The harness, tasks, 2,400 raw episode "
+        "logs, analysis, and figures are public and regenerate in CI, so "
+        "every claim in this paper can be checked and new small models "
+        "can be run on the same testbed."), first_indent=False)
 
     heading(doc, "Reproducibility statement", 1)
     body(doc, (

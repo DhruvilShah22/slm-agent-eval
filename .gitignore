@@ -14,3 +14,4 @@ __pycache__/
 # (raw scratch outputs stay out)
 scratch/
 tmp/
+*.docx
